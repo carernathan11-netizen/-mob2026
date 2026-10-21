@@ -19,6 +19,7 @@
                     colors: {
                         brand: {
                             red: '#FF2A2A',
+                            neonRed: '#FF0033',
                             amber: '#FF9500',
                             dark: '#08090C',
                             card: '#11141C',
@@ -79,7 +80,7 @@
                 <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>Acte II du 24 Octobre 2026 : Suivi du réseau citoyen, carte des 33 villes et alertes en direct.</span>
+                <span>Acte II du 24 Octobre 2026 : Suivi du réseau citoyen, carte des villes mobilisées et alertes en direct.</span>
             </div>
             <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">2026</span>
         </div>
@@ -134,7 +135,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Convergence lycéenne, étudiante et citoyenne. Suivez en temps réel la carte des mobilisations dans 33 villes de France et les alertes transmises par le réseau.
+                    Convergence lycéenne, étudiante et citoyenne. Suivez en temps réel la carte des mobilisations à travers la France et les alertes transmises par le réseau.
                 </p>
 
                 <div class="pt-2 flex items-center gap-3">
@@ -149,7 +150,7 @@
             </div>
         </section>
 
-        <!-- CE QUI EST ATTENDU & PARCOURS PARIS -->
+        <!-- INFORMATIONS 24 OCTOBRE -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 transition hover:-translate-y-1 duration-300">
                 <h2 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
@@ -202,12 +203,12 @@
             </div>
         </section>
 
-        <!-- CARTE INTERACTIVE (33 VILLES) -->
+        <!-- CARTE INTERACTIVE (AVEC LORIENT) -->
         <section id="villes-carte" class="glass-panel p-6 rounded-2xl border border-brand-border space-y-5 transition hover:-translate-y-1 duration-300">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations (33 Villes)
+                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France
                     </h2>
                     <p class="text-xs text-slate-400">Cartographie nationale mise à jour pour le 24 octobre.</p>
                 </div>
@@ -224,8 +225,8 @@
                         <span class="text-brand-red font-mono font-bold text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">33 Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans.</p>
-                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance renforcée sur Rennes, Brest et Nantes.</p>
+                        <p><strong class="text-white">Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Lorient, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans.</p>
+                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance renforcée sur Rennes, Brest, Lorient et Nantes.</p>
                     </div>
                 </div>
             </div>
@@ -244,7 +245,7 @@
                     <p class="font-bold text-white flex items-center gap-1.5">
                         <i class="fa-solid fa-compass text-brand-red"></i> Securmanif — Bretagne :
                     </p>
-                    <p class="text-slate-300">Villes clés : <strong class="text-white">Rennes, Brest, Nantes</strong> (Loire-Atlantique).</p>
+                    <p class="text-slate-300">Villes clés : <strong class="text-white">Rennes, Brest, Lorient, Nantes</strong>.</p>
                 </div>
             </div>
         </section>
@@ -256,8 +257,8 @@
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre (ex: Blocus à la gare de Rennes)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
-                    <input id="input-city" type="text" placeholder="Ville concernée (ex: Rennes, Paris...)" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
+                    <input id="input-title" type="text" placeholder="Titre (ex: Blocus à la gare de Lorient)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
+                    <input id="input-city" type="text" placeholder="Ville concernée (ex: Lorient, Rennes, Paris...)" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
                 </div>
                 <textarea id="input-desc" placeholder="Détails de la situation sur le terrain..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
                 <button id="btn-send-post" class="bg-brand-red hover:bg-red-600 text-white font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-red/30 glow-red">
@@ -318,7 +319,7 @@
 
         let latestDataSnapshot = null;
 
-        // 1. CARTE DE FRANCE INTERACTIVE
+        // 1. CARTE DE FRANCE INTERACTIVE (AVEC LORIENT)
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
@@ -326,22 +327,39 @@
         }).addTo(map);
 
         const citiesList = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522 }, { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777 }, { name: "Brest", lat: 48.3904, lng: -4.4861 },
-            { name: "Nantes", lat: 47.2183, lng: -1.5536 }, { name: "Lille", lat: 50.6292, lng: 3.0573 },
-            { name: "Lyon", lat: 45.7640, lng: 4.8357 }, { name: "Marseille", lat: 43.2965, lng: 5.3698 },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442 }, { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
-            { name: "Grenoble", lat: 45.1885, lng: 5.7245 }, { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
-            { name: "Nice", lat: 43.7102, lng: 7.2620 }, { name: "Rouen", lat: 49.4432, lng: 1.0999 },
-            { name: "Caen", lat: 49.1829, lng: -0.3707 }, { name: "Angers", lat: 47.4784, lng: -0.5632 },
-            { name: "Amiens", lat: 49.8941, lng: 2.2957 }, { name: "Dijon", lat: 47.3220, lng: 5.0415 },
-            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 }, { name: "Limoges", lat: 45.8336, lng: 1.2611 },
-            { name: "Metz", lat: 49.1193, lng: 6.1757 }, { name: "Nancy", lat: 48.6921, lng: 6.1844 },
-            { name: "Reims", lat: 49.2583, lng: 4.0317 }, { name: "Tours", lat: 47.3941, lng: 0.6848 },
-            { name: "Poitiers", lat: 46.5802, lng: 0.3404 }, { name: "Avignon", lat: 43.9493, lng: 4.8055 },
-            { name: "Perpignan", lat: 42.6986, lng: 2.8956 }, { name: "Toulon", lat: 43.1242, lng: 5.9280 },
-            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 }, { name: "Besançon", lat: 47.2378, lng: 6.0241 },
-            { name: "Le Havre", lat: 49.4944, lng: 0.1079 }, { name: "Orléans", lat: 47.9029, lng: 1.9090 }
+            { name: "Paris", lat: 48.8566, lng: 2.3522 },
+            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
+            { name: "Brest", lat: 48.3904, lng: -4.4861 },
+            { name: "Lorient", lat: 47.7483, lng: -3.3700 }, // Lorient ajouté
+            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
+            { name: "Lille", lat: 50.6292, lng: 3.0573 },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
+            { name: "Nice", lat: 43.7102, lng: 7.2620 },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
+            { name: "Caen", lat: 49.1829, lng: -0.3707 },
+            { name: "Angers", lat: 47.4784, lng: -0.5632 },
+            { name: "Amiens", lat: 49.8941, lng: 2.2957 },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
+            { name: "Metz", lat: 49.1193, lng: 6.1757 },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
+            { name: "Reims", lat: 49.2583, lng: 4.0317 },
+            { name: "Tours", lat: 47.3941, lng: 0.6848 },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
+            { name: "Avignon", lat: 43.9493, lng: 4.8055 },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
+            { name: "Toulon", lat: 43.1242, lng: 5.9280 },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090 }
         ];
 
         citiesList.forEach(c => {
@@ -417,7 +435,6 @@
                 userProfile.classList.add('hidden');
                 sectionContrib.classList.add('hidden');
             }
-            // Re-rendre le fil d'actualités pour afficher/masquer les boutons de suppression
             renderPosts(latestDataSnapshot);
         });
 
@@ -472,7 +489,6 @@
                 const card = document.createElement('article');
                 card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5 relative transition hover:-translate-y-0.5 duration-200";
 
-                // VÉRIFICATION STRICTE DE L'AUTEUR PAR SON UID OU NOM
                 const isAuthor = currentUser && (
                     currentUser.uid === post.uid || 
                     currentUser.displayName === post.author || 
