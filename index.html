@@ -329,7 +329,7 @@
 
     <!-- MODAL / NOUVELLE PAGE : VILLES À HAUT RISQUE ET CONFIRMÉES -->
     <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-        <div class="flame-modal-bg w-full max-w-3xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
+        <div class="flame-modal-bg w-full max-w-4xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
             <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-red/25 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-amber-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -340,7 +340,7 @@
                     </div>
                     <div>
                         <h2 class="font-display font-black text-xl text-white uppercase tracking-wider">Villes à Haut Risque & Confirmées</h2>
-                        <p class="text-xs text-red-300 font-mono">Acte II — 24 Octobre 2026 | Zones de convergence majeure</p>
+                        <p class="text-xs text-red-300 font-mono">Suivi du 24 Octobre 2026 | Signalements croisés</p>
                     </div>
                 </div>
                 <button id="close-high-risk-modal" class="text-slate-400 hover:text-white bg-slate-800/80 hover:bg-red-600/80 w-9 h-9 rounded-xl flex items-center justify-center transition border border-slate-700">
@@ -348,75 +348,74 @@
                 </button>
             </div>
 
-            <!-- CONTENU DE LA PAGE SPÉCIALE (VILLES CONFIRMÉES) -->
-            <div class="space-y-5 relative z-10 text-xs text-slate-200">
-                <div class="bg-red-950/60 border border-red-500/40 p-4 rounded-2xl space-y-2">
-                    <p class="font-bold text-red-400 flex items-center gap-2 text-sm">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Zones à forte tension & rassemblements majeurs confirmés :
+            <!-- CONTENU DE LA PAGE SPÉCIALE (AVEC VOS DEUX NIVEAUX DE CONFIRMATION) -->
+            <div class="space-y-6 relative z-10 text-xs text-slate-200">
+                
+                <!-- NOTE D'AVERTISSEMENT DE SÉCURITÉ -->
+                <div class="bg-slate-900/90 border border-amber-500/40 p-4 rounded-2xl space-y-1">
+                    <p class="font-bold text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Information importante :
                     </p>
-                    <p class="leading-relaxed text-slate-300">
-                        D'après les remontées nationales et les appels officiels recensés, les villes ci-dessous présentent un niveau de vigilance maximal et des cortèges d'envergure confirmés pour cet Acte II.
+                    <p class="text-slate-300 text-[11px] leading-relaxed">
+                        Cette confirmation concerne des manifestations ou rassemblements annoncés dans ces villes, pas nécessairement l'« Acte II » des Gilets jaunes ni un même mouvement national unique.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Paris -->
-                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-black text-white text-sm">PARIS (75)</span>
-                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Risque Maximum</span>
-                        </div>
-                        <p class="text-slate-300 text-[11px]">Cortège principal Place de la Bastille vers Opéra Garnier. Forte présence annoncée et risques de tensions sur les axes parisiens.</p>
+                <!-- SECTION 1 : MANIFESTATIONS CONFIRMÉES PAR PLUSIEURS SOURCES -->
+                <div class="space-y-3">
+                    <h3 class="font-display font-black text-sm text-emerald-400 uppercase tracking-wide flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> ✅ Manifestations confirmées par plusieurs sources
+                    </h3>
+                    <p class="text-[11px] text-slate-400">Signalements concordants recensés pour le 24 octobre d'après les calendriers consultés :</p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Paris</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Marseille</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Bordeaux</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Lille</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Dijon</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Besançon</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Brest</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Nîmes</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Toulouse</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Orléans</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Angers</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Clermont-Ferrand</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Perpignan</div>
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Grenoble</div>
                     </div>
+                </div>
 
-                    <!-- Nantes -->
-                    <div class="bg-brand-card/90 border border-amber-500/30 p-4 rounded-2xl space-y-1.5 glow-amber">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-black text-white text-sm">NANTES (44)</span>
-                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Vigilance Élevée</span>
-                        </div>
-                        <p class="text-slate-300 text-[11px]">Rassemblements structurés centre-ville et axes routiers périphériques. Point névralgique de l'Ouest confirmé.</p>
-                    </div>
+                <hr class="border-red-500/20">
 
-                    <!-- Rennes -->
-                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-black text-white text-sm">RENNES (35)</span>
-                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Haut Risque</span>
-                        </div>
-                        <p class="text-slate-300 text-[11px]">Forte mobilisation étudiante et lycéenne confirmée. Risques de blocages autour des campus et de la gare.</p>
-                    </div>
-
-                    <!-- Lorient -->
-                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-black text-white text-sm">LORIENT (56)</span>
-                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Securmanif Bretagne</span>
-                        </div>
-                        <p class="text-slate-300 text-[11px]">Cortège local et actions ciblées sur le bassin lorientais. Suivi permanent assuré par le réseau citoyen.</p>
-                    </div>
-
-                    <!-- Marseille -->
-                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-bold text-white text-sm">MARSEILLE (13)</span>
-                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
-                        </div>
-                        <p class="text-slate-400 text-[11px]">Rassemblements majeurs prévus sur le Vieux-Port et axes adjacents.</p>
-                    </div>
-
-                    <!-- Lyon -->
-                    <div class="bg-brand-card/90 border border-amber-500/30 p-4 rounded-2xl space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-bold text-white text-sm">LYON (69)</span>
-                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
-                        </div>
-                        <p class="text-slate-400 text-[11px]">Secteurs de Terreaux et Jean Macé sous surveillance étroite des forces de l'ordre.</p>
+                <!-- SECTION 2 : MANIFESTATIONS ANNONCÉES / CONFIRMATION LIMITÉE -->
+                <div class="space-y-3">
+                    <h3 class="font-display font-black text-sm text-amber-400 uppercase tracking-wide flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> 🟠 Manifestations annoncées (Confirmation plus limitée)
+                    </h3>
+                    <p class="text-[11px] text-slate-400">Villes apparaissant également dans les appels et signalements consultés :</p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Nice</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Nantes</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Montpellier</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Strasbourg</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Rennes</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Reims</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Limoges</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Saint-Étienne</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Nancy</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Caen</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Le Havre</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Rouen</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Metz</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Mulhouse</div>
+                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Lorient</div>
                     </div>
                 </div>
 
                 <div class="p-3 bg-black/40 rounded-xl border border-red-500/20 text-center text-[11px] text-slate-400 font-mono">
-                    Données mises à jour en direct depuis les signalements terrain vérifiés.
+                    Données consolidées via le réseau citoyen MOB'2026.
                 </div>
             </div>
 
