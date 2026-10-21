@@ -15,9 +15,9 @@
                         brand: {
                             red: '#FF3B30',
                             amber: '#FF9500',
-                            dark: '#0D0F12',
-                            card: '#161920',
-                            border: '#262B36'
+                            dark: '#0A0C0E',
+                            card: '#12151C',
+                            border: '#1F2430'
                         }
                     }
                 }
@@ -28,14 +28,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- html2canvas -->
+    <!-- html2canvas pour la capture d'écran détaillée -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         .glass-panel {
-            background: rgba(22, 25, 32, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(18, 21, 28, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glow-red {
+            box-shadow: 0 0 25px -5px rgba(255, 59, 48, 0.3);
         }
         .pulse-red {
             box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
@@ -43,50 +46,50 @@
         }
         @keyframes pulse-red {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 48, 0); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 59, 48, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
         }
-        #map-export-area { position: relative; border-radius: 1.25rem; overflow: hidden; }
-        #map { height: 420px; width: 100%; z-index: 1; }
+        #map-export-area { position: relative; border-radius: 1.5rem; overflow: hidden; }
+        #map { height: 460px; width: 100%; z-index: 1; border-radius: 1rem; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
     <!-- BANDEROLLE FLASH INFO -->
-    <div class="bg-brand-red/10 border-b border-brand-red/30 py-2.5 px-4 text-xs md:text-sm font-medium text-red-400">
+    <div class="bg-gradient-to-r from-brand-red/20 via-brand-amber/10 to-brand-red/20 border-b border-brand-red/30 py-2.5 px-4 text-xs md:text-sm font-semibold text-red-400">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-brand-red pulse-red"></span>
-                <span class="font-bold tracking-wider uppercase text-brand-red">FLASH INFO</span>
+                <span class="font-black tracking-widest uppercase text-brand-red">FLASH INFO</span>
             </div>
-            <div class="truncate text-slate-300">
-                <span>Acte II du 24 Octobre 2026 : Suivi du réseau, carte des 33 villes et fil Snap en direct.</span>
+            <div class="truncate text-slate-200 font-medium">
+                <span>Acte II du 24 Octobre : Suivi du réseau citoyen, carte des 33 villes et alertes en direct.</span>
             </div>
-            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline">21 Octobre 2026</span>
+            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline font-mono">2026</span>
         </div>
     </div>
 
     <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-brand-border">
+    <header class="sticky top-0 z-50 glass-panel border-b border-brand-border/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-red to-brand-amber flex items-center justify-center font-black text-xl text-white shadow-lg shadow-brand-red/20">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-red to-brand-amber flex items-center justify-center font-black text-xl text-white shadow-lg shadow-brand-red/30">
                     M
                 </div>
                 <div>
-                    <a href="#" class="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
+                    <a href="#" class="font-black text-2xl tracking-tight text-white flex items-center gap-1">
                         MOB<span class="text-brand-red">'26</span>
                     </a>
-                    <p class="text-[10px] text-slate-400 tracking-wider uppercase -mt-1 font-semibold">Live Social Tracker</p>
+                    <p class="text-[9px] text-slate-400 tracking-widest uppercase -mt-1 font-bold">Live Social Tracker</p>
                 </div>
             </div>
 
             <!-- PROFIL -->
             <div class="flex items-center gap-3">
-                <div id="user-profile" class="hidden flex items-center gap-2 bg-brand-card border border-brand-border p-1.5 rounded-xl">
+                <div id="user-profile" class="hidden flex items-center gap-2.5 bg-brand-card/90 border border-brand-border p-1.5 px-3 rounded-xl shadow-md">
                     <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-lg border border-slate-700 object-cover">
                     <span id="user-name" class="text-xs font-bold text-white hidden sm:inline"></span>
-                    <button id="btn-logout" class="text-slate-400 hover:text-red-400 text-xs px-2" title="Déconnexion">
+                    <button id="btn-logout" class="text-slate-400 hover:text-red-400 text-xs pl-1 transition" title="Déconnexion">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </div>
@@ -97,64 +100,64 @@
     <!-- CONTENU PRINCIPAL -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
-        <!-- AFFICHE À LA UNE + COMPTE À REBOURS COMPACT -->
-        <section class="relative rounded-3xl overflow-hidden border border-brand-red/40 p-6 sm:p-8 md:p-10 shadow-2xl shadow-brand-red/10 min-h-[320px] flex flex-col justify-between">
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-50"></div>
+        <!-- HERO : AFFICHE À LA UNE + COMPTE À REBOURS COMPACT -->
+        <section class="relative rounded-3xl overflow-hidden border border-brand-red/40 p-6 sm:p-10 shadow-2xl shadow-brand-red/10 min-h-[340px] flex flex-col justify-between glow-red">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/85 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-45"></div>
 
-            <div class="relative z-20 space-y-3 max-w-4xl">
+            <div class="relative z-20 space-y-4 max-w-4xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="bg-brand-red text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-widest shadow-md shadow-brand-red/40 pulse-red">
+                    <span class="bg-brand-red text-white text-[10px] font-black uppercase px-3 py-1 rounded-lg tracking-widest shadow-md shadow-brand-red/40 pulse-red">
                         À LA UNE
                     </span>
-                    <span class="bg-slate-900/90 text-amber-400 text-[11px] font-bold px-2.5 py-0.5 rounded-md border border-amber-400/30">
-                        <i class="fa-solid fa-calendar-days mr-1"></i> SAMEDI 24 OCTOBRE 2026
+                    <span class="bg-slate-900/90 text-amber-400 text-xs font-extrabold px-3 py-1 rounded-lg border border-amber-400/30">
+                        <i class="fa-solid fa-calendar-days mr-1.5"></i> SAMEDI 24 OCTOBRE 2026
                     </span>
                 </div>
 
-                <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-none">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-none drop-shadow-md">
                     ACTE II <span class="text-brand-red">— 24 OCTOBRE</span>
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Convergence lycéenne, étudiante et citoyenne. Suivez le direct national, la carte complète des 33 villes et le fil de photos Snap.
+                    Convergence lycéenne, étudiante et citoyenne. Suivez en temps réel la carte des mobilisations dans 33 villes de France et les alertes du réseau.
                 </p>
 
-                <!-- COMPTE À REBOURS MINI -->
-                <div class="pt-1 flex items-center gap-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1"><i class="fa-regular fa-clock text-brand-red"></i> J-</span>
+                <!-- COMPTE À REBOURS COMPACT -->
+                <div class="pt-2 flex items-center gap-3">
+                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-400"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Rassemblement dans :</span>
                     <div id="countdown" class="flex items-center gap-1.5 font-mono font-bold text-xs text-white">
-                        <span id="cd-days" class="bg-brand-card/90 border border-brand-border px-2 py-1 rounded text-brand-red font-black">00</span>j
-                        <span id="cd-hours" class="bg-brand-card/90 border border-brand-border px-2 py-1 rounded text-brand-amber font-black">00</span>h
-                        <span id="cd-mins" class="bg-brand-card/90 border border-brand-border px-2 py-1 rounded text-white font-black">00</span>m
-                        <span id="cd-secs" class="bg-brand-card/90 border border-brand-border px-2 py-1 rounded text-emerald-400 font-black">00</span>s
+                        <span id="cd-days" class="bg-brand-card/90 border border-brand-border px-2.5 py-1 rounded-lg text-brand-red font-black text-sm">00</span>j
+                        <span id="cd-hours" class="bg-brand-card/90 border border-brand-border px-2.5 py-1 rounded-lg text-brand-amber font-black text-sm">00</span>h
+                        <span id="cd-mins" class="bg-brand-card/90 border border-brand-border px-2.5 py-1 rounded-lg text-white font-black text-sm">00</span>m
+                        <span id="cd-secs" class="bg-brand-card/90 border border-brand-border px-2.5 py-1 rounded-lg text-emerald-400 font-black text-sm">00</span>s
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- INFORMATIONS 24 OCTOBRE -->
+        <!-- SECTIONS ATTENDU & PARCOURS PARIS -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
+                <h2 class="text-sm font-extrabold text-white flex items-center gap-2">
                     <i class="fa-solid fa-bullhorn text-brand-amber"></i> Ce qui est attendu le 24 octobre
                 </h2>
-                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
-                    <li><strong class="text-white">Convergence "Jaunes et Jeunes" :</strong> Mobilisations citoyennes et lycéennes.</li>
-                    <li><strong class="text-white">Opérations filtrantes :</strong> Points de blocage sur axes régionaux stratégiques.</li>
-                    <li><strong class="text-white">Préfectures & Métropoles :</strong> Dispositifs renforcés.</li>
+                <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                    <li><strong class="text-white">Convergence "Jaunes et Jeunes" :</strong> Mobilisations lycéennes et citoyennes.</li>
+                    <li><strong class="text-white">Opérations filtrantes :</strong> Points de blocus sur axes stratégiques régionaux.</li>
+                    <li><strong class="text-white">Secteurs surveillés :</strong> Préfectures et grands centres métropolitains.</li>
                 </ul>
             </div>
 
-            <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
+                <h2 class="text-sm font-extrabold text-white flex items-center gap-2">
                     <i class="fa-solid fa-route text-brand-red"></i> Parcours prévu à Paris (Déclaré)
                 </h2>
-                <div class="space-y-1.5 text-xs text-slate-300">
+                <div class="space-y-2 text-xs text-slate-300">
                     <p><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i> <strong>Rassemblement :</strong> Place de la Bastille (12h - 14h)</p>
                     <p><i class="fa-solid fa-arrow-right-long text-brand-amber mr-1.5"></i> <strong>Direction :</strong> Opéra Garnier</p>
-                    <p class="text-[10px] text-slate-400 italic border-t border-slate-800/80 pt-1">
-                        *Parcours déclaré sous réserve de modifications préfectorales.
+                    <p class="text-[10px] text-slate-400 italic border-t border-slate-800/80 pt-1.5">
+                        *Parcours sous réserve de modifications préfectorales de dernière minute.
                     </p>
                 </div>
             </div>
@@ -162,70 +165,74 @@
 
         <!-- AUTHENTIFICATION (Google & Email) -->
         <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div>
-                    <h3 class="font-bold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Google</h3>
-                    <p class="text-xs text-slate-400">Pour pouvoir publier des messages et photos Snap.</p>
+                    <h3 class="font-extrabold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Google</h3>
+                    <p class="text-xs text-slate-400">Authentifiez-vous pour publier et gérer vos alertes.</p>
                 </div>
-                <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+                <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-lg">
                     <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
                     Se connecter avec Google
                 </button>
             </div>
 
-            <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div class="space-y-2">
-                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Connexion par Email</h3>
-                    <input id="auth-email" type="email" placeholder="Email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
-                    <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <h3 class="font-extrabold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Connexion par Email</h3>
+                    <input id="auth-email" type="email" placeholder="Adresse email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
+                    <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
                 </div>
                 <div class="flex gap-2">
-                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2 rounded-xl border border-slate-700">Inscription</button>
-                    <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 rounded-xl">Connexion</button>
+                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 transition">Inscription</button>
+                    <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">Connexion</button>
                 </div>
             </div>
         </section>
 
-        <!-- CARTE INTERACTIVE & BOUTON TÉLÉCHARGER DÉTAILLÉ -->
-        <section id="villes-carte" class="glass-panel p-5 sm:p-6 rounded-2xl border border-brand-border space-y-4">
+        <!-- CARTE INTERACTIVE & TÉLÉCHARGEMENT DÉTAILLÉ -->
+        <section id="villes-carte" class="glass-panel p-6 rounded-2xl border border-brand-border space-y-5">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                    <h2 class="text-base font-bold text-white flex items-center gap-2">
+                    <h2 class="text-lg font-black text-white flex items-center gap-2">
                         <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France (33 Villes)
                     </h2>
-                    <p class="text-xs text-slate-400">Cartographie interactive nationale.</p>
+                    <p class="text-xs text-slate-400">Cartographie nationale mise à jour pour le 24 octobre.</p>
                 </div>
-                <button id="btn-download-map" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/20 self-start sm:self-auto">
-                    <i class="fa-solid fa-download"></i> Télécharger / Partager la Carte Détaillée
+                <button id="btn-download-map" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-extrabold text-xs py-2.5 px-5 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/30 self-start sm:self-auto">
+                    <i class="fa-solid fa-download"></i> Télécharger la Carte Détaillée HD
                 </button>
             </div>
 
-            <!-- ZONE À TÉLÉCHARGER -->
-            <div id="map-export-area" class="p-4 bg-brand-dark rounded-2xl border border-brand-border space-y-3">
+            <!-- ZONE D'EXPORTATION DÉTAILLÉE -->
+            <div id="map-export-area" class="p-5 bg-brand-dark rounded-2xl border border-brand-border space-y-4">
                 <div id="map"></div>
-                <!-- Panneau récapitulatif pour l'export -->
-                <div class="p-3 bg-brand-card rounded-xl border border-slate-800 text-[11px] text-slate-300 flex flex-wrap justify-between items-center gap-2">
-                    <div>
-                        <span class="text-white font-bold block">MOB'2026 — CARTE OFFICIELLE ACTE II (24 OCTOBRE)</span>
-                        <span>33 Villes répertoriées • Réseau Citoyen en temps réel</span>
+                
+                <!-- PANNEAU DÉTAILLÉ INCLUS DANS L'IMAGE TÉLÉCHARGÉE -->
+                <div class="p-4 bg-brand-card rounded-xl border border-slate-800 space-y-3">
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-2">
+                        <span class="text-white font-black text-xs uppercase tracking-wider">MOB'2026 — FICHE OFFICIELLE DÉTAILLÉE DU 24 OCTOBRE</span>
+                        <span class="text-brand-red font-mono font-bold text-xs">mob2026.vercel.app</span>
                     </div>
-                    <span class="text-brand-red font-mono font-bold">mob2026.vercel.app</span>
+                    <div class="text-[11px] text-slate-300 space-y-1">
+                        <p><strong class="text-white">33 Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans.</p>
+                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance renforcée sur Rennes, Brest et Nantes.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- AVERTISSEMENTS & BRETAGNE -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-                <div class="md:col-span-2 bg-brand-amber/10 border border-brand-amber/30 p-3.5 rounded-xl text-xs text-amber-300">
-                    <p class="font-bold flex items-center gap-1 mb-0.5">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Attention :
+            <!-- AVERTISSEMENT -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2 bg-brand-amber/10 border border-brand-amber/30 p-4 rounded-xl text-xs text-amber-300">
+                    <p class="font-bold flex items-center gap-1.5 mb-1">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Avertissement important :
                     </p>
                     <p class="leading-relaxed">
                         Cette liste recense des villes où des appels à la mobilisation circulent. Elle ne signifie pas que les manifestations y sont toutes confirmées, autorisées ou maintenues.
                     </p>
                 </div>
 
-                <div class="bg-brand-dark/80 border border-brand-border p-3.5 rounded-xl text-xs space-y-1">
-                    <p class="font-bold text-white flex items-center gap-1">
+                <div class="bg-brand-dark/80 border border-brand-border p-4 rounded-xl text-xs space-y-1">
+                    <p class="font-bold text-white flex items-center gap-1.5">
                         <i class="fa-solid fa-compass text-brand-red"></i> Securmanif — Bretagne :
                     </p>
                     <p class="text-slate-300">Villes clés : <strong class="text-white">Rennes, Brest, Nantes</strong> (Loire-Atlantique).</p>
@@ -233,61 +240,30 @@
             </div>
         </section>
 
-        <!-- SECTION SNAP MOB'26 (PHOTOS DU DIRECT) -->
-        <section class="glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
-            <div class="flex items-center justify-between border-b border-brand-border pb-3">
-                <h2 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-camera text-brand-red"></i> Snap MOB'26 — Photos en Direct
-                </h2>
-                <span class="text-xs text-slate-400">Rassemblements & Cortèges</span>
-            </div>
-
-            <!-- Formulaire d'envoi Snap (Visible si connecté) -->
-            <div id="section-snap-upload" class="hidden bg-brand-dark border border-brand-border p-4 rounded-xl space-y-3">
-                <p class="text-xs font-bold text-white"><i class="fa-solid fa-image text-amber-400 mr-1.5"></i> Partager une photo de manifestation</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <input id="snap-url" type="url" placeholder="URL de l'image (ex: https://.../photo.jpg)" class="bg-brand-card border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
-                    <input id="snap-legend" type="text" placeholder="Légende (ex: Ambiance Place de la Bastille)" class="bg-brand-card border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
-                </div>
-                <button id="btn-send-snap" class="bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 px-4 rounded-xl transition">
-                    Publier le Snap
-                </button>
-            </div>
-
-            <!-- Galerie Snap -->
-            <div id="snap-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <p class="text-xs text-slate-500 italic col-span-full">Aucune photo Snap pour le moment. Soyez le premier à partager votre image du terrain !</p>
-            </div>
-        </section>
-
-        <!-- FORMULAIRE DE PUBLICATION D'ALERTE TEXTE (Visible si connecté) -->
-        <section id="section-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
-            <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <i class="fa-solid fa-pen-to-square text-brand-red"></i> Publier un signalement texte
+        <!-- PUBLICATION D'ALERTE (Si connecté) -->
+        <section id="section-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square text-brand-red"></i> Publier une alerte en direct
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
-                    <input id="input-city" type="text" placeholder="Ville..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
+                    <input id="input-title" type="text" placeholder="Titre (ex: Blocus à la gare de Rennes)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
+                    <input id="input-city" type="text" placeholder="Ville concernée (ex: Rennes, Paris...)" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
                 </div>
-                <textarea id="input-desc" placeholder="Détails..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"></textarea>
-                <button id="btn-send-post" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition">
+                <textarea id="input-desc" placeholder="Détails de la situation sur le terrain..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
+                <button id="btn-send-post" class="bg-brand-red hover:bg-red-600 text-white font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-red/20">
                     Diffuser l'alerte
                 </button>
             </div>
         </section>
 
-        <!-- FIL EN DIRECT -->
+        <!-- FIL D'ACTUALITÉ EN DIRECT -->
         <section id="live-feed" class="space-y-4">
-            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <h2 class="text-xl font-extrabold text-white flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
             </h2>
             <div id="live-feed-list" class="space-y-3">
-                <div class="glass-panel p-5 rounded-2xl border border-brand-border text-center">
-                    <i class="fa-solid fa-circle-check text-emerald-400 text-lg mb-1 block"></i>
-                    <p class="text-xs font-bold text-slate-300">Rien à signaler pour le moment</p>
-                    <p class="text-[11px] text-slate-500">Les alertes et rapports de situation apparaîtront ici dès leur publication.</p>
-                </div>
+                <!-- Les messages dynamiques s'affichent ici -->
             </div>
         </section>
 
@@ -297,7 +273,7 @@
     <footer class="mt-auto border-t border-brand-border bg-brand-dark py-6 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <p class="font-bold text-slate-400">MOB'2026 — Plateforme Citoyenne Indépendante</p>
-            <p class="text-[11px] text-slate-600">Données synchronisées en temps réel via Google Firebase.</p>
+            <p class="text-[11px] text-slate-600">Hébergé sur mob2026.vercel.app | Données Firebase Realtime.</p>
         </div>
     </footer>
 
@@ -316,7 +292,7 @@
             signOut, 
             onAuthStateChanged 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyAgU2wzM-AoMgzgQYXsyrIVs10IQLYM6qc",
@@ -377,21 +353,21 @@
 
         citiesList.forEach(c => {
             L.marker([c.lat, c.lng]).addTo(map)
-                .bindPopup(`<b>${c.name}</b><br>Mobilisation répertoriée.`);
+                .bindPopup(`<b>${c.name}</b><br>Appel à la mobilisation répertorié.`);
         });
 
-        // EXPORT DE LA CARTE DÉTAILLÉE
+        // EXPORT HD DE LA CARTE DÉTAILLÉE
         document.getElementById('btn-download-map').addEventListener('click', () => {
             const area = document.getElementById('map-export-area');
-            html2canvas(area, { useCORS: true }).then(canvas => {
+            html2canvas(area, { useCORS: true, scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'carte-detaillee-33villes-24octobre.png';
+                link.download = 'MOB2026-Carte-Detaillee-24Octobre.png';
                 link.href = canvas.toDataURL();
                 link.click();
             });
         });
 
-        // 2. COMPTE À REBOURS MINI
+        // 2. COMPTE À REBOURS
         const targetDate = new Date('2026-10-24T10:00:00').getTime();
         function updateCountdown() {
             const now = new Date().getTime();
@@ -419,7 +395,6 @@
         const userAvatar = document.getElementById('user-avatar');
         const btnLogout = document.getElementById('btn-logout');
         const sectionContrib = document.getElementById('section-contrib');
-        const sectionSnapUpload = document.getElementById('section-snap-upload');
 
         document.getElementById('btn-login-google').addEventListener('click', () => {
             signInWithPopup(auth, googleProvider).catch(err => alert("Erreur Google : " + err.message));
@@ -442,105 +417,98 @@
                 sectionAuthContainer.classList.add('hidden');
                 userProfile.classList.remove('hidden');
                 sectionContrib.classList.remove('hidden');
-                sectionSnapUpload.classList.remove('hidden');
                 userName.textContent = user.displayName || user.email;
                 userAvatar.src = user.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + user.uid;
             } else {
                 sectionAuthContainer.classList.remove('hidden');
                 userProfile.classList.add('hidden');
                 sectionContrib.classList.add('hidden');
-                sectionSnapUpload.classList.add('hidden');
             }
         });
 
-        // 4. SNAP MOB'26 (PUBLICATION ET LECTURE DE PHOTOS)
-        document.getElementById('btn-send-snap').addEventListener('click', () => {
-            const url = document.getElementById('snap-url').value.trim();
-            const legend = document.getElementById('snap-legend').value.trim();
-            const user = auth.currentUser;
-
-            if(!url) return alert("Veuillez coller l'URL de l'image.");
-
-            push(ref(db, 'snaps'), {
-                imageUrl: url,
-                legend: legend || "Snap direct",
-                author: user.displayName || user.email || "Anonyme",
-                timestamp: Date.now()
-            }).then(() => {
-                document.getElementById('snap-url').value = '';
-                document.getElementById('snap-legend').value = '';
-            }).catch(err => alert("Erreur : " + err.message));
-        });
-
-        onValue(ref(db, 'snaps'), snapshot => {
-            const gallery = document.getElementById('snap-gallery');
-            gallery.innerHTML = '';
-            const data = snapshot.val();
-            if(!data) { gallery.innerHTML = '<p class="text-xs text-slate-500 italic col-span-full">Aucune photo Snap pour le moment.</p>'; return; }
-
-            Object.entries(data).reverse().forEach(([id, snap]) => {
-                const card = document.createElement('div');
-                card.className = "bg-brand-dark border border-brand-border rounded-xl overflow-hidden space-y-2 p-2";
-                card.innerHTML = `
-                    <img src="${snap.imageUrl}" alt="Snap" class="w-full h-44 object-cover rounded-lg bg-slate-900" onerror="this.src='https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=400'">
-                    <div class="px-1 text-xs">
-                        <p class="font-bold text-white">${snap.legend}</p>
-                        <p class="text-[10px] text-slate-500">Par ${snap.author}</p>
-                    </div>
-                `;
-                gallery.appendChild(card);
-            });
-        });
-
-        // 5. POSTS TEXTE EN DIRECT
+        // 4. PUBLICATION D'ALERTE DANS LA BASE
         document.getElementById('btn-send-post').addEventListener('click', () => {
             const title = document.getElementById('input-title').value.trim();
             const city = document.getElementById('input-city').value.trim();
             const desc = document.getElementById('input-desc').value.trim();
             const user = auth.currentUser;
 
-            if(!title || !desc || !city) return alert("Remplissez tous les champs.");
+            if(!title || !desc || !city) return alert("Tous les champs sont obligatoires.");
 
             push(ref(db, 'posts'), {
-                title, city, description: desc, author: user.displayName || user.email || "Anonyme", timestamp: Date.now()
+                title, 
+                city, 
+                description: desc, 
+                author: user.displayName || user.email || "Anonyme", 
+                uid: user.uid,
+                timestamp: Date.now()
             }).then(() => {
                 document.getElementById('input-title').value = '';
                 document.getElementById('input-city').value = '';
                 document.getElementById('input-desc').value = '';
-            });
+            }).catch(err => alert("Erreur d'envoi : " + err.message));
         });
 
+        // 5. AFFICHAGE DES MESSAGES + SUPPRESSION DES ANNONCES
         onValue(ref(db, 'posts'), snapshot => {
             const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
             const data = snapshot.val();
+            const currentUser = auth.currentUser;
+
             if(!data) { 
                 liveFeedList.innerHTML = `
-                    <div class="glass-panel p-5 rounded-2xl border border-brand-border text-center">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg mb-1 block"></i>
+                    <div class="glass-panel p-6 rounded-2xl border border-brand-border text-center">
+                        <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2 block"></i>
                         <p class="text-xs font-bold text-slate-300">Rien à signaler pour le moment</p>
-                        <p class="text-[11px] text-slate-500">Les alertes et rapports de situation apparaîtront ici dès leur publication.</p>
+                        <p class="text-[11px] text-slate-500">Les alertes du réseau apparaîtront ici dès publication.</p>
                     </div>
                 `; 
                 return; 
             }
 
-            Object.entries(data).reverse().forEach(([id, post]) => {
+            Object.entries(data).reverse().forEach(([key, post]) => {
                 const dateStr = new Date(post.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 const card = document.createElement('article');
-                card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2";
+                card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5 relative";
+
+                // Vérifier si l'utilisateur connecté est l'auteur de l'annonce pour afficher le bouton supprimer
+                const isAuthor = currentUser && (currentUser.uid === post.uid);
+                const deleteBtnHtml = isAuthor ? `
+                    <button onclick="deletePost('${key}')" class="text-slate-500 hover:text-red-400 text-xs px-2 py-1 rounded-lg transition" title="Supprimer mon annonce">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                ` : '';
+
                 card.innerHTML = `
                     <div class="flex items-center justify-between text-xs text-slate-400">
-                        <span class="text-brand-red font-bold uppercase"><i class="fa-solid fa-location-dot"></i> ${post.city}</span>
-                        <span class="font-mono">${dateStr}</span>
+                        <span class="text-brand-red font-extrabold uppercase tracking-wider"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(post.city)}</span>
+                        <div class="flex items-center gap-2">
+                            <span class="font-mono text-[11px]">${dateStr}</span>
+                            ${deleteBtnHtml}
+                        </div>
                     </div>
-                    <h3 class="font-bold text-base text-white">${post.title}</h3>
-                    <p class="text-xs text-slate-300">${post.description}</p>
-                    <div class="text-[10px] text-slate-500">Par ${post.author}</div>
+                    <h3 class="font-extrabold text-base text-white">${escapeHtml(post.title)}</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(post.description)}</p>
+                    <div class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/60">Par ${escapeHtml(post.author)}</div>
                 `;
                 liveFeedList.appendChild(card);
             });
         });
+
+        // FONCTION DE SUPPRESSION D'UNE ANNONCE
+        window.deletePost = function(postKey) {
+            if(confirm("Voulez-vous vraiment supprimer définitivement cette alerte de mob2026.vercel.app ?")) {
+                remove(ref(db, 'posts/' + postKey))
+                    .then(() => alert("Alerte supprimée des serveurs avec succès."))
+                    .catch(err => alert("Erreur lors de la suppression : " + err.message));
+            }
+        };
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return (text || '').replace(/[&<>"']/g, m => map[m]);
+        }
     </script>
 </body>
 </html>
