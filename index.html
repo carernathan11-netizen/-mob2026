@@ -83,7 +83,6 @@
         .icon-petard { background-color: #EAB308; color: #000; }
         .icon-pillage { background-color: #4B5563; }
 
-        /* Style spécial page rouge / flammes urgence modal */
         .flame-modal-bg {
             background: linear-gradient(135deg, rgba(20, 5, 5, 0.95) 0%, rgba(35, 10, 8, 0.98) 100%);
             border: 2px solid rgba(255, 42, 42, 0.6);
@@ -214,12 +213,12 @@
             </div>
         </section>
 
-        <!-- CARTE INTERACTIVE EN DIRECT -->
+        <!-- CARTE INTERACTIVE EN DIRECT (34 VILLES OFFICIELLES) -->
         <section id="villes-carte" class="glass-panel p-6 rounded-2xl border border-brand-border space-y-5 transition hover:-translate-y-1 duration-300">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France (34 Villes)
+                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations (34 Villes Officielles)
                     </h2>
                     <p class="text-xs text-slate-400">Signalements interactifs répertoriés en direct par les utilisateurs.</p>
                 </div>
@@ -247,8 +246,7 @@
                         <span class="text-brand-red font-mono font-bold text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">34 Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Lorient, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans, Saint-Brieuc.</p>
-                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance sur Rennes, Brest, Lorient et Nantes.</p>
+                        <p><strong class="text-white">Liste des 34 Villes :</strong> Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux, Lille, Rennes, Grenoble, Reims, Dijon, Limoges, Clermont-Ferrand, Brest, Lorient, La Rochelle, Perpignan, Besançon, Orléans, Nancy, Angers, Caen, Le Havre, Rouen, Saint-Étienne, Metz, Mulhouse, Aix-en-Provence, Nîmes, Poitiers.</p>
                     </div>
                 </div>
             </div>
@@ -275,19 +273,17 @@
                         <label class="block text-[11px] text-slate-400 mb-1 font-bold">Ville / Lieu :</label>
                         <select id="map-input-city" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
                             <option value="48.8566,2.3522">Paris</option>
-                            <option value="44.8378,-0.5792">Bordeaux</option>
-                            <option value="48.1172,-1.6777">Rennes</option>
-                            <option value="48.3904,-4.4861">Brest</option>
-                            <option value="47.7483,-3.3700">Lorient</option>
-                            <option value="47.2183,-1.5536">Nantes</option>
-                            <option value="50.6292,3.0573">Lille</option>
-                            <option value="45.7640,4.8357">Lyon</option>
                             <option value="43.2965,5.3698">Marseille</option>
+                            <option value="45.7640,4.8357">Lyon</option>
                             <option value="43.6047,1.4442">Toulouse</option>
-                            <option value="43.6108,3.8767">Montpellier</option>
-                            <option value="45.1885,5.7245">Grenoble</option>
-                            <option value="48.5734,7.7521">Strasbourg</option>
                             <option value="43.7102,7.2620">Nice</option>
+                            <option value="47.2183,-1.5536">Nantes</option>
+                            <option value="43.6108,3.8767">Montpellier</option>
+                            <option value="48.5734,7.7521">Strasbourg</option>
+                            <option value="44.8378,-0.5792">Bordeaux</option>
+                            <option value="50.6292,3.0573">Lille</option>
+                            <option value="48.1172,-1.6777">Rennes</option>
+                            <option value="47.7483,-3.3700">Lorient</option>
                         </select>
                     </div>
                     <div>
@@ -334,7 +330,6 @@
     <!-- MODAL / NOUVELLE PAGE : VILLES À HAUT RISQUE ET CONFIRMÉES -->
     <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
         <div class="flame-modal-bg w-full max-w-3xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
-            <!-- Effet visuel arrière-plan chaud -->
             <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-red/25 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-amber-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -353,14 +348,14 @@
                 </button>
             </div>
 
-            <!-- CONTENU DE LA PAGE SPÉCIALE -->
+            <!-- CONTENU DE LA PAGE SPÉCIALE (VILLES CONFIRMÉES) -->
             <div class="space-y-5 relative z-10 text-xs text-slate-200">
                 <div class="bg-red-950/60 border border-red-500/40 p-4 rounded-2xl space-y-2">
                     <p class="font-bold text-red-400 flex items-center gap-2 text-sm">
                         <i class="fa-solid fa-triangle-exclamation"></i> Zones à forte tension & rassemblements majeurs confirmés :
                     </p>
                     <p class="leading-relaxed text-slate-300">
-                        D'après les remontées nationales et les appels officiels recensés pour ce 24 octobre, les métropoles et axes ci-dessous présentent un niveau de vigilance élevé (risques de blocages, tensions accrues et cortèges d'envergure).
+                        D'après les remontées nationales et les appels officiels recensés, les villes ci-dessous présentent un niveau de vigilance maximal et des cortèges d'envergure confirmés pour cet Acte II.
                     </p>
                 </div>
 
@@ -371,7 +366,7 @@
                             <span class="font-display font-black text-white text-sm">PARIS (75)</span>
                             <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Risque Maximum</span>
                         </div>
-                        <p class="text-slate-300 text-[11px]">Cortège principal Place de la Bastille vers Opéra Garnier. Forte présence annoncée et risques de tensions sur le périphérique.</p>
+                        <p class="text-slate-300 text-[11px]">Cortège principal Place de la Bastille vers Opéra Garnier. Forte présence annoncée et risques de tensions sur les axes parisiens.</p>
                     </div>
 
                     <!-- Nantes -->
@@ -380,7 +375,7 @@
                             <span class="font-display font-black text-white text-sm">NANTES (44)</span>
                             <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Vigilance Élevée</span>
                         </div>
-                        <p class="text-slate-300 text-[11px]">Rassemblements structurés centre-ville et axes routiers périphériques. Point névralgique de l'Ouest.</p>
+                        <p class="text-slate-300 text-[11px]">Rassemblements structurés centre-ville et axes routiers périphériques. Point névralgique de l'Ouest confirmé.</p>
                     </div>
 
                     <!-- Rennes -->
@@ -401,22 +396,22 @@
                         <p class="text-slate-300 text-[11px]">Cortège local et actions ciblées sur le bassin lorientais. Suivi permanent assuré par le réseau citoyen.</p>
                     </div>
 
-                    <!-- Lyon -->
-                    <div class="bg-brand-card/80 border border-slate-800 p-4 rounded-2xl space-y-1.5">
+                    <!-- Marseille -->
+                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5">
                         <div class="flex items-center justify-between">
-                            <span class="font-display font-bold text-white text-sm">LYON (69)</span>
-                            <span class="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
+                            <span class="font-display font-bold text-white text-sm">MARSEILLE (13)</span>
+                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
                         </div>
-                        <p class="text-slate-400 text-[11px]">Secteurs de Terreaux et Jean Macé sous surveillance étroite des forces de l'ordre.</p>
+                        <p class="text-slate-400 text-[11px]">Rassemblements majeurs prévus sur le Vieux-Port et axes adjacents.</p>
                     </div>
 
-                    <!-- Toulouse -->
-                    <div class="bg-brand-card/80 border border-slate-800 p-4 rounded-2xl space-y-1.5">
+                    <!-- Lyon -->
+                    <div class="bg-brand-card/90 border border-amber-500/30 p-4 rounded-2xl space-y-1.5">
                         <div class="flex items-center justify-between">
-                            <span class="font-display font-bold text-white text-sm">TOULOUSE (31)</span>
-                            <span class="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
+                            <span class="font-display font-bold text-white text-sm">LYON (69)</span>
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
                         </div>
-                        <p class="text-slate-400 text-[11px]">Appels concordants pour un rassemblement place du Capitole à partir de la matinée.</p>
+                        <p class="text-slate-400 text-[11px]">Secteurs de Terreaux et Jean Macé sous surveillance étroite des forces de l'ordre.</p>
                     </div>
                 </div>
 
@@ -475,14 +470,14 @@
         let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
 
-        // GESTION DE LA PAGE MODALE DES VILLES À HAUT RISQUE
+        // GESTION MODAL VILLES À HAUT RISQUE
         const modal = document.getElementById('high-risk-modal');
         document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
         document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
         document.getElementById('close-high-risk-modal-btn').addEventListener('click', () => modal.classList.add('hidden'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('hidden'); });
 
-        // 1. CARTE INTERACTIVE
+        // 1. CARTE INTERACTIVE (LES 34 VILLES OFFICIELLES)
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
@@ -490,23 +485,39 @@
         }).addTo(map);
 
         const citiesList = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522 }, { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777 }, { name: "Brest", lat: 48.3904, lng: -4.4861 },
-            { name: "Lorient", lat: 47.7483, lng: -3.3700 }, { name: "Nantes", lat: 47.2183, lng: -1.5536 },
-            { name: "Lille", lat: 50.6292, lng: 3.0573 }, { name: "Lyon", lat: 45.7640, lng: 4.8357 },
-            { name: "Marseille", lat: 43.2965, lng: 5.3698 }, { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
-            { name: "Montpellier", lat: 43.6108, lng: 3.8767 }, { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
-            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 }, { name: "Nice", lat: 43.7102, lng: 7.2620 },
-            { name: "Rouen", lat: 49.4432, lng: 1.0999 }, { name: "Caen", lat: 49.1829, lng: -0.3707 },
-            { name: "Angers", lat: 47.4784, lng: -0.5632 }, { name: "Amiens", lat: 49.8941, lng: 2.2957 },
-            { name: "Dijon", lat: 47.3220, lng: 5.0415 }, { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
-            { name: "Limoges", lat: 45.8336, lng: 1.2611 }, { name: "Metz", lat: 49.1193, lng: 6.1757 },
-            { name: "Nancy", lat: 48.6921, lng: 6.1844 }, { name: "Reims", lat: 49.2583, lng: 4.0317 },
-            { name: "Tours", lat: 47.3941, lng: 0.6848 }, { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
-            { name: "Avignon", lat: 43.9493, lng: 4.8055 }, { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
-            { name: "Toulon", lat: 43.1242, lng: 5.9280 }, { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
-            { name: "Besançon", lat: 47.2378, lng: 6.0241 }, { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
-            { name: "Orléans", lat: 47.9029, lng: 1.9090 }, { name: "Saint-Brieuc", lat: 48.5142, lng: -2.7658 }
+            { name: "Paris", lat: 48.8566, lng: 2.3522 },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
+            { name: "Nice", lat: 43.7102, lng: 7.2620 },
+            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
+            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
+            { name: "Lille", lat: 50.6292, lng: 3.0573 },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
+            { name: "Reims", lat: 49.2583, lng: 4.0317 },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
+            { name: "Brest", lat: 48.3904, lng: -4.4861 },
+            { name: "Lorient", lat: 47.7483, lng: -3.3700 },
+            { name: "La Rochelle", lat: 46.1603, lng: -1.1511 },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090 },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
+            { name: "Angers", lat: 47.4784, lng: -0.5632 },
+            { name: "Caen", lat: 49.1829, lng: -0.3707 },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
+            { name: "Metz", lat: 49.1193, lng: 6.1757 },
+            { name: "Mulhouse", lat: 47.7508, lng: 7.3359 },
+            { name: "Aix-en-Provence", lat: 43.5297, lng: 5.4474 },
+            { name: "Nîmes", lat: 43.8367, lng: 4.3601 },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404 }
         ];
 
         citiesList.forEach(c => {
