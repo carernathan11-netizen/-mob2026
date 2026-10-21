@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOB'2026 — Live Social Tracker</title>
+    <title>MOB'2026 — Live Social Tracker | Acte II</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,11 +26,13 @@
     </script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Leaflet CSS (Carte Interactive) -->
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- html2canvas pour la capture/téléchargement de la carte -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         .glass-panel {
-            background: rgba(22, 25, 32, 0.85);
+            background: rgba(22, 25, 32, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -44,12 +46,13 @@
             70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 48, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
         }
-        #map { height: 380px; width: 100%; border-radius: 1rem; z-index: 1; }
+        #map-container { position: relative; border-radius: 1.25rem; overflow: hidden; }
+        #map { height: 450px; width: 100%; z-index: 1; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-    <!-- FLASH INFO BANDEROLLE -->
+    <!-- BANDEROLLE FLASH INFO -->
     <div class="bg-brand-red/10 border-b border-brand-red/30 py-2.5 px-4 text-xs md:text-sm font-medium text-red-400">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
@@ -57,9 +60,9 @@
                 <span class="font-bold tracking-wider uppercase text-brand-red">FLASH INFO</span>
             </div>
             <div class="truncate text-slate-300">
-                <span>Mobilisations nationales — Acte II du 24 Octobre 2026 : Suivi du réseau en direct.</span>
+                <span>Acte II du 24 Octobre 2026 : Suivi du réseau et carte de la mobilisation actualisée en temps réel.</span>
             </div>
-            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline">Édition 2026</span>
+            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline">21 Octobre 2026</span>
         </div>
     </div>
 
@@ -78,7 +81,7 @@
                 </div>
             </div>
 
-            <!-- PROFIL UTILISATEUR CONNECTÉ -->
+            <!-- PROFIL -->
             <div class="flex items-center gap-3">
                 <div id="user-profile" class="hidden flex items-center gap-2 bg-brand-card border border-brand-border p-1.5 rounded-xl">
                     <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-lg border border-slate-700 object-cover">
@@ -94,9 +97,8 @@
     <!-- CONTENU PRINCIPAL -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
-        <!-- GRANDE AFFICHE À LA UNE : ACTE II 24 OCTOBRE -->
-        <section class="relative rounded-3xl overflow-hidden border border-brand-red/40 p-6 sm:p-10 md:p-12 shadow-2xl shadow-brand-red/10 min-h-[380px] flex flex-col justify-end">
-            <!-- Arrière-plan avec Image de manifestation et dégradé sombre -->
+        <!-- GRANDE AFFICHE À LA UNE & COMPTE À REBOURS -->
+        <section class="relative rounded-3xl overflow-hidden border border-brand-red/40 p-6 sm:p-10 md:p-12 shadow-2xl shadow-brand-red/10 min-h-[420px] flex flex-col justify-between">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-50"></div>
 
@@ -115,65 +117,129 @@
                 </h1>
 
                 <p class="text-sm sm:text-base text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Appel national aux mobilisations, rassemblements et blocus. Suivez l'évolution de la situation ville par ville en temps réel sur la plateforme interactive MOB'2026.
+                    Mouvement national convergents : Gilets jaunes, lycéens, étudiants et interprofessionnels. Suivez la carte interactive et le fil en direct.
                 </p>
 
-                <div class="pt-2 flex flex-wrap gap-3">
-                    <a href="#villes-carte" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-xl transition shadow-lg shadow-brand-red/30 flex items-center gap-2">
-                        <i class="fa-solid fa-map-location-dot"></i> Voir les Villes & La Carte
-                    </a>
-                    <a href="#live-feed" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-xl border border-slate-700 transition flex items-center gap-2">
-                        <i class="fa-solid fa-bolt text-emerald-400"></i> Fil d'actualité direct
-                    </a>
+                <!-- COMPTE À REBOURS -->
+                <div class="pt-2">
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Temps restant avant le rassemblement :</p>
+                    <div id="countdown" class="flex items-center gap-3 font-mono font-black text-center text-white">
+                        <div class="bg-brand-card/90 border border-brand-border p-2.5 rounded-xl min-w-[65px]">
+                            <span id="cd-days" class="text-2xl sm:text-3xl block text-brand-red">00</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-sans">Jours</span>
+                        </div>
+                        <span class="text-xl text-slate-600">:</span>
+                        <div class="bg-brand-card/90 border border-brand-border p-2.5 rounded-xl min-w-[65px]">
+                            <span id="cd-hours" class="text-2xl sm:text-3xl block text-brand-amber">00</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-sans">Heures</span>
+                        </div>
+                        <span class="text-xl text-slate-600">:</span>
+                        <div class="bg-brand-card/90 border border-brand-border p-2.5 rounded-xl min-w-[65px]">
+                            <span id="cd-mins" class="text-2xl sm:text-3xl block text-white">00</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-sans">Minutes</span>
+                        </div>
+                        <span class="text-xl text-slate-600">:</span>
+                        <div class="bg-brand-card/90 border border-brand-border p-2.5 rounded-xl min-w-[65px]">
+                            <span id="cd-secs" class="text-2xl sm:text-3xl block text-emerald-400">00</span>
+                            <span class="text-[9px] text-slate-400 uppercase font-sans">Secs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTIONS D'AUTHENTIFICATION (Si déconnecté) -->
-        <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- CE QUI EST ATTENDU & PARCOURS PARISIEN PRÉVU -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Ce qui est attendu -->
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
+                <h2 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-brand-amber"></i> Ce qui est attendu le 24 octobre
+                </h2>
+                <ul class="text-xs text-slate-300 space-y-2.5 list-disc list-inside">
+                    <li><strong class="text-white">Convergence "Jaunes et Jeunes" :</strong> Appels conjoints des syndicats lycéens, étudiants et des collectifs citoyens.</li>
+                    <li><strong class="text-white">Opérations escargot & blocages :</strong> Points de filtrage sur les axes stratégiques régionaux.</li>
+                    <li><strong class="text-white">Secteurs sous surveillance :</strong> Dispositifs renforcés autour des préfectures et centres métropolitains.</li>
+                </ul>
+            </div>
+
+            <!-- Parcours de Paris prévu -->
+            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
+                <h2 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-route text-brand-red"></i> Parcours prévu à Paris (Déclaré)
+                </h2>
+                <div class="space-y-2 text-xs text-slate-300">
+                    <p><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i> <strong>Rassemblement :</strong> Place de la Bastille (à partir de 12h - 14h)</p>
+                    <p><i class="fa-solid fa-arrow-right-long text-brand-amber mr-1.5"></i> <strong>Axe principal :</strong> Cortège vers le quartier Opéra Garnier</p>
+                    <p class="text-[11px] text-slate-400 italic pt-1 border-t border-slate-800">
+                        *Parcours déclaré en préfecture sous réserve des arbitrages officiels.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTIONS D'AUTHENTIFICATION (Google & Email uniquement) -->
+        <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div>
-                    <h3 class="font-bold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Google Sign-In</h3>
-                    <p class="text-xs text-slate-400">Connexion instantanée via compte Google.</p>
+                    <h3 class="font-bold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Google</h3>
+                    <p class="text-xs text-slate-400">Authentification rapide avec votre compte Google.</p>
                 </div>
                 <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-md">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-                    Connexion avec Google
+                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                    Se connecter avec Google
                 </button>
             </div>
 
             <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div class="space-y-2">
-                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Email & Mot de passe</h3>
-                    <input id="auth-email" type="email" placeholder="Email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Connexion par Email</h3>
+                    <input id="auth-email" type="email" placeholder="Adresse email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
                     <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
                 </div>
                 <div class="flex gap-2">
-                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2 rounded-xl border border-slate-700">Créer compte</button>
+                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2 rounded-xl border border-slate-700">Inscription</button>
                     <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 rounded-xl">Connexion</button>
-                </div>
-            </div>
-
-            <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
-                <div class="space-y-2">
-                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> Numéro de Téléphone</h3>
-                    <input id="auth-phone" type="tel" placeholder="+33 6 XX XX XX XX" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
-                    <div id="recaptcha-container"></div>
-                    <input id="auth-sms-code" type="text" placeholder="Code SMS reçu..." class="hidden w-full bg-brand-dark border border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
-                </div>
-                <div>
-                    <button id="btn-send-code" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl">Envoyer Code SMS</button>
-                    <button id="btn-verify-code" class="hidden w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl">Valider le Code</button>
                 </div>
             </div>
         </section>
 
-        <!-- CARTE DE FRANCE INTERACTIVE (OpenStreetMap Gratuit) -->
+        <!-- CARTE DE FRANCE INTERACTIVE & BOUTON PARTAGER/TÉLÉCHARGER -->
         <section id="villes-carte" class="glass-panel p-5 sm:p-6 rounded-2xl border border-brand-border space-y-4">
-            <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte Interactive des Mobilisations en France
-            </h2>
-            <div id="map"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France (33 Villes)
+                    </h2>
+                    <p class="text-xs text-slate-400">Suivi des points d'attention et rassemblements signalés.</p>
+                </div>
+                <button id="btn-download-map" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/20 self-start sm:self-auto">
+                    <i class="fa-solid fa-download"></i> Télécharger / Partager la Carte
+                </button>
+            </div>
+
+            <!-- CARTE -->
+            <div id="map-container">
+                <div id="map"></div>
+            </div>
+
+            <!-- AVERTISSEMENT & FOCUS BRETAGNE -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                <div class="md:col-span-2 bg-brand-amber/10 border border-brand-amber/30 p-4 rounded-xl text-xs text-amber-300">
+                    <p class="font-bold flex items-center gap-1.5 mb-1">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Attention :
+                    </p>
+                    <p class="leading-relaxed">
+                        Cette liste recense les villes où des appels à la mobilisation circulent. Elle ne signifie pas que les manifestations y sont toutes confirmées, autorisées ou maintenues.
+                    </p>
+                </div>
+
+                <div class="bg-brand-dark/80 border border-brand-border p-4 rounded-xl text-xs space-y-1">
+                    <p class="font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-compass text-brand-red"></i> Securmanif — Focus Bretagne :
+                    </p>
+                    <p class="text-slate-300">Villes à surveiller : <strong class="text-white">Rennes, Brest, Nantes</strong> (Loire-Atlantique). Horaires et parcours locaux à vérifier.</p>
+                </div>
+            </div>
         </section>
 
         <!-- FORMULAIRE DE PUBLICATION D'ALERTE (Visible si connecté) -->
@@ -183,22 +249,12 @@
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre (ex: Rassemblement à Paris Place de la Bastille)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
-                    <select id="input-city" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
-                        <option value="Paris">Paris</option>
-                        <option value="Rennes">Rennes</option>
-                        <option value="Nantes">Nantes</option>
-                        <option value="Lorient">Lorient</option>
-                        <option value="Lyon">Lyon</option>
-                        <option value="Marseille">Marseille</option>
-                        <option value="Bordeaux">Bordeaux</option>
-                        <option value="Toulouse">Toulouse</option>
-                        <option value="National">Autre / National</option>
-                    </select>
+                    <input id="input-title" type="text" placeholder="Titre (ex: Rassemblement à Nantes)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
+                    <input id="input-city" type="text" placeholder="Ville concernée (ex: Rennes, Paris...)" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
                 </div>
                 <textarea id="input-desc" placeholder="Détails de la situation, perturbations, cortèges..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"></textarea>
                 <button id="btn-send-post" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition">
-                    Diffuser l'alerte en direct
+                    Diffuser en direct
                 </button>
             </div>
         </section>
@@ -209,7 +265,7 @@
                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
             </h2>
             <div id="live-feed-list" class="space-y-3">
-                <p class="text-xs text-slate-500 italic">Chargement des signalements...</p>
+                <p class="text-xs text-slate-500 italic">Chargement des flux en direct...</p>
             </div>
         </section>
 
@@ -235,8 +291,6 @@
             signInWithPopup, 
             createUserWithEmailAndPassword, 
             signInWithEmailAndPassword, 
-            signInWithPhoneNumber, 
-            RecaptchaVerifier,
             signOut, 
             onAuthStateChanged 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -257,28 +311,86 @@
         const db = getDatabase(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // 1. CARTE OPENSTREETMAP GRATUITE
+        // 1. CARTE DE FRANCE INTERACTIVE (33 VILLES)
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
         }).addTo(map);
 
-        const cities = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522, status: "Appel Fort" },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777, status: "Signalé" },
-            { name: "Nantes", lat: 47.2183, lng: -1.5536, status: "En attente" },
-            { name: "Lorient", lat: 47.7483, lng: -3.3700, status: "R.A.S." },
-            { name: "Lyon", lat: 45.7640, lng: 4.8357, status: "Cortège prévu" },
-            { name: "Marseille", lat: 43.2965, lng: 5.3698, status: "Cortège prévu" }
+        const citiesList = [
+            { name: "Paris", lat: 48.8566, lng: 2.3522 },
+            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
+            { name: "Brest", lat: 48.3904, lng: -4.4861 },
+            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
+            { name: "Lille", lat: 50.6292, lng: 3.0573 },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
+            { name: "Nice", lat: 43.7102, lng: 7.2620 },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
+            { name: "Caen", lat: 49.1829, lng: -0.3707 },
+            { name: "Angers", lat: 47.4784, lng: -0.5632 },
+            { name: "Amiens", lat: 49.8941, lng: 2.2957 },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
+            { name: "Metz", lat: 49.1193, lng: 6.1757 },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
+            { name: "Reims", lat: 49.2583, lng: 4.0317 },
+            { name: "Tours", lat: 47.3941, lng: 0.6848 },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
+            { name: "Avignon", lat: 43.9493, lng: 4.8055 },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
+            { name: "Toulon", lat: 43.1242, lng: 5.9280 },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090 }
         ];
 
-        cities.forEach(c => {
+        citiesList.forEach(c => {
             L.marker([c.lat, c.lng]).addTo(map)
-                .bindPopup(`<b>${c.name}</b><br>Statut: ${c.status}`);
+                .bindPopup(`<b>${c.name}</b><br>Appel à la mobilisation répertorié.`);
         });
 
-        // 2. GESTION AUTHENTIFICATION
+        // TÉLÉCHARGER / PARTAGER LA CARTE
+        document.getElementById('btn-download-map').addEventListener('click', () => {
+            const container = document.getElementById('map-container');
+            html2canvas(container, { useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'carte-mobilisations-24octobre.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
+
+        // 2. COMPTE À REBOURS SAMEDI 24 OCTOBRE 2026 À 10:00
+        const targetDate = new Date('2026-10-24T10:00:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').textContent = d < 10 ? '0' + d : d;
+                document.getElementById('cd-hours').textContent = h < 10 ? '0' + h : h;
+                document.getElementById('cd-mins').textContent = m < 10 ? '0' + m : m;
+                document.getElementById('cd-secs').textContent = s < 10 ? '0' + s : s;
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. AUTHENTIFICATION
         const sectionAuthContainer = document.getElementById('section-auth-container');
         const userProfile = document.getElementById('user-profile');
         const userName = document.getElementById('user-name');
@@ -307,7 +419,7 @@
                 sectionAuthContainer.classList.add('hidden');
                 userProfile.classList.remove('hidden');
                 sectionContrib.classList.remove('hidden');
-                userName.textContent = user.displayName || user.email || user.phoneNumber;
+                userName.textContent = user.displayName || user.email;
                 userAvatar.src = user.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + user.uid;
             } else {
                 sectionAuthContainer.classList.remove('hidden');
@@ -316,29 +428,29 @@
             }
         });
 
-        // 3. PUBLICATION DE MESSAGE DANS LA BASE
+        // 4. BASE DE DONNÉES EN TEMPS RÉEL
         document.getElementById('btn-send-post').addEventListener('click', () => {
             const title = document.getElementById('input-title').value.trim();
-            const city = document.getElementById('input-city').value;
+            const city = document.getElementById('input-city').value.trim();
             const desc = document.getElementById('input-desc').value.trim();
             const user = auth.currentUser;
 
-            if(!title || !desc) return alert("Veuillez remplir le titre et la description.");
+            if(!title || !desc || !city) return alert("Remplissez tous les champs.");
 
             push(ref(db, 'posts'), {
-                title, city, description: desc, author: user.displayName || user.email || user.phoneNumber || "Anonyme", timestamp: Date.now()
+                title, city, description: desc, author: user.displayName || user.email || "Anonyme", timestamp: Date.now()
             }).then(() => {
                 document.getElementById('input-title').value = '';
+                document.getElementById('input-city').value = '';
                 document.getElementById('input-desc').value = '';
-            }).catch(err => alert("Erreur d'envoi : " + err.message));
+            }).catch(err => alert("Erreur : " + err.message));
         });
 
-        // 4. LECTURE DES POSTS EN DIRECT
         onValue(ref(db, 'posts'), snapshot => {
             const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
             const data = snapshot.val();
-            if(!data) { liveFeedList.innerHTML = '<p class="text-xs text-slate-500 italic">Aucun message pour le moment.</p>'; return; }
+            if(!data) { liveFeedList.innerHTML = '<p class="text-xs text-slate-500 italic">Aucune alerte publiée pour le moment.</p>'; return; }
 
             Object.entries(data).reverse().forEach(([id, post]) => {
                 const dateStr = new Date(post.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
