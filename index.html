@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr" class="dark">
 <head>
@@ -82,6 +83,13 @@
         .icon-dangereux { background-color: #D97706; }
         .icon-petard { background-color: #EAB308; color: #000; }
         .icon-pillage { background-color: #4B5563; }
+
+        /* Style spécial page rouge / flammes urgence modal */
+        .flame-modal-bg {
+            background: linear-gradient(135deg, rgba(20, 5, 5, 0.95) 0%, rgba(35, 10, 8, 0.98) 100%);
+            border: 2px solid rgba(255, 42, 42, 0.6);
+            box-shadow: 0 0 50px rgba(255, 42, 42, 0.4), inset 0 0 30px rgba(255, 69, 0, 0.2);
+        }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
@@ -115,7 +123,12 @@
                 </div>
             </div>
 
+            <!-- BOUTON NOUVELLE PAGE VILLES À HAUT RISQUE -->
             <div class="flex items-center gap-3">
+                <button id="open-high-risk-modal" class="bg-gradient-to-r from-brand-red via-red-600 to-amber-600 hover:opacity-90 text-white font-display font-black text-xs py-2 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-brand-red/50 glow-red animate-pulse">
+                    <i class="fa-solid fa-fire text-amber-300"></i> Villes à Haut Risque / Confirmées
+                </button>
+
                 <div id="user-profile" class="hidden flex items-center gap-2.5 bg-brand-card/90 border border-brand-border p-1.5 px-3 rounded-xl shadow-lg">
                     <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-lg border border-brand-red/50 object-cover">
                     <span id="user-name" class="text-xs font-bold text-white hidden sm:inline"></span>
@@ -164,7 +177,7 @@
             </div>
         </section>
 
-        <!-- CHARTE CITOYENNE & ENGAGEMENT PACIFIQUE -->
+        <!-- CHARTE CITOYENNE -->
         <section class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
             <div class="flex items-center gap-2 text-emerald-400 font-display font-black text-sm uppercase tracking-wide">
                 <i class="fa-solid fa-shield-cat text-lg"></i> Charte de la Plateforme & Légitimité
@@ -172,7 +185,7 @@
             <p class="text-xs text-slate-300 leading-relaxed">
                 <strong class="text-white">MOB'2026 est une plateforme citoyenne parfaitement légale d'information collective.</strong> 
                 Elle ne constitue en aucun cas un appel aux dégradations ou aux violences. Nous condamnons fermement tout acte de casse ou de violence. 
-                L'objectif de ce service est d'assurer la <strong>sécurité de tous les manifestants pacifistes</strong> en partageant en temps réel les informations de circulation, les zones de tension et les dispositifs de sécurité.
+                L'objectif de ce service est d'assurer la <strong class="text-white">sécurité de tous les manifestants pacifistes</strong> en partageant en temps réel les informations de circulation, les zones de tension et les dispositifs de sécurité.
             </p>
         </section>
 
@@ -319,6 +332,108 @@
 
     </main>
 
+    <!-- MODAL / NOUVELLE PAGE : VILLES À HAUT RISQUE ET CONFIRMÉES -->
+    <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="flame-modal-bg w-full max-w-3xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
+            <!-- Effet visuel arrière-plan chaud -->
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-red/25 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-amber-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between border-b border-red-500/30 pb-4 relative z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-red to-amber-600 flex items-center justify-center text-white text-xl shadow-lg shadow-red-600/50 glow-red animate-pulse">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-display font-black text-xl text-white uppercase tracking-wider">Villes à Haut Risque & Confirmées</h2>
+                        <p class="text-xs text-red-300 font-mono">Acte II — 24 Octobre 2026 | Zones de convergence majeure</p>
+                    </div>
+                </div>
+                <button id="close-high-risk-modal" class="text-slate-400 hover:text-white bg-slate-800/80 hover:bg-red-600/80 w-9 h-9 rounded-xl flex items-center justify-center transition border border-slate-700">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- CONTENU DE LA PAGE SPÉCIALE -->
+            <div class="space-y-5 relative z-10 text-xs text-slate-200">
+                <div class="bg-red-950/60 border border-red-500/40 p-4 rounded-2xl space-y-2">
+                    <p class="font-bold text-red-400 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Zones à forte tension & rassemblements majeurs confirmés :
+                    </p>
+                    <p class="leading-relaxed text-slate-300">
+                        D'après les remontées nationales et les appels officiels recensés pour ce 24 octobre, les métropoles et axes ci-dessous présentent un niveau de vigilance élevé (risques de blocages, tensions accrues et cortèges d'envergure).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Paris -->
+                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-black text-white text-sm">PARIS (75)</span>
+                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Risque Maximum</span>
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Cortège principal Place de la Bastille vers Opéra Garnier. Forte présence annoncée et risques de tensions sur le périphérique.</p>
+                    </div>
+
+                    <!-- Nantes -->
+                    <div class="bg-brand-card/90 border border-amber-500/30 p-4 rounded-2xl space-y-1.5 glow-amber">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-black text-white text-sm">NANTES (44)</span>
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Vigilance Élevée</span>
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Rassemblements structurés centre-ville et axes routiers périphériques. Point névralgique de l'Ouest.</p>
+                    </div>
+
+                    <!-- Rennes -->
+                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-black text-white text-sm">RENNES (35)</span>
+                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Haut Risque</span>
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Forte mobilisation étudiante et lycéenne confirmée. Risques de blocages autour des campus et de la gare.</p>
+                    </div>
+
+                    <!-- Lorient -->
+                    <div class="bg-brand-card/90 border border-red-500/30 p-4 rounded-2xl space-y-1.5 glow-red">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-black text-white text-sm">LORIENT (56)</span>
+                            <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Securmanif Bretagne</span>
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Cortège local et actions ciblées sur le bassin lorientais. Suivi permanent assuré par le réseau citoyen.</p>
+                    </div>
+
+                    <!-- Lyon -->
+                    <div class="bg-brand-card/80 border border-slate-800 p-4 rounded-2xl space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-bold text-white text-sm">LYON (69)</span>
+                            <span class="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
+                        </div>
+                        <p class="text-slate-400 text-[11px]">Secteurs de Terreaux et Jean Macé sous surveillance étroite des forces de l'ordre.</p>
+                    </div>
+
+                    <!-- Toulouse -->
+                    <div class="bg-brand-card/80 border border-slate-800 p-4 rounded-2xl space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-bold text-white text-sm">TOULOUSE (31)</span>
+                            <span class="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Confirmé</span>
+                        </div>
+                        <p class="text-slate-400 text-[11px]">Appels concordants pour un rassemblement place du Capitole à partir de la matinée.</p>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-black/40 rounded-xl border border-red-500/20 text-center text-[11px] text-slate-400 font-mono">
+                    Données mises à jour en direct depuis les signalements terrain vérifiés.
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-red-500/30 flex justify-end relative z-10">
+                <button id="close-high-risk-modal-btn" class="bg-brand-red hover:bg-red-600 text-white font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-red-600/40">
+                    Fermer la page
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="mt-auto border-t border-brand-border bg-brand-dark/90 py-6 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <p class="font-bold text-slate-400">MOB'2026 — Plateforme Citoyenne Indépendante</p>
@@ -360,6 +475,13 @@
         let latestPostsSnapshot = null;
         let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
+
+        // GESTION DE LA PAGE MODALE DES VILLES À HAUT RISQUE
+        const modal = document.getElementById('high-risk-modal');
+        document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
+        document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
+        document.getElementById('close-high-risk-modal-btn').addEventListener('click', () => modal.classList.add('hidden'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('hidden'); });
 
         // 1. CARTE INTERACTIVE
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
@@ -425,7 +547,6 @@
             const currentUser = auth.currentUser;
 
             Object.entries(data).forEach(([key, ev]) => {
-                // VERIFICATION STRICTE DE L'AUTEUR PAR SON UID UNIQUE
                 const isAuthor = currentUser && (currentUser.uid === ev.uid);
                 
                 const deleteBtnHtml = isAuthor ? 
@@ -443,7 +564,6 @@
             });
         }
 
-        // SUPPRESSION DU REPÈRE SUR LA CARTE (UNIQUE À L'AUTEUR)
         window.deleteMapEvent = function(key) {
             if(confirm("Confirmez-vous la suppression définitive de votre repère sur la carte ?")) {
                 remove(ref(db, 'events/' + key))
