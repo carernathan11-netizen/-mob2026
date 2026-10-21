@@ -6,7 +6,6 @@
     <title>MOB'2026 — Live Social Tracker | Acte II</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Police Google : Montserrat (Style street / manif fort) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -20,7 +19,6 @@
                     colors: {
                         brand: {
                             red: '#FF2A2A',
-                            neonRed: '#FF0033',
                             amber: '#FF9500',
                             dark: '#08090C',
                             card: '#11141C',
@@ -73,7 +71,7 @@
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-    <!-- BANDEROLLE FLASH INFO NÉON -->
+    <!-- BANDEROLLE FLASH INFO -->
     <div class="bg-gradient-to-r from-brand-red/30 via-brand-amber/20 to-brand-red/30 border-b border-brand-red/40 py-2.5 px-4 text-xs md:text-sm font-semibold text-red-400 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
@@ -87,7 +85,7 @@
         </div>
     </div>
 
-    <!-- NAVBAR GLASSMORPHISM -->
+    <!-- NAVBAR -->
     <header class="sticky top-0 z-50 glass-panel border-b border-brand-border/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -102,7 +100,6 @@
                 </div>
             </div>
 
-            <!-- PROFIL UTILISATEUR -->
             <div class="flex items-center gap-3">
                 <div id="user-profile" class="hidden flex items-center gap-2.5 bg-brand-card/90 border border-brand-border p-1.5 px-3 rounded-xl shadow-lg">
                     <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-lg border border-brand-red/50 object-cover">
@@ -115,10 +112,9 @@
         </div>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
-        <!-- HERO BANNER STYLES MANIF / NÉON -->
+        <!-- HERO BANNER -->
         <section class="relative rounded-3xl overflow-hidden border border-brand-red/50 p-6 sm:p-10 shadow-2xl min-h-[360px] flex flex-col justify-between glow-red">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
@@ -141,7 +137,6 @@
                     Convergence lycéenne, étudiante et citoyenne. Suivez en temps réel la carte des mobilisations dans 33 villes de France et les alertes transmises par le réseau.
                 </p>
 
-                <!-- COMPTE À REBOURS COMPACT -->
                 <div class="pt-2 flex items-center gap-3">
                     <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Rassemblement dans :</span>
                     <div id="countdown" class="flex items-center gap-1.5 font-mono font-bold text-xs text-white">
@@ -181,7 +176,7 @@
             </div>
         </section>
 
-        <!-- AUTHENTIFICATION (Google & Email) -->
+        <!-- AUTHENTIFICATION -->
         <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div>
@@ -207,7 +202,7 @@
             </div>
         </section>
 
-        <!-- CARTE INTERACTIVE SURÉLEVÉE & EXPORTATION -->
+        <!-- CARTE INTERACTIVE (33 VILLES) -->
         <section id="villes-carte" class="glass-panel p-6 rounded-2xl border border-brand-border space-y-5 transition hover:-translate-y-1 duration-300">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
@@ -221,11 +216,8 @@
                 </button>
             </div>
 
-            <!-- ZONE D'EXPORTATION DÉTAILLÉE -->
             <div id="map-export-area" class="p-5 bg-brand-dark rounded-2xl border border-brand-border space-y-4">
                 <div id="map"></div>
-                
-                <!-- PANNEAU INCLUS DANS L'IMAGE TÉLÉCHARGÉE -->
                 <div class="p-4 bg-brand-card rounded-xl border border-slate-800 space-y-3">
                     <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-2">
                         <span class="font-display text-white font-black text-xs uppercase tracking-wider">MOB'2026 — CARTE DÉTAILLÉE ACTE II (24 OCTOBRE)</span>
@@ -238,7 +230,6 @@
                 </div>
             </div>
 
-            <!-- AVERTISSEMENTS -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="md:col-span-2 bg-brand-amber/10 border border-brand-amber/30 p-4 rounded-xl text-xs text-amber-300">
                     <p class="font-bold flex items-center gap-1.5 mb-1">
@@ -275,19 +266,18 @@
             </div>
         </section>
 
-        <!-- FIL D'ACTUALITÉ EN DIRECT AVEC SUPPRESSION PAR L'AUTEUR -->
+        <!-- FIL D'ACTUALITÉ EN DIRECT -->
         <section id="live-feed" class="space-y-4">
             <h2 class="font-display font-black text-xl text-white flex items-center gap-2 uppercase tracking-wide">
                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
             </h2>
             <div id="live-feed-list" class="space-y-3">
-                <!-- Les cartes d'alerte avec bouton de suppression s'affichent ici -->
+                <!-- Les cartes d'alerte s'affichent ici -->
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="mt-auto border-t border-brand-border bg-brand-dark/90 py-6 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <p class="font-bold text-slate-400">MOB'2026 — Plateforme Citoyenne Indépendante</p>
@@ -295,10 +285,9 @@
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK & Logique JS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
@@ -327,7 +316,9 @@
         const db = getDatabase(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // 1. CARTE DE FRANCE INTERACTIVE (33 VILLES)
+        let latestDataSnapshot = null;
+
+        // 1. CARTE DE FRANCE INTERACTIVE
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
@@ -335,38 +326,22 @@
         }).addTo(map);
 
         const citiesList = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522 },
-            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
-            { name: "Brest", lat: 48.3904, lng: -4.4861 },
-            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
-            { name: "Lille", lat: 50.6292, lng: 3.0573 },
-            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
-            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
-            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
-            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
-            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
-            { name: "Nice", lat: 43.7102, lng: 7.2620 },
-            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
-            { name: "Caen", lat: 49.1829, lng: -0.3707 },
-            { name: "Angers", lat: 47.4784, lng: -0.5632 },
-            { name: "Amiens", lat: 49.8941, lng: 2.2957 },
-            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
-            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
-            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
-            { name: "Metz", lat: 49.1193, lng: 6.1757 },
-            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
-            { name: "Reims", lat: 49.2583, lng: 4.0317 },
-            { name: "Tours", lat: 47.3941, lng: 0.6848 },
-            { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
-            { name: "Avignon", lat: 43.9493, lng: 4.8055 },
-            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
-            { name: "Toulon", lat: 43.1242, lng: 5.9280 },
-            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
-            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
-            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
-            { name: "Orléans", lat: 47.9029, lng: 1.9090 }
+            { name: "Paris", lat: 48.8566, lng: 2.3522 }, { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777 }, { name: "Brest", lat: 48.3904, lng: -4.4861 },
+            { name: "Nantes", lat: 47.2183, lng: -1.5536 }, { name: "Lille", lat: 50.6292, lng: 3.0573 },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357 }, { name: "Marseille", lat: 43.2965, lng: 5.3698 },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442 }, { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245 }, { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
+            { name: "Nice", lat: 43.7102, lng: 7.2620 }, { name: "Rouen", lat: 49.4432, lng: 1.0999 },
+            { name: "Caen", lat: 49.1829, lng: -0.3707 }, { name: "Angers", lat: 47.4784, lng: -0.5632 },
+            { name: "Amiens", lat: 49.8941, lng: 2.2957 }, { name: "Dijon", lat: 47.3220, lng: 5.0415 },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 }, { name: "Limoges", lat: 45.8336, lng: 1.2611 },
+            { name: "Metz", lat: 49.1193, lng: 6.1757 }, { name: "Nancy", lat: 48.6921, lng: 6.1844 },
+            { name: "Reims", lat: 49.2583, lng: 4.0317 }, { name: "Tours", lat: 47.3941, lng: 0.6848 },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404 }, { name: "Avignon", lat: 43.9493, lng: 4.8055 },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956 }, { name: "Toulon", lat: 43.1242, lng: 5.9280 },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 }, { name: "Besançon", lat: 47.2378, lng: 6.0241 },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079 }, { name: "Orléans", lat: 47.9029, lng: 1.9090 }
         ];
 
         citiesList.forEach(c => {
@@ -374,7 +349,7 @@
                 .bindPopup(`<b>${c.name}</b><br>Appel à la mobilisation répertorié.`);
         });
 
-        // EXPORT HD DE LA CARTE DÉTAILLÉE
+        // EXPORT DE LA CARTE HD
         document.getElementById('btn-download-map').addEventListener('click', () => {
             const area = document.getElementById('map-export-area');
             html2canvas(area, { useCORS: true, scale: 2 }).then(canvas => {
@@ -442,6 +417,8 @@
                 userProfile.classList.add('hidden');
                 sectionContrib.classList.add('hidden');
             }
+            // Re-rendre le fil d'actualités pour afficher/masquer les boutons de suppression
+            renderPosts(latestDataSnapshot);
         });
 
         // 4. PUBLICATION D'ALERTE
@@ -452,6 +429,7 @@
             const user = auth.currentUser;
 
             if(!title || !desc || !city) return alert("Tous les champs sont obligatoires.");
+            if(!user) return alert("Vous devez être connecté pour publier.");
 
             push(ref(db, 'posts'), {
                 title, 
@@ -467,11 +445,15 @@
             }).catch(err => alert("Erreur d'envoi : " + err.message));
         });
 
-        // 5. AFFICHAGE DES MESSAGES ET BOUTON DE SUPPRESSION
+        // 5. RENDU ET SUPPRESSION DES ANNONCES PAR LEUR AUTEUR
         onValue(ref(db, 'posts'), snapshot => {
+            latestDataSnapshot = snapshot.val();
+            renderPosts(latestDataSnapshot);
+        });
+
+        function renderPosts(data) {
             const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
-            const data = snapshot.val();
             const currentUser = auth.currentUser;
 
             if(!data) { 
@@ -490,10 +472,15 @@
                 const card = document.createElement('article');
                 card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5 relative transition hover:-translate-y-0.5 duration-200";
 
-                // Afficher le bouton supprimer si l'utilisateur est l'auteur du post
-                const isAuthor = currentUser && (currentUser.uid === post.uid);
+                // VÉRIFICATION STRICTE DE L'AUTEUR PAR SON UID OU NOM
+                const isAuthor = currentUser && (
+                    currentUser.uid === post.uid || 
+                    currentUser.displayName === post.author || 
+                    currentUser.email === post.author
+                );
+
                 const deleteBtnHtml = isAuthor ? `
-                    <button onclick="deletePost('${key}')" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs px-2.5 py-1 rounded-lg border border-red-500/30 transition flex items-center gap-1" title="Supprimer cette alerte">
+                    <button onclick="deletePost('${key}')" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs px-2.5 py-1 rounded-lg border border-red-500/40 transition flex items-center gap-1 shadow-md" title="Supprimer cette alerte">
                         <i class="fa-solid fa-trash-can text-[10px]"></i> <span class="text-[10px] font-bold">Supprimer</span>
                     </button>
                 ` : '';
@@ -515,13 +502,13 @@
                 `;
                 liveFeedList.appendChild(card);
             });
-        });
+        }
 
-        // SUPPRESSION DE POST SUR TOUT LE SITE DEPUIS FIREBASE REALTIME DATABASE
+        // SUPPRESSION SUR FIREBASE
         window.deletePost = function(postKey) {
-            if(confirm("Confirmez-vous la suppression définitive de cette annonce sur mob2026.vercel.app ?")) {
+            if(confirm("Confirmez-vous la suppression définitive de votre annonce sur mob2026.vercel.app ?")) {
                 remove(ref(db, 'posts/' + postKey))
-                    .then(() => alert("L'annonce a été supprimée des serveurs avec succès."))
+                    .then(() => alert("Annonce supprimée avec succès."))
                     .catch(err => alert("Erreur lors de la suppression : " + err.message));
             }
         };
