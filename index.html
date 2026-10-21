@@ -65,11 +65,10 @@
         #map-export-area { position: relative; border-radius: 1.5rem; overflow: hidden; }
         #map { height: 500px; width: 100%; z-index: 1; border-radius: 1.25rem; }
         
-        /* Styles personnalisés pour les icônes de carte */
         .custom-map-icon {
             display: flex;
             align-items: center;
-            justify-center;
+            justify-content: center;
             border-radius: 50%;
             color: white;
             font-size: 14px;
@@ -95,7 +94,7 @@
                 <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>Acte II du 24 Octobre 2026 : Suivi du réseau citoyen, carte interactive en direct et alertes géolocalisées.</span>
+                <span>Acte II du 24 Octobre 2026 : Carte interactive des 34 villes mobilisées et alertes en direct.</span>
             </div>
             <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">2026</span>
         </div>
@@ -150,7 +149,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Convergence lycéenne, étudiante et citoyenne. Suivez en temps réel la carte des mobilisations en direct et ajoutez vos signalements sur le terrain.
+                    Convergence lycéenne, étudiante et citoyenne. Suivez la carte interactive recensant les 34 villes mobilisées en France et ajoutez vos informations géolocalisées.
                 </p>
 
                 <div class="pt-2 flex items-center gap-3">
@@ -196,9 +195,9 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
-                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte du Mouvement en Direct
+                        <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France (34 Villes)
                     </h2>
-                    <p class="text-xs text-slate-400">Signalements géolocalisés en temps réel par les utilisateurs.</p>
+                    <p class="text-xs text-slate-400">Carte nationale interactive avec signalements en direct.</p>
                 </div>
                 <button id="btn-download-map" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs py-2.5 px-5 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/30 self-start sm:self-auto glow-red">
                     <i class="fa-solid fa-download"></i> Télécharger la Carte Détaillée HD
@@ -224,7 +223,8 @@
                         <span class="text-brand-red font-mono font-bold text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">Villes clés :</strong> Paris, Bordeaux, Rennes, Brest, Lorient, Nantes, Lille, Lyon, Marseille, Toulouse, Nice, Strasbourg...</p>
+                        <p><strong class="text-white">34 Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Lorient, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans, Saint-Brieuc.</p>
+                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance renforcée sur Rennes, Brest, Lorient et Nantes.</p>
                     </div>
                 </div>
             </div>
@@ -251,20 +251,24 @@
                         <label class="block text-[11px] text-slate-400 mb-1 font-bold">Ville / Lieu :</label>
                         <select id="map-input-city" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
                             <option value="48.8566,2.3522">Paris</option>
+                            <option value="44.8378,-0.5792">Bordeaux</option>
                             <option value="48.1172,-1.6777">Rennes</option>
-                            <option value="47.7483,-3.3700">Lorient</option>
                             <option value="48.3904,-4.4861">Brest</option>
+                            <option value="47.7483,-3.3700">Lorient</option>
                             <option value="47.2183,-1.5536">Nantes</option>
+                            <option value="50.6292,3.0573">Lille</option>
                             <option value="45.7640,4.8357">Lyon</option>
                             <option value="43.2965,5.3698">Marseille</option>
-                            <option value="44.8378,-0.5792">Bordeaux</option>
                             <option value="43.6047,1.4442">Toulouse</option>
-                            <option value="50.6292,3.0573">Lille</option>
+                            <option value="43.6108,3.8767">Montpellier</option>
+                            <option value="45.1885,5.7245">Grenoble</option>
+                            <option value="48.5734,7.7521">Strasbourg</option>
+                            <option value="43.7102,7.2620">Nice</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-[11px] text-slate-400 mb-1 font-bold">Titre du repère :</label>
-                        <input id="map-input-title" type="text" placeholder="ex: Barrage CRS Place de la Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
+                        <input id="map-input-title" type="text" placeholder="ex: Barrage Place de la Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
                     </div>
                 </div>
                 <textarea id="map-input-desc" placeholder="Précisions utiles sur le lieu exact, l'heure ou la situation..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
@@ -344,14 +348,13 @@
         let latestDataSnapshot = null;
         let mapMarkersGroup = [];
 
-        // 1. CARTE INTERACTIVE
+        // 1. CARTE INTERACTIVE (LES 34 VILLES DE FRANCE)
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
         }).addTo(map);
 
-        // Villes par défaut
         const citiesList = [
             { name: "Paris", lat: 48.8566, lng: 2.3522 },
             { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
@@ -362,7 +365,31 @@
             { name: "Lille", lat: 50.6292, lng: 3.0573 },
             { name: "Lyon", lat: 45.7640, lng: 4.8357 },
             { name: "Marseille", lat: 43.2965, lng: 5.3698 },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442 }
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
+            { name: "Nice", lat: 43.7102, lng: 7.2620 },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
+            { name: "Caen", lat: 49.1829, lng: -0.3707 },
+            { name: "Angers", lat: 47.4784, lng: -0.5632 },
+            { name: "Amiens", lat: 49.8941, lng: 2.2957 },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
+            { name: "Metz", lat: 49.1193, lng: 6.1757 },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
+            { name: "Reims", lat: 49.2583, lng: 4.0317 },
+            { name: "Tours", lat: 47.3941, lng: 0.6848 },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
+            { name: "Avignon", lat: 43.9493, lng: 4.8055 },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
+            { name: "Toulon", lat: 43.1242, lng: 5.9280 },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090 },
+            { name: "Saint-Brieuc", lat: 48.5142, lng: -2.7658 }
         ];
 
         citiesList.forEach(c => {
@@ -390,7 +417,6 @@
 
         // LECTURE DES ÉVÉNEMENTS SUR LA CARTE
         onValue(ref(db, 'events'), snapshot => {
-            // Nettoyer les marqueurs dynamiques existants
             mapMarkersGroup.forEach(m => map.removeLayer(m));
             mapMarkersGroup = [];
 
