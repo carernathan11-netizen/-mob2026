@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOB'2026 — Info Manifs & Mobilisations en Direct</title>
+    <title>MOB'2026 — Live Social Tracker</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,9 +26,11 @@
     </script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS (Carte Interactive) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         .glass-panel {
-            background: rgba(22, 25, 32, 0.75);
+            background: rgba(22, 25, 32, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -42,11 +44,12 @@
             70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 48, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
         }
+        #map { height: 380px; width: 100%; border-radius: 1rem; z-index: 1; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-    <!-- BANDEROLLE FLASH INFO -->
+    <!-- FLASH INFO -->
     <div class="bg-brand-red/10 border-b border-brand-red/30 py-2.5 px-4 text-xs md:text-sm font-medium text-red-400">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
@@ -54,9 +57,9 @@
                 <span class="font-bold tracking-wider uppercase text-brand-red">FLASH INFO</span>
             </div>
             <div class="truncate text-slate-300">
-                <span>Suivi national en direct - Acte II du 24 octobre : points de rassemblement et état des routes.</span>
+                <span>Direct 2026 — Mobilisations nationales et carte des rassemblements en direct.</span>
             </div>
-            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline">Édition 2026</span>
+            <span class="text-slate-500 text-xs shrink-0 hidden sm:inline">21 Octobre 2026</span>
         </div>
     </div>
 
@@ -75,7 +78,7 @@
                 </div>
             </div>
 
-            <!-- ZONE UTILISATEUR / PROFIL -->
+            <!-- PROFIL -->
             <div class="flex items-center gap-3">
                 <div id="user-profile" class="hidden flex items-center gap-2 bg-brand-card border border-brand-border p-1.5 rounded-xl">
                     <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-lg border border-slate-700 object-cover">
@@ -88,16 +91,38 @@
         </div>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+    <!-- CONTENU -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <!-- SECTION AUTHENTIFICATION MULTIPLE (Si non connecté) -->
+        <!-- À LA UNE : ACTE II LE 24 OCTOBRE -->
+        <section class="relative rounded-2xl overflow-hidden glass-panel border border-brand-border p-6 md:p-8 flex flex-col justify-between group">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1200')] bg-cover bg-center opacity-40"></div>
+
+            <div class="relative z-20 space-y-3 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="bg-brand-red text-white text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider">
+                        À LA UNE
+                    </span>
+                    <span class="bg-slate-800/80 backdrop-blur-md text-slate-300 text-xs font-medium px-2.5 py-1 rounded-md border border-slate-700">
+                        24 OCTOBRE 2026
+                    </span>
+                </div>
+                <h1 class="text-2xl md:text-4xl font-black text-white leading-tight">
+                    Acte II du 24 Octobre : Carte des rassemblements et préparation des mouvements lycéens & citoyens
+                </h1>
+                <p class="text-xs md:text-sm text-slate-300">
+                    Retrouvez l'évolution en temps réel des points de blocages, cortèges et appels à manifester dans toutes les régions.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTIONS D'AUTHENTIFICATION (Si déconnecté) -->
         <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- 1. Google -->
             <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div>
-                    <h3 class="font-bold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Rapide</h3>
-                    <p class="text-xs text-slate-400">Connectez-vous instantanément avec votre compte Google.</p>
+                    <h3 class="font-bold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Google Sign-In</h3>
+                    <p class="text-xs text-slate-400">Connexion rapide via compte Google.</p>
                 </div>
                 <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-md">
                     <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
@@ -105,145 +130,85 @@
                 </button>
             </div>
 
-            <!-- 2. Email / Mot de passe -->
             <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div class="space-y-2">
                     <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Email & Mot de passe</h3>
-                    <input id="auth-email" type="email" placeholder="Email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
-                    <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
+                    <input id="auth-email" type="email" placeholder="Email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
                 </div>
                 <div class="flex gap-2">
-                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2 rounded-xl transition border border-slate-700">Inscription</button>
-                    <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 rounded-xl transition">Connexion</button>
+                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2 rounded-xl border border-slate-700">Créer compte</button>
+                    <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 rounded-xl">Connexion</button>
                 </div>
             </div>
 
-            <!-- 3. Numéro de Téléphone -->
             <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div class="space-y-2">
-                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> Par Téléphone (SMS)</h3>
-                    <input id="auth-phone" type="tel" placeholder="+33 6 XX XX XX XX" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                    <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> Numéro de Téléphone</h3>
+                    <input id="auth-phone" type="tel" placeholder="+33 6 XX XX XX XX" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
                     <div id="recaptcha-container"></div>
-                    <input id="auth-sms-code" type="text" placeholder="Code reçu par SMS..." class="hidden w-full bg-brand-dark border border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                    <input id="auth-sms-code" type="text" placeholder="Code SMS reçu..." class="hidden w-full bg-brand-dark border border-emerald-500 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
                 </div>
                 <div>
-                    <button id="btn-send-code" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl transition">Envoyer le code SMS</button>
-                    <button id="btn-verify-code" class="hidden w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl transition">Valider le code</button>
+                    <button id="btn-send-code" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl">Envoyer Code SMS</button>
+                    <button id="btn-verify-code" class="hidden w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 rounded-xl">Valider le Code</button>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION CONTRIBUTION (Visible si connecté) -->
+        <!-- CARTE DE FRANCE INTERACTIVE -->
+        <section class="glass-panel p-5 rounded-2xl border border-brand-border space-y-3">
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte Interactive des Mobilisations en France
+            </h2>
+            <div id="map"></div>
+        </section>
+
+        <!-- FORMULAIRE DE PUBLICATION (Visible si connecté) -->
         <section id="section-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
             <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <i class="fa-solid fa-pen-to-square text-brand-red"></i> Publier une information en direct sur le réseau
+                <i class="fa-solid fa-pen-to-square text-brand-red"></i> Publier une alerte en direct
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre (ex: Blocage en cours à Paris)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
-                    <select id="input-city" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red">
-                        <option value="National">National / Autre</option>
+                    <input id="input-title" type="text" placeholder="Titre (ex: Rassemblement à Paris Place de la Bastille)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
+                    <select id="input-city" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
                         <option value="Paris">Paris</option>
                         <option value="Rennes">Rennes</option>
                         <option value="Nantes">Nantes</option>
                         <option value="Lorient">Lorient</option>
-                        <option value="Brest">Brest</option>
                         <option value="Lyon">Lyon</option>
                         <option value="Marseille">Marseille</option>
-                        <option value="Toulouse">Toulouse</option>
                         <option value="Bordeaux">Bordeaux</option>
+                        <option value="Toulouse">Toulouse</option>
+                        <option value="National">Autre / National</option>
                     </select>
                 </div>
-                <textarea id="input-desc" placeholder="Détails de la situation, perturbations, cortèges..." rows="3" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
+                <textarea id="input-desc" placeholder="Détails du point d'info..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"></textarea>
                 <button id="btn-send-post" class="bg-brand-red hover:bg-red-600 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition">
-                    Diffuser l'alerte en direct
+                    Diffuser en direct
                 </button>
             </div>
         </section>
 
-        <!-- GRILLE PRINCIPALE : LIVE FEED & SUIVI PAR VILLES -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- FIL D'ACTUALITÉ EN DIRECT (2 colonnes) -->
-            <section class="lg:col-span-2 space-y-4">
-                <div class="flex items-center justify-between pb-2 border-b border-brand-border">
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
-                    </h2>
-                    <span class="text-xs text-slate-400">Temps réel Database</span>
-                </div>
-                <div id="live-feed-list" class="space-y-3">
-                    <p class="text-xs text-slate-500 italic">Chargement des signalements en direct...</p>
-                </div>
-            </section>
-
-            <!-- SIDEBAR : CARTE DE FRANCE & SUIVI DES VILLES -->
-            <aside class="space-y-6">
-                <div class="glass-panel p-5 rounded-2xl border border-brand-border space-y-4">
-                    <h2 class="text-base font-bold text-white flex items-center justify-between">
-                        <span><i class="fa-solid fa-map-location-dot text-brand-red mr-2"></i> Villes de France</span>
-                        <span class="text-xs text-slate-500 font-normal">24 Oct.</span>
-                    </h2>
-                    <p class="text-xs text-slate-400">État des mobilisations recensées à travers le pays :</p>
-
-                    <!-- Liste des Villes -->
-                    <div class="space-y-2.5 text-xs max-h-[400px] overflow-y-auto pr-1">
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Paris</span><span class="text-slate-500">República / Bastille</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-red/20 text-red-400 font-bold text-[10px]">Appel fort</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Rennes</span><span class="text-slate-500">Place de la Mairie</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-amber/20 text-amber-400 font-bold text-[10px]">En attente</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Nantes</span><span class="text-slate-500">Miroir d'eau</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-amber/20 text-amber-400 font-bold text-[10px]">En attente</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Lorient</span><span class="text-slate-500">Centre-ville / UBS</span></div>
-                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-400 font-bold text-[10px]">R.A.S.</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Brest</span><span class="text-slate-500">Place de la Liberté</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-amber/20 text-amber-400 font-bold text-[10px]">Signalé</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Lyon</span><span class="text-slate-500">Place Bellecour</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-red/20 text-red-400 font-bold text-[10px]">Cortège</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Marseille</span><span class="text-slate-500">Vieux-Port</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-red/20 text-red-400 font-bold text-[10px]">Cortège</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Toulouse</span><span class="text-slate-500">Capitole</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-amber/20 text-amber-400 font-bold text-[10px]">En attente</span>
-                        </div>
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-brand-dark/50 border border-slate-800">
-                            <div><span class="font-bold text-white block">Bordeaux</span><span class="text-slate-500">Place de la Bourse</span></div>
-                            <span class="px-2 py-1 rounded bg-brand-amber/20 text-amber-400 font-bold text-[10px]">En attente</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-        </div>
+        <!-- FIL EN DIRECT -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
+            </h2>
+            <div id="live-feed-list" class="space-y-3">
+                <p class="text-xs text-slate-500 italic">Chargement des flux en direct...</p>
+            </div>
+        </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="mt-auto border-t border-brand-border bg-brand-dark py-6 text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
-            <p class="font-bold text-slate-400">MOB'2026 — Plateforme Citoyenne Indépendante</p>
-            <p class="text-[11px] text-slate-600">Données synchronisées en temps réel via Google Firebase.</p>
-        </div>
-    </footer>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- LOGIQUE JAVASCRIPT & FIREBASE -->
+    <!-- Firebase JS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
         import { 
             getAuth, 
             GoogleAuthProvider, 
@@ -255,15 +220,8 @@
             signOut, 
             onAuthStateChanged 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { 
-            getDatabase, 
-            ref, 
-            push, 
-            set, 
-            onValue 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // Configuration Firebase officielle
         const firebaseConfig = {
           apiKey: "AIzaSyAgU2wzM-AoMgzgQYXsyrIVs10IQLYM6qc",
           authDomain: "mob2026-5e842.firebaseapp.com",
@@ -271,17 +229,36 @@
           projectId: "mob2026-5e842",
           storageBucket: "mob2026-5e842.firebasestorage.app",
           messagingSenderId: "698324193955",
-          appId: "1:698324193955:web:05e84018db3c0457be2516",
-          measurementId: "G-7KPHGDKM5K"
+          appId: "1:698324193955:web:05e84018db3c0457be2516"
         };
 
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
         const auth = getAuth(app);
         const db = getDatabase(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // Éléments interface
+        // 1. CARTE LEAFLET
+        const map = L.map('map').setView([46.603354, 1.888334], 5.5);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap © CARTO',
+            maxZoom: 19
+        }).addTo(map);
+
+        const cities = [
+            { name: "Paris", lat: 48.8566, lng: 2.3522, status: "Appel Fort" },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777, status: "Signalé" },
+            { name: "Nantes", lat: 47.2183, lng: -1.5536, status: "En attente" },
+            { name: "Lorient", lat: 47.7483, lng: -3.3700, status: "R.A.S." },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357, status: "Cortège prévu" },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698, status: "Cortège prévu" }
+        ];
+
+        cities.forEach(c => {
+            L.marker([c.lat, c.lng]).addTo(map)
+                .bindPopup(`<b>${c.name}</b><br>Statut: ${c.status}`);
+        });
+
+        // 2. AUTHENTIFICATION
         const sectionAuthContainer = document.getElementById('section-auth-container');
         const userProfile = document.getElementById('user-profile');
         const userName = document.getElementById('user-name');
@@ -289,73 +266,28 @@
         const btnLogout = document.getElementById('btn-logout');
         const sectionContrib = document.getElementById('section-contrib');
 
-        const btnLoginGoogle = document.getElementById('btn-login-google');
-        const authEmail = document.getElementById('auth-email');
-        const authPassword = document.getElementById('auth-password');
-        const btnSignupEmail = document.getElementById('btn-signup-email');
-        const btnSigninEmail = document.getElementById('btn-signin-email');
-
-        const authPhone = document.getElementById('auth-phone');
-        const authSmsCode = document.getElementById('auth-sms-code');
-        const btnSendCode = document.getElementById('btn-send-code');
-        const btnVerifyCode = document.getElementById('btn-verify-code');
-
-        const inputTitle = document.getElementById('input-title');
-        const inputCity = document.getElementById('input-city');
-        const inputDesc = document.getElementById('input-desc');
-        const btnSendPost = document.getElementById('btn-send-post');
-        const liveFeedList = document.getElementById('live-feed-list');
-
-        // 1. Google Auth
-        btnLoginGoogle.addEventListener('click', () => {
+        document.getElementById('btn-login-google').addEventListener('click', () => {
             signInWithPopup(auth, googleProvider).catch(err => alert("Erreur Google : " + err.message));
         });
 
-        // 2. Email Auth
-        btnSignupEmail.addEventListener('click', () => {
-            if(!authEmail.value || !authPassword.value) return alert("Remplis l'email et le mot de passe.");
-            createUserWithEmailAndPassword(auth, authEmail.value, authPassword.value).catch(err => alert("Erreur : " + err.message));
-        });
-        btnSigninEmail.addEventListener('click', () => {
-            if(!authEmail.value || !authPassword.value) return alert("Remplis l'email et le mot de passe.");
-            signInWithEmailAndPassword(auth, authEmail.value, authPassword.value).catch(err => alert("Erreur : " + err.message));
+        document.getElementById('btn-signup-email').addEventListener('click', () => {
+            const e = document.getElementById('auth-email').value, p = document.getElementById('auth-password').value;
+            if(e && p) createUserWithEmailAndPassword(auth, e, p).catch(err => alert(err.message));
         });
 
-        // 3. Phone SMS Auth setup
-        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { 'size': 'invisible' });
-
-        btnSendCode.addEventListener('click', () => {
-            const phoneNumber = authPhone.value.trim();
-            if(!phoneNumber) return alert("Entre un numéro de téléphone valide.");
-            const appVerifier = window.recaptchaVerifier;
-
-            signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-                .then(confirmationResult => {
-                    window.confirmationResult = confirmationResult;
-                    alert("Code SMS envoyé !");
-                    authPhone.classList.add('hidden');
-                    btnSendCode.classList.add('hidden');
-                    authSmsCode.classList.remove('hidden');
-                    btnVerifyCode.classList.remove('hidden');
-                }).catch(error => alert("Erreur SMS : " + error.message));
+        document.getElementById('btn-signin-email').addEventListener('click', () => {
+            const e = document.getElementById('auth-email').value, p = document.getElementById('auth-password').value;
+            if(e && p) signInWithEmailAndPassword(auth, e, p).catch(err => alert(err.message));
         });
 
-        btnVerifyCode.addEventListener('click', () => {
-            const code = authSmsCode.value.trim();
-            if(!code) return alert("Entre le code reçu.");
-            window.confirmationResult.confirm(code).result.catch(error => alert("Code invalide : " + error.message));
-        });
-
-        // 4. Déconnexion
         btnLogout.addEventListener('click', () => signOut(auth));
 
-        // 5. Suivi connexion utilisateur
         onAuthStateChanged(auth, user => {
             if (user) {
                 sectionAuthContainer.classList.add('hidden');
                 userProfile.classList.remove('hidden');
                 sectionContrib.classList.remove('hidden');
-                userName.textContent = user.displayName || user.phoneNumber || user.email;
+                userName.textContent = user.displayName || user.email || user.phoneNumber;
                 userAvatar.src = user.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + user.uid;
             } else {
                 sectionAuthContainer.classList.remove('hidden');
@@ -364,65 +296,44 @@
             }
         });
 
-        // 6. Publier dans Realtime Database
-        btnSendPost.addEventListener('click', () => {
-            const title = inputTitle.value.trim();
-            const city = inputCity.value;
-            const desc = inputDesc.value.trim();
+        // 3. ENVOI / LECTURE DATABASE
+        document.getElementById('btn-send-post').addEventListener('click', () => {
+            const title = document.getElementById('input-title').value.trim();
+            const city = document.getElementById('input-city').value;
+            const desc = document.getElementById('input-desc').value.trim();
             const user = auth.currentUser;
 
-            if(!title || !desc) return alert("Le titre et la description sont obligatoires.");
-            if(!user) return alert("Vous devez être connecté.");
-
-            const postsRef = ref(db, 'posts');
-            const newPostRef = push(postsRef);
-
-            set(newPostRef, {
-                title: title,
-                city: city,
-                description: desc,
-                author: user.displayName || user.phoneNumber || user.email,
-                timestamp: Date.now()
+            if(!title || !desc) return alert("Remplissez tous les champs.");
+            push(ref(db, 'posts'), {
+                title, city, description: desc, author: user.displayName || user.email || user.phoneNumber, timestamp: Date.now()
             }).then(() => {
-                inputTitle.value = '';
-                inputDesc.value = '';
-            }).catch(err => alert("Erreur d'envoi : " + err.message));
+                document.getElementById('input-title').value = '';
+                document.getElementById('input-desc').value = '';
+            });
         });
 
-        // 7. Affichage dynamique du fil en direct
-        const postsRef = ref(db, 'posts');
-        onValue(postsRef, snapshot => {
+        onValue(ref(db, 'posts'), snapshot => {
+            const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
             const data = snapshot.val();
+            if(!data) { liveFeedList.innerHTML = '<p class="text-xs text-slate-500 italic">Aucun message pour le moment.</p>'; return; }
 
-            if (!data) {
-                liveFeedList.innerHTML = `<p class="text-xs text-slate-500 italic">Aucune actualité en direct pour le moment. Soyez le premier à publier !</p>`;
-                return;
-            }
-
-            const postsArray = Object.entries(data).map(([id, val]) => ({ id, ...val })).reverse();
-
-            postsArray.forEach(post => {
+            Object.entries(data).reverse().forEach(([id, post]) => {
                 const dateStr = new Date(post.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 const card = document.createElement('article');
-                card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2 hover:border-slate-700 transition";
+                card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2";
                 card.innerHTML = `
                     <div class="flex items-center justify-between text-xs text-slate-400">
-                        <span class="flex items-center gap-1.5 text-brand-red font-bold uppercase tracking-wider"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(post.city)}</span>
+                        <span class="text-brand-red font-bold uppercase"><i class="fa-solid fa-location-dot"></i> ${post.city}</span>
                         <span class="font-mono">${dateStr}</span>
                     </div>
-                    <h3 class="font-bold text-base text-white">${escapeHtml(post.title)}</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(post.description)}</p>
-                    <div class="pt-1 text-[10px] text-slate-500">Par ${escapeHtml(post.author)}</div>
+                    <h3 class="font-bold text-base text-white">${post.title}</h3>
+                    <p class="text-xs text-slate-300">${post.description}</p>
+                    <div class="text-[10px] text-slate-500">Par ${post.author}</div>
                 `;
                 liveFeedList.appendChild(card);
             });
         });
-
-        function escapeHtml(text) {
-            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-            return (text || '').replace(/[&<>"']/g, m => map[m]);
-        }
     </script>
 </body>
 </html>
