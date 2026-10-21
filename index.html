@@ -94,7 +94,7 @@
                 <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>Acte II du 24 Octobre 2026 : Carte interactive des 34 villes mobilisées et alertes en direct.</span>
+                <span>Acte II du 24 Octobre 2026 : Plateforme citoyenne pacifique d'information et de sécurité.</span>
             </div>
             <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">2026</span>
         </div>
@@ -137,7 +137,7 @@
             <div class="relative z-20 space-y-4 max-w-4xl">
                 <div class="flex flex-wrap items-center gap-2">
                     <span class="bg-brand-red text-white text-[10px] font-display font-black uppercase px-3 py-1 rounded-lg tracking-widest shadow-lg shadow-brand-red/50 pulse-red">
-                        À LA UNE
+                        APPEL À LA MOBILISATION
                     </span>
                     <span class="bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-lg border border-amber-400/40 glow-amber">
                         <i class="fa-solid fa-calendar-days mr-1.5"></i> SAMEDI 24 OCTOBRE 2026
@@ -149,7 +149,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Convergence lycéenne, étudiante et citoyenne. Suivez la carte interactive recensant les 34 villes mobilisées en France et ajoutez vos informations géolocalisées.
+                    Plateforme citoyenne d'information en temps réel. Suivez les rassemblements pacifistes, préservez la sécurité de tous et partagez les informations du terrain.
                 </p>
 
                 <div class="pt-2 flex items-center gap-3">
@@ -164,12 +164,24 @@
             </div>
         </section>
 
+        <!-- CHARTE CITOYENNE & ENGAGEMENT PACIFIQUE -->
+        <section class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
+            <div class="flex items-center gap-2 text-emerald-400 font-display font-black text-sm uppercase tracking-wide">
+                <i class="fa-solid fa-shield-cat text-lg"></i> Charte de la Plateforme & Légitimité
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                <strong class="text-white">MOB'2026 est une plateforme citoyenne parfaitement légale d'information collective.</strong> 
+                Elle ne constitue en aucun cas un appel aux dégradations ou aux violences. Nous condamnons fermement tout acte de casse ou de violence. 
+                L'objectif de ce service est d'assurer la <strong>sécurité de tous les manifestants pacifistes</strong> en partageant en temps réel les informations de circulation, les zones de tension et les dispositifs de sécurité.
+            </p>
+        </section>
+
         <!-- AUTHENTIFICATION -->
         <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
                 <div>
                     <h3 class="font-display font-extrabold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Google</h3>
-                    <p class="text-xs text-slate-400">Authentifiez-vous pour ajouter des repères sur la carte et publier des alertes.</p>
+                    <p class="text-xs text-slate-400">Connectez-vous pour signaler des événements et gérer vos propres repères.</p>
                 </div>
                 <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-lg">
                     <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
@@ -197,21 +209,21 @@
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations en France (34 Villes)
                     </h2>
-                    <p class="text-xs text-slate-400">Carte nationale interactive avec signalements en direct.</p>
+                    <p class="text-xs text-slate-400">Signalements interactifs répertoriés en direct par les utilisateurs.</p>
                 </div>
                 <button id="btn-download-map" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs py-2.5 px-5 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/30 self-start sm:self-auto glow-red">
-                    <i class="fa-solid fa-download"></i> Télécharger la Carte Détaillée HD
+                    <i class="fa-solid fa-download"></i> Télécharger la Carte HD
                 </button>
             </div>
 
-            <!-- LÉGENDE DES MOTIFS -->
+            <!-- LÉGENDE -->
             <div class="flex flex-wrap items-center gap-3 p-3 bg-brand-dark/90 rounded-xl border border-slate-800 text-xs">
                 <span class="text-slate-400 font-bold">Légende :</span>
                 <span class="flex items-center gap-1 text-red-400"><i class="fa-solid fa-bullhorn text-brand-red"></i> Manif</span>
                 <span class="flex items-center gap-1 text-blue-400"><i class="fa-solid fa-shield-halved text-blue-500"></i> Police</span>
                 <span class="flex items-center gap-1 text-amber-400"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Dangereux</span>
                 <span class="flex items-center gap-1 text-yellow-300"><i class="fa-solid fa-burst text-yellow-400"></i> Pétard</span>
-                <span class="flex items-center gap-1 text-slate-300"><i class="fa-solid fa-store-slash text-slate-400"></i> Pillage</span>
+                <span class="flex items-center gap-1 text-slate-300"><i class="fa-solid fa-store-slash text-slate-400"></i> Incident</span>
             </div>
 
             <!-- CARTE -->
@@ -224,16 +236,16 @@
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
                         <p><strong class="text-white">34 Villes Répertoriées :</strong> Paris, Bordeaux, Rennes, Brest, Lorient, Nantes, Lille, Lyon, Marseille, Toulouse, Montpellier, Grenoble, Strasbourg, Nice, Rouen, Caen, Angers, Amiens, Dijon, Clermont-Ferrand, Limoges, Metz, Nancy, Reims, Tours, Poitiers, Avignon, Perpignan, Toulon, Saint-Étienne, Besançon, Le Havre, Orléans, Saint-Brieuc.</p>
-                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance renforcée sur Rennes, Brest, Lorient et Nantes.</p>
+                        <p><strong class="text-amber-400">Securmanif Bretagne :</strong> Vigilance sur Rennes, Brest, Lorient et Nantes.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FORMULAIRE : AJOUTER UN SIGNALEMENT SUR LA CARTE (Si connecté) -->
+        <!-- FORMULAIRE : AJOUTER UN REPÈRE SUR LA CARTE (Si connecté) -->
         <section id="section-map-event-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
             <h3 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
-                <i class="fa-solid fa-location-crosshairs text-brand-red"></i> Ajouter une alerte sur la carte en direct
+                <i class="fa-solid fa-location-crosshairs text-brand-red"></i> Placer un repère sur la carte
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -244,7 +256,7 @@
                             <option value="police">👮 Police / Forces de l'ordre</option>
                             <option value="dangereux">⚠️ Zone Dangereuse / Danger</option>
                             <option value="petard">💥 Pétards / Détonations</option>
-                            <option value="pillage">🚨 Pillage / Incidents</option>
+                            <option value="pillage">🚨 Incident / Zone à risque</option>
                         </select>
                     </div>
                     <div>
@@ -268,12 +280,12 @@
                     </div>
                     <div>
                         <label class="block text-[11px] text-slate-400 mb-1 font-bold">Titre du repère :</label>
-                        <input id="map-input-title" type="text" placeholder="ex: Barrage Place de la Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
+                        <input id="map-input-title" type="text" placeholder="ex: Cortège Pacifique Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
                     </div>
                 </div>
-                <textarea id="map-input-desc" placeholder="Précisions utiles sur le lieu exact, l'heure ou la situation..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
+                <textarea id="map-input-desc" placeholder="Précisions utiles sur le lieu exact, l'heure ou la circulation..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
                 <button id="btn-send-map-event" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-red/30 glow-red">
-                    Placer l'alerte sur la Carte
+                    Placer l'Alerte sur la Carte
                 </button>
             </div>
         </section>
@@ -281,16 +293,16 @@
         <!-- FORMULAIRE PUBLICATION ALERTE TEXTE FIL -->
         <section id="section-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
             <h3 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
-                <i class="fa-solid fa-pen-to-square text-brand-amber"></i> Publier une alerte dans le fil texte
+                <i class="fa-solid fa-pen-to-square text-brand-amber"></i> Publier un message d'information
             </h3>
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre (ex: Blocus à la gare de Lorient)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
+                    <input id="input-title" type="text" placeholder="Titre (ex: Blocus gare de Lorient)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                     <input id="input-city" type="text" placeholder="Ville concernée (ex: Lorient, Rennes, Paris...)" class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                 </div>
-                <textarea id="input-desc" placeholder="Détails de la situation sur le terrain..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber"></textarea>
+                <textarea id="input-desc" placeholder="Message d'information citoyenne..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber"></textarea>
                 <button id="btn-send-post" class="bg-brand-amber hover:bg-amber-600 text-slate-950 font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-amber/30">
-                    Diffuser l'alerte texte
+                    Diffuser le Message
                 </button>
             </div>
         </section>
@@ -345,10 +357,11 @@
         const db = getDatabase(app);
         const googleProvider = new GoogleAuthProvider();
 
-        let latestDataSnapshot = null;
+        let latestPostsSnapshot = null;
+        let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
 
-        // 1. CARTE INTERACTIVE (LES 34 VILLES DE FRANCE)
+        // 1. CARTE INTERACTIVE
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
@@ -356,48 +369,31 @@
         }).addTo(map);
 
         const citiesList = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522 },
-            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
-            { name: "Brest", lat: 48.3904, lng: -4.4861 },
-            { name: "Lorient", lat: 47.7483, lng: -3.3700 },
-            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
-            { name: "Lille", lat: 50.6292, lng: 3.0573 },
-            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
-            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
-            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
-            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
-            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
-            { name: "Nice", lat: 43.7102, lng: 7.2620 },
-            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
-            { name: "Caen", lat: 49.1829, lng: -0.3707 },
-            { name: "Angers", lat: 47.4784, lng: -0.5632 },
-            { name: "Amiens", lat: 49.8941, lng: 2.2957 },
-            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
-            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
-            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
-            { name: "Metz", lat: 49.1193, lng: 6.1757 },
-            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
-            { name: "Reims", lat: 49.2583, lng: 4.0317 },
-            { name: "Tours", lat: 47.3941, lng: 0.6848 },
-            { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
-            { name: "Avignon", lat: 43.9493, lng: 4.8055 },
-            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
-            { name: "Toulon", lat: 43.1242, lng: 5.9280 },
-            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
-            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
-            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
-            { name: "Orléans", lat: 47.9029, lng: 1.9090 },
-            { name: "Saint-Brieuc", lat: 48.5142, lng: -2.7658 }
+            { name: "Paris", lat: 48.8566, lng: 2.3522 }, { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777 }, { name: "Brest", lat: 48.3904, lng: -4.4861 },
+            { name: "Lorient", lat: 47.7483, lng: -3.3700 }, { name: "Nantes", lat: 47.2183, lng: -1.5536 },
+            { name: "Lille", lat: 50.6292, lng: 3.0573 }, { name: "Lyon", lat: 45.7640, lng: 4.8357 },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698 }, { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767 }, { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 }, { name: "Nice", lat: 43.7102, lng: 7.2620 },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999 }, { name: "Caen", lat: 49.1829, lng: -0.3707 },
+            { name: "Angers", lat: 47.4784, lng: -0.5632 }, { name: "Amiens", lat: 49.8941, lng: 2.2957 },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415 }, { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611 }, { name: "Metz", lat: 49.1193, lng: 6.1757 },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844 }, { name: "Reims", lat: 49.2583, lng: 4.0317 },
+            { name: "Tours", lat: 47.3941, lng: 0.6848 }, { name: "Poitiers", lat: 46.5802, lng: 0.3404 },
+            { name: "Avignon", lat: 43.9493, lng: 4.8055 }, { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
+            { name: "Toulon", lat: 43.1242, lng: 5.9280 }, { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241 }, { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090 }, { name: "Saint-Brieuc", lat: 48.5142, lng: -2.7658 }
         ];
 
         citiesList.forEach(c => {
             L.marker([c.lat, c.lng]).addTo(map)
-                .bindPopup(`<b>${c.name}</b><br>Appel à la mobilisation répertorié.`);
+                .bindPopup(`<b>${c.name}</b><br>Mobilisation répertoriée.`);
         });
 
-        // 2. CONFIGURATION DES ICÔNES DE CARTE SELON LE MOTIF
+        // 2. CONFIGURATION DES ICÔNES DE CARTE
         function createCustomIcon(type) {
             let iconClass = "fa-bullhorn";
             let bgClass = "icon-manifestation";
@@ -415,33 +411,48 @@
             });
         }
 
-        // LECTURE DES ÉVÉNEMENTS SUR LA CARTE
+        // LECTURE & RENDU DES ÉVÉNEMENTS CARTE AVEC SUPPRESSION RÉSERVÉE À L'AUTEUR (UID)
         onValue(ref(db, 'events'), snapshot => {
+            latestEventsSnapshot = snapshot.val();
+            renderMapEvents(latestEventsSnapshot);
+        });
+
+        function renderMapEvents(data) {
             mapMarkersGroup.forEach(m => map.removeLayer(m));
             mapMarkersGroup = [];
 
-            const data = snapshot.val();
             if(!data) return;
-
             const currentUser = auth.currentUser;
 
             Object.entries(data).forEach(([key, ev]) => {
-                const isAuthor = currentUser && (currentUser.uid === ev.uid || currentUser.email === ev.author);
-                const deleteBtn = isAuthor ? `<br><button onclick="deleteMapEvent('${key}')" style="color:red;font-weight:bold;margin-top:5px;cursor:pointer;">Supprimer l'alerte</button>` : '';
+                // VERIFICATION STRICTE DE L'AUTEUR PAR SON UID UNIQUE
+                const isAuthor = currentUser && (currentUser.uid === ev.uid);
+                
+                const deleteBtnHtml = isAuthor ? 
+                    `<br><button onclick="deleteMapEvent('${key}')" style="background:#FF2A2A;color:white;border:none;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:bold;margin-top:6px;cursor:pointer;">Supprimer mon repère</button>` : '';
 
                 const marker = L.marker([ev.lat, ev.lng], { icon: createCustomIcon(ev.type) }).addTo(map)
                     .bindPopup(`
-                        <b>${escapeHtml(ev.title)}</b><br>
-                        <span style="font-size:11px;color:#aaa;">Motif : ${ev.type.toUpperCase()}</span><br>
-                        ${escapeHtml(ev.description)}<br>
-                        <small style="color:#777;">Par ${escapeHtml(ev.author)}</small>
-                        ${deleteBtn}
+                        <b style="color:#111;">${escapeHtml(ev.title)}</b><br>
+                        <span style="font-size:10px;color:#666;font-weight:bold;">MOTIF : ${ev.type.toUpperCase()}</span><br>
+                        <span style="font-size:11px;color:#333;">${escapeHtml(ev.description)}</span><br>
+                        <small style="color:#888;">Par ${escapeHtml(ev.author)}</small>
+                        ${deleteBtnHtml}
                     `);
                 mapMarkersGroup.push(marker);
             });
-        });
+        }
 
-        // AJOUT D'UN ÉVÉNEMENT SUR LA CARTE
+        // SUPPRESSION DU REPÈRE SUR LA CARTE (UNIQUE À L'AUTEUR)
+        window.deleteMapEvent = function(key) {
+            if(confirm("Confirmez-vous la suppression définitive de votre repère sur la carte ?")) {
+                remove(ref(db, 'events/' + key))
+                    .then(() => alert("Repère supprimé de la carte."))
+                    .catch(err => alert("Erreur : " + err.message));
+            }
+        };
+
+        // AJOUT D'UN REPÈRE SUR LA CARTE
         document.getElementById('btn-send-map-event').addEventListener('click', () => {
             const type = document.getElementById('map-input-type').value;
             const coords = document.getElementById('map-input-city').value.split(',');
@@ -464,15 +475,9 @@
             }).then(() => {
                 document.getElementById('map-input-title').value = '';
                 document.getElementById('map-input-desc').value = '';
-                alert("Alerte ajoutée sur la carte avec succès !");
+                alert("Votre repère a été placé sur la carte !");
             }).catch(err => alert("Erreur : " + err.message));
         });
-
-        window.deleteMapEvent = function(key) {
-            if(confirm("Supprimer ce repère de la carte ?")) {
-                remove(ref(db, 'events/' + key)).then(() => alert("Repère supprimé."));
-            }
-        };
 
         // EXPORT CARTE HD
         document.getElementById('btn-download-map').addEventListener('click', () => {
@@ -545,10 +550,11 @@
                 sectionContrib.classList.add('hidden');
                 sectionMapEventContrib.classList.add('hidden');
             }
-            renderPosts(latestDataSnapshot);
+            renderPosts(latestPostsSnapshot);
+            renderMapEvents(latestEventsSnapshot);
         });
 
-        // 5. PUBLICATION ALERTE FIL TEXTE
+        // 5. PUBLICATION POST TEXTE
         document.getElementById('btn-send-post').addEventListener('click', () => {
             const title = document.getElementById('input-title').value.trim();
             const city = document.getElementById('input-city').value.trim();
@@ -556,7 +562,7 @@
             const user = auth.currentUser;
 
             if(!title || !desc || !city) return alert("Tous les champs sont obligatoires.");
-            if(!user) return alert("Vous devez être connecté pour publier.");
+            if(!user) return alert("Vous devez être connecté.");
 
             push(ref(db, 'posts'), {
                 title, city, description: desc, author: user.displayName || user.email || "Anonyme", uid: user.uid, timestamp: Date.now()
@@ -567,10 +573,9 @@
             });
         });
 
-        // LECTURE ET RENDU DES POSTS TEXTE
         onValue(ref(db, 'posts'), snapshot => {
-            latestDataSnapshot = snapshot.val();
-            renderPosts(latestDataSnapshot);
+            latestPostsSnapshot = snapshot.val();
+            renderPosts(latestPostsSnapshot);
         });
 
         function renderPosts(data) {
@@ -594,7 +599,7 @@
                 const card = document.createElement('article');
                 card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5 relative transition hover:-translate-y-0.5 duration-200";
 
-                const isAuthor = currentUser && (currentUser.uid === post.uid || currentUser.email === post.author);
+                const isAuthor = currentUser && (currentUser.uid === post.uid);
                 const deleteBtnHtml = isAuthor ? `
                     <button onclick="deletePost('${key}')" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs px-2.5 py-1 rounded-lg border border-red-500/40 transition flex items-center gap-1 shadow-md">
                         <i class="fa-solid fa-trash-can text-[10px]"></i> <span class="text-[10px] font-bold">Supprimer</span>
