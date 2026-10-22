@@ -92,15 +92,15 @@
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-    <!-- BANDEROLLE FLASH INFO 22 OCTOBRE -->
+    <!-- BANDEROLLE FLASH INFO -->
     <div class="bg-gradient-to-r from-brand-red/30 via-brand-amber/20 to-brand-red/30 border-b border-brand-red/40 py-2.5 px-4 text-xs md:text-sm font-semibold text-red-400 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-brand-red pulse-red"></span>
-                <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH ÉLYSÉE — 22 OCTOBRE</span>
+                <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT — ÉQUIPE MOB'26</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>E. Macron : Seules les manifs syndicales autorisées ce samedi sur parcours déviés (Centres-villes protégés). Conseil de défense vendredi.</span>
+                <span>E. Macron : Seules les manifs syndicales autorisées ce samedi sur parcours déviés. Suivi officiel en temps réel.</span>
             </div>
             <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">22/10/2026</span>
         </div>
@@ -117,14 +117,18 @@
                     <a href="#" class="font-display font-black text-2xl tracking-tight text-white flex items-center gap-1">
                         MOB<span class="text-brand-red font-extrabold">'26</span>
                     </a>
-                    <p class="text-[9px] text-slate-400 tracking-widest uppercase -mt-1 font-bold">Live Social Tracker</p>
+                    <p class="text-[9px] text-slate-400 tracking-widest uppercase -mt-1 font-bold">Official Live Tracker</p>
                 </div>
             </div>
 
-            <!-- BOUTON NOUVELLE PAGE VILLES À HAUT RISQUE & INTERDITES -->
+            <!-- BOUTONS ACTION ET COMPTE ADMIN -->
             <div class="flex items-center gap-3">
                 <button id="open-high-risk-modal" class="bg-gradient-to-r from-brand-red via-red-600 to-amber-600 hover:opacity-90 text-white font-display font-black text-xs py-2 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-brand-red/50 glow-red animate-pulse">
                     <i class="fa-solid fa-ban text-amber-300"></i> Villes Interdites & À Haut Risque
+                </button>
+
+                <button id="open-admin-login-modal" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-display font-bold text-xs py-2 px-3 rounded-xl border border-slate-700 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-user-shield text-brand-amber"></i> Admin
                 </button>
 
                 <div id="user-profile" class="hidden flex items-center gap-2.5 bg-brand-card/90 border border-brand-border p-1.5 px-3 rounded-xl shadow-lg">
@@ -148,7 +152,7 @@
             <div class="relative z-20 space-y-4 max-w-4xl">
                 <div class="flex flex-wrap items-center gap-2">
                     <span class="bg-brand-red text-white text-[10px] font-display font-black uppercase px-3 py-1 rounded-lg tracking-widest shadow-lg shadow-brand-red/50 pulse-red">
-                        APPEL À LA MOBILISATION
+                        TRACKER OFFICIEL VÉRIFIÉ
                     </span>
                     <span class="bg-slate-900/90 text-amber-400 text-xs font-bold px-3 py-1 rounded-lg border border-amber-400/40 glow-amber">
                         <i class="fa-solid fa-calendar-days mr-1.5"></i> SAMEDI 24 OCTOBRE 2026
@@ -160,7 +164,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Plateforme citoyenne d'information en temps réel. Suivez la situation ville par ville, la déviation des tracés et les arrêtés d'interdiction préfectoraux.
+                    Plateforme officielle d'information et de suivi en temps réel administrée centralement par l'équipe MOB'2026. Informations vérifiées, arrêtés préfectoraux et déviations de parcours.
                 </p>
 
                 <div class="pt-2 flex items-center gap-3">
@@ -182,7 +186,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300">
-                <!-- Seules les manifs syndicales -->
                 <div class="bg-red-950/40 border border-red-500/30 p-4 rounded-xl space-y-2">
                     <p class="font-bold text-white flex items-center gap-1.5 text-sm">
                         <i class="fa-solid fa-gavel text-red-500"></i> Autorisations Stricte :
@@ -192,7 +195,6 @@
                     </p>
                 </div>
 
-                <!-- Protection des centres-villes -->
                 <div class="bg-amber-950/30 border border-amber-500/30 p-4 rounded-xl space-y-2">
                     <p class="font-bold text-white flex items-center gap-1.5 text-sm">
                         <i class="fa-solid fa-store-slash text-amber-400"></i> Tracés Alternatifs :
@@ -202,7 +204,6 @@
                     </p>
                 </div>
 
-                <!-- Conseil de Défense & Fermeté -->
                 <div class="bg-slate-900/90 border border-slate-700 p-4 rounded-xl space-y-2">
                     <p class="font-bold text-white flex items-center gap-1.5 text-sm">
                         <i class="fa-solid fa-shield-halved text-blue-400"></i> Conseil de Défense :
@@ -214,42 +215,14 @@
             </div>
         </section>
 
-        <!-- CHARTE CITOYENNE -->
+        <!-- CHARTE & MODE D'ADMINISTRATION CENTRALISÉ -->
         <section class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3">
             <div class="flex items-center gap-2 text-emerald-400 font-display font-black text-sm uppercase tracking-wide">
-                <i class="fa-solid fa-shield-cat text-lg"></i> Charte de la Plateforme & Légitimité
+                <i class="fa-solid fa-user-check text-lg"></i> Informations Officiellement Vérifiées
             </div>
             <p class="text-xs text-slate-300 leading-relaxed">
-                <strong class="text-white">MOB'2026 est une plateforme citoyenne parfaitement légale d'information collective.</strong> 
-                Elle ne constitue en aucun cas un appel aux dégradations ou aux violences. Nous condamnons fermement tout acte de casse ou de violence. 
-                L'objectif de ce service est d'assurer la <strong class="text-white">sécurité de tous les manifestants pacifistes</strong> en partageant en temps réel les informations de circulation, les zones de tension et les dispositifs de sécurité.
+                Afin d'assurer une fiabilité maximale des données et de prévenir la désinformation, <strong class="text-white">la plateforme MOB'2026 est désormais gérée en mode d'administration centralisé</strong>. Toutes les alertes, déviations de parcours et statuts de villes affichés sur la carte sont rédigés et validés en direct par l'équipe de rédaction MOB'2026.
             </p>
-        </section>
-
-        <!-- AUTHENTIFICATION -->
-        <section id="section-auth-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
-                <div>
-                    <h3 class="font-display font-extrabold text-sm text-white mb-1"><i class="fa-brands fa-google text-brand-red mr-2"></i> Connexion Google</h3>
-                    <p class="text-xs text-slate-400">Connectez-vous pour signaler des événements et gérer vos propres repères.</p>
-                </div>
-                <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-lg">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-                    Se connecter avec Google
-                </button>
-            </div>
-
-            <div class="glass-panel p-6 rounded-2xl border border-brand-border space-y-3 flex flex-col justify-between">
-                <div class="space-y-2">
-                    <h3 class="font-display font-extrabold text-sm text-white"><i class="fa-solid fa-envelope text-brand-amber mr-2"></i> Connexion par Email</h3>
-                    <input id="auth-email" type="email" placeholder="Adresse email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
-                    <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
-                </div>
-                <div class="flex gap-2">
-                    <button id="btn-signup-email" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 transition">Inscription</button>
-                    <button id="btn-signin-email" class="flex-1 bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">Connexion</button>
-                </div>
-            </div>
         </section>
 
         <!-- CARTE INTERACTIVE EN DIRECT -->
@@ -259,7 +232,7 @@
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations (34 Villes Officielles)
                     </h2>
-                    <p class="text-xs text-slate-400">Statut des 34 villes mis à jour avec la directive présidentielle du 22 octobre.</p>
+                    <p class="text-xs text-slate-400">Suivi cartographique sous contrôle direct de la rédaction MOB'2026.</p>
                 </div>
                 <button id="btn-download-map" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs py-2.5 px-5 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/30 self-start sm:self-auto glow-red">
                     <i class="fa-solid fa-download"></i> Télécharger la Carte HD
@@ -275,7 +248,7 @@
                 <span class="flex items-center gap-1 text-amber-400"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Tension</span>
             </div>
 
-            <!-- CARTE -->
+            <!-- CARTE EN SÉCURITÉ -->
             <div id="map-export-area" class="p-5 bg-brand-dark rounded-2xl border border-brand-border space-y-4">
                 <div id="map"></div>
                 <div class="p-4 bg-brand-card rounded-xl border border-slate-800 space-y-3">
@@ -285,32 +258,37 @@
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
                         <p><strong class="text-white">Directive Nationale du 22 Octobre :</strong> Les manifestations non déclarées par les syndicats sont strictement prohibées. Les centres-villes et zones commerçantes sont protégés par déviation obligatoire des parcours.</p>
+                        <p class="text-[10px] text-amber-400 font-semibold pt-1"><i class="fa-solid fa-shield-check mr-1"></i> Carte mise à jour en direct par l'équipe MOB'2026.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FORMULAIRE : AJOUTER UN REPÈRE SUR LA CARTE -->
-        <section id="section-map-event-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
-            <h3 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
-                <i class="fa-solid fa-location-crosshairs text-brand-red"></i> Placer un repère sur la carte
-            </h3>
+        <!-- PANEL DE GESTION ADMIN (Affiché uniquement pour les Admins connectés) -->
+        <section id="admin-panel" class="hidden glass-panel p-6 rounded-2xl border border-amber-500/50 space-y-4 glow-amber">
+            <div class="flex items-center justify-between border-b border-amber-500/30 pb-3">
+                <h3 class="font-display font-black text-sm text-amber-400 flex items-center gap-2 uppercase tracking-wide">
+                    <i class="fa-solid fa-user-gear"></i> Administration centrale MOB'2026 — Placer une Alerte Officielle
+                </h3>
+                <span class="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-amber-500/40">Équipe Créateurs</span>
+            </div>
+
             <div class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Motif du signalement :</label>
-                        <select id="map-input-type" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
+                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Type d'alerte :</label>
+                        <select id="map-input-type" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
                             <option value="manifestation">📢 Cortège Syndical Autorisé</option>
-                            <option value="police">👮 Police / Forces de l'ordre</option>
+                            <option value="police">👮 Dispositif Forces de l'Ordre</option>
                             <option value="dangereux">⚠️ Zone de Tension / Barrage</option>
                             <option value="petard">💥 Détonations / Tirs de LBD</option>
                             <option value="pillage">🚨 Incident / Rassemblement non autorisé</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Ville / Lieu :</label>
-                        <select id="map-input-city" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
-                            <option value="48.8566,2.3522">Paris (Bastille-Nation uniquement)</option>
+                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Ville / Coordonnées :</label>
+                        <select id="map-input-city" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
+                            <option value="48.8566,2.3522">Paris (Bastille-Nation)</option>
                             <option value="43.2965,5.3698">Marseille</option>
                             <option value="45.7640,4.8357">Lyon (INTERDICTION TOTALE)</option>
                             <option value="43.6047,1.4442">Toulouse</option>
@@ -326,38 +304,24 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Titre du repère :</label>
-                        <input id="map-input-title" type="text" placeholder="ex: Déviation du cortège Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
+                        <label class="block text-[11px] text-slate-400 mb-1 font-bold">Titre officiel :</label>
+                        <input id="map-input-title" type="text" placeholder="ex: Information Officielle Bastille" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-amber">
                     </div>
                 </div>
-                <textarea id="map-input-desc" placeholder="Précisions utiles sur le tracé alternatif, contrôles ou circulation..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-red"></textarea>
-                <button id="btn-send-map-event" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-red/30 glow-red">
-                    Placer l'Alerte sur la Carte
-                </button>
-            </div>
-        </section>
-
-        <!-- FORMULAIRE PUBLICATION ALERTE TEXTE FIL -->
-        <section id="section-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
-            <h3 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
-                <i class="fa-solid fa-pen-to-square text-brand-amber"></i> Publier un message d'information
-            </h3>
-            <div class="space-y-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input id="input-title" type="text" placeholder="Titre (ex: Parcours alternatif Nantes)..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
-                    <input id="input-city" type="text" placeholder="Ville concernée..." class="bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
+                <textarea id="map-input-desc" placeholder="Détails de la mise à jour officielle de l'équipe..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber"></textarea>
+                
+                <div class="flex gap-3">
+                    <button id="btn-send-map-event" class="bg-gradient-to-r from-brand-amber to-amber-600 hover:opacity-90 text-slate-950 font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-amber/30">
+                        Publier sur la Carte Officielle
+                    </button>
                 </div>
-                <textarea id="input-desc" placeholder="Message d'information citoyenne..." rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber"></textarea>
-                <button id="btn-send-post" class="bg-brand-amber hover:bg-amber-600 text-slate-950 font-display font-extrabold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-brand-amber/30">
-                    Diffuser le Message
-                </button>
             </div>
         </section>
 
-        <!-- FIL D'ACTUALITÉ EN DIRECT -->
+        <!-- FIL D'ACTUALITÉ ET ALERTES DE LA RÉDACTION -->
         <section id="live-feed" class="space-y-4">
             <h2 class="font-display font-black text-xl text-white flex items-center gap-2 uppercase tracking-wide">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité en direct
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span> Fil d'actualité officiel de la Rédaction
             </h2>
             <div id="live-feed-list" class="space-y-3">
                 <!-- Les cartes d'alerte s'affichent ici -->
@@ -365,6 +329,37 @@
         </section>
 
     </main>
+
+    <!-- MODAL CONNEXION ADMIN -->
+    <div id="admin-login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-md rounded-3xl p-6 space-y-5 relative border border-amber-500/40 glow-amber">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-display font-extrabold text-base text-white flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-brand-amber"></i> Connexion Créateur / Admin
+                </h3>
+                <button id="close-admin-login-modal" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <p class="text-xs text-slate-400">Connectez-vous avec votre compte créateur pour accéder au panneau d'administration cartographique.</p>
+                <input id="auth-email" type="email" placeholder="Email administrateur..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
+                <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
+                
+                <div class="flex gap-2 pt-2">
+                    <button id="btn-signin-email" class="w-full bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">Se Connecter (Admin)</button>
+                </div>
+                
+                <div class="pt-2 border-t border-slate-800">
+                    <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                        Connexion Google Admin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- MODAL / NOUVELLE PAGE : VILLES INTERDITES, À HAUT RISQUE & CONFIRMÉES -->
     <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
@@ -390,17 +385,15 @@
             <!-- CONTENU SPÉCIAL DE LA MODAL -->
             <div class="space-y-6 relative z-10 text-xs text-slate-200">
                 
-                <!-- REGLE NATIONALE 22 OCTOBRE -->
                 <div class="bg-red-950/80 border border-red-500/80 p-4 rounded-2xl space-y-1.5 shadow-xl glow-red">
                     <p class="font-bold text-red-400 flex items-center gap-2 text-sm uppercase">
                         <i class="fa-solid fa-gavel text-red-500"></i> Cadre National Fixé par l'Élysée (22 Octobre) :
                     </p>
                     <p class="text-slate-200 text-[11px] leading-relaxed">
-                        Seules les manifestations déposées par les syndicats sont autorisées. Tous les cortèges non déclarés ainsi que l'accès aux hyper-centres et zones commerçantes sont strictement interdits par arrêtés et déviés sur des parcours alternatifs.
+                        Seules les manifestations déposées par les syndicats sont autorisées. Tous les cortèges non déclarés ainsi que l'accès aux hyper-centres et zones commerçantes sont strictly interdits par arrêtés et déviés sur des parcours alternatifs.
                     </p>
                 </div>
 
-                <!-- VILLES TOTALEMENT OU PARTIELLEMENT INTERDITES -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-sm text-red-500 uppercase tracking-wide flex items-center gap-2">
                         <i class="fa-solid fa-ban text-red-500"></i> 🚫 Interdictions Spécifiques
@@ -441,7 +434,6 @@
 
                 <hr class="border-red-500/20">
 
-                <!-- MANIFESTATIONS CONFIRMÉES SOUS DÉVIATION -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-sm text-emerald-400 uppercase tracking-wide flex items-center gap-2">
                         <i class="fa-solid fa-circle-check"></i> ✅ Rassemblements Syndicaux Confirmés (Parcours Déviés)
@@ -481,7 +473,7 @@
     <footer class="mt-auto border-t border-brand-border bg-brand-dark/90 py-6 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <p class="font-bold text-slate-400">MOB'2026 — Plateforme Citoyenne Indépendante</p>
-            <p class="text-[11px] text-slate-600">mob2026.vercel.app | Données synchronisées via Google Firebase.</p>
+            <p class="text-[11px] text-slate-600">mob2026.vercel.app | Données administrées par l'équipe rédactionnelle.</p>
         </div>
     </footer>
 
@@ -494,7 +486,6 @@
             getAuth, 
             GoogleAuthProvider, 
             signInWithPopup, 
-            createUserWithEmailAndPassword, 
             signInWithEmailAndPassword, 
             signOut, 
             onAuthStateChanged 
@@ -516,25 +507,31 @@
         const db = getDatabase(app);
         const googleProvider = new GoogleAuthProvider();
 
+        // LISTE DES EMAILS ADMINS AUTORISÉS À GÉRER LE SITE
+        const adminEmails = ["admin@mob2026.fr", "nathancarer.cinema@gmail.com"]; 
+
         let latestPostsSnapshot = null;
         let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
 
-        // GESTION MODAL VILLES À HAUT RISQUE & INTERDITES
+        // GESTION DES MODALS
         const modal = document.getElementById('high-risk-modal');
         document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
         document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
         document.getElementById('close-high-risk-modal-btn').addEventListener('click', () => modal.classList.add('hidden'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('hidden'); });
 
-        // 1. CARTE INTERACTIVE - MISE À JOUR DYNAMIQUE DES 34 VILLES SELON CONSIGNES PRÉSIDENTIELLES
+        const adminLoginModal = document.getElementById('admin-login-modal');
+        document.getElementById('open-admin-login-modal').addEventListener('click', () => adminLoginModal.classList.remove('hidden'));
+        document.getElementById('close-admin-login-modal').addEventListener('click', () => adminLoginModal.classList.add('hidden'));
+
+        // 1. CARTE INTERACTIVE - LES 34 VILLES
         const map = L.map('map').setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
         }).addTo(map);
 
-        // CONFIGURATION PRÉCISE DES 34 VILLES AVEC STATUS ET ROUGES/VERTS
         const citiesList = [
             { name: "Paris", lat: 48.8566, lng: 2.3522, status: "Manif Syndicale Bastille-Nation | Périmètres protégés", restricted: false },
             { name: "Marseille", lat: 43.2965, lng: 5.3698, status: "Cortège syndical autorisé (Parcours dévié)", restricted: false },
@@ -571,7 +568,6 @@
             { name: "Poitiers", lat: 46.5802, lng: 0.3404, status: "Cortège syndical autorisé", restricted: false }
         ];
 
-        // DESSIN DES MARQUEURS VILLE DYNAMIQUES
         citiesList.forEach(c => {
             const circleColor = c.restricted ? "#FF0033" : "#10B981";
             const statusStyle = c.restricted ? "color:#FF0033;font-weight:black;" : "color:#10B981;font-weight:bold;";
@@ -580,7 +576,7 @@
                 <div style="font-family:sans-serif;padding:3px;">
                     <b style="font-size:13px;color:#111;">${c.name}</b><br>
                     <span style="font-size:11px;${statusStyle}">${c.status}</span><br>
-                    <small style="color:#666;font-size:9px;">Directive officielle du 22 Octobre 2026</small>
+                    <small style="color:#666;font-size:9px;">Directive officielle MOB'2026</small>
                 </div>
             `;
 
@@ -594,7 +590,7 @@
             }).addTo(map).bindPopup(popupContent);
         });
 
-        // 2. CONFIGURATION DES ICÔNES UTILISATEURS
+        // 2. ICÔNES DE CARTE
         function createCustomIcon(type) {
             let iconClass = "fa-bullhorn";
             let bgClass = "icon-manifestation";
@@ -612,7 +608,7 @@
             });
         }
 
-        // LECTURE & RENDU DES ÉVÉNEMENTS CARTE
+        // RENDU DES REPERES DE LA CARTE (ADMINS SEULS PEUVENT SUPPRIMER)
         onValue(ref(db, 'events'), snapshot => {
             latestEventsSnapshot = snapshot.val();
             renderMapEvents(latestEventsSnapshot);
@@ -624,19 +620,18 @@
 
             if(!data) return;
             const currentUser = auth.currentUser;
+            const isAdmin = currentUser && (adminEmails.includes(currentUser.email) || currentUser.email === "nathancarer.cinema@gmail.com");
 
             Object.entries(data).forEach(([key, ev]) => {
-                const isAuthor = currentUser && (currentUser.uid === ev.uid);
-                
-                const deleteBtnHtml = isAuthor ? 
-                    `<br><button onclick="deleteMapEvent('${key}')" style="background:#FF2A2A;color:white;border:none;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:bold;margin-top:6px;cursor:pointer;">Supprimer mon repère</button>` : '';
+                const deleteBtnHtml = isAdmin ? 
+                    `<br><button onclick="deleteMapEvent('${key}')" style="background:#FF2A2A;color:white;border:none;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:bold;margin-top:6px;cursor:pointer;">Supprimer l'Alerte (Admin)</button>` : '';
 
                 const marker = L.marker([ev.lat, ev.lng], { icon: createCustomIcon(ev.type) }).addTo(map)
                     .bindPopup(`
                         <b style="color:#111;">${escapeHtml(ev.title)}</b><br>
                         <span style="font-size:10px;color:#666;font-weight:bold;">MOTIF : ${ev.type.toUpperCase()}</span><br>
                         <span style="font-size:11px;color:#333;">${escapeHtml(ev.description)}</span><br>
-                        <small style="color:#888;">Par ${escapeHtml(ev.author)}</small>
+                        <small style="color:#888;">Validé par Rédaction MOB'2026</small>
                         ${deleteBtnHtml}
                     `);
                 mapMarkersGroup.push(marker);
@@ -644,14 +639,14 @@
         }
 
         window.deleteMapEvent = function(key) {
-            if(confirm("Confirmez-vous la suppression définitive de votre repère sur la carte ?")) {
+            if(confirm("Confirmez-vous la suppression de cette alerte ?")) {
                 remove(ref(db, 'events/' + key))
-                    .then(() => alert("Repère supprimé de la carte."))
+                    .then(() => alert("Alerte supprimée."))
                     .catch(err => alert("Erreur : " + err.message));
             }
         };
 
-        // AJOUT D'UN REPÈRE SUR LA CARTE
+        // ENVOI D'UNE ALERTE PAR L'ADMINISTRATEUR
         document.getElementById('btn-send-map-event').addEventListener('click', () => {
             const type = document.getElementById('map-input-type').value;
             const coords = document.getElementById('map-input-city').value.split(',');
@@ -660,7 +655,7 @@
             const user = auth.currentUser;
 
             if(!title || !desc) return alert("Le titre et la description sont obligatoires.");
-            if(!user) return alert("Vous devez être connecté.");
+            if(!user) return alert("Connexion administrateur requise.");
 
             push(ref(db, 'events'), {
                 type: type,
@@ -668,13 +663,13 @@
                 lng: parseFloat(coords[1]),
                 title: title,
                 description: desc,
-                author: user.displayName || user.email || "Anonyme",
+                author: "Équipe MOB'2026",
                 uid: user.uid,
                 timestamp: Date.now()
             }).then(() => {
                 document.getElementById('map-input-title').value = '';
                 document.getElementById('map-input-desc').value = '';
-                alert("Votre repère a été placé sur la carte !");
+                alert("Alerte publiée sur la carte officielle !");
             }).catch(err => alert("Erreur : " + err.message));
         });
 
@@ -683,7 +678,7 @@
             const area = document.getElementById('map-export-area');
             html2canvas(area, { useCORS: true, scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'MOB2026-Carte-Detaillee-24Octobre.png';
+                link.download = 'MOB2026-Carte-Officielle-24Octobre.png';
                 link.href = canvas.toDataURL();
                 link.click();
             });
@@ -710,68 +705,45 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 4. AUTHENTIFICATION
-        const sectionAuthContainer = document.getElementById('section-auth-container');
+        // 4. AUTHENTIFICATION & PANEL ADMIN
         const userProfile = document.getElementById('user-profile');
         const userName = document.getElementById('user-name');
         const userAvatar = document.getElementById('user-avatar');
         const btnLogout = document.getElementById('btn-logout');
-        const sectionContrib = document.getElementById('section-contrib');
-        const sectionMapEventContrib = document.getElementById('section-map-event-contrib');
+        const adminPanel = document.getElementById('admin-panel');
 
         document.getElementById('btn-login-google').addEventListener('click', () => {
-            signInWithPopup(auth, googleProvider).catch(err => alert("Erreur Google : " + err.message));
-        });
-
-        document.getElementById('btn-signup-email').addEventListener('click', () => {
-            const e = document.getElementById('auth-email').value, p = document.getElementById('auth-password').value;
-            if(e && p) createUserWithEmailAndPassword(auth, e, p).catch(err => alert(err.message));
+            signInWithPopup(auth, googleProvider).then(() => adminLoginModal.classList.add('hidden')).catch(err => alert("Erreur Google : " + err.message));
         });
 
         document.getElementById('btn-signin-email').addEventListener('click', () => {
             const e = document.getElementById('auth-email').value, p = document.getElementById('auth-password').value;
-            if(e && p) signInWithEmailAndPassword(auth, e, p).catch(err => alert(err.message));
+            if(e && p) signInWithEmailAndPassword(auth, e, p).then(() => adminLoginModal.classList.add('hidden')).catch(err => alert(err.message));
         });
 
         btnLogout.addEventListener('click', () => signOut(auth));
 
         onAuthStateChanged(auth, user => {
             if (user) {
-                sectionAuthContainer.classList.add('hidden');
                 userProfile.classList.remove('hidden');
-                sectionContrib.classList.remove('hidden');
-                sectionMapEventContrib.classList.remove('hidden');
                 userName.textContent = user.displayName || user.email;
                 userAvatar.src = user.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + user.uid;
+                
+                // Vérification si l'utilisateur connecté est un administrateur
+                if (adminEmails.includes(user.email) || user.email === "nathancarer.cinema@gmail.com") {
+                    adminPanel.classList.remove('hidden');
+                } else {
+                    adminPanel.classList.add('hidden');
+                }
             } else {
-                sectionAuthContainer.classList.remove('hidden');
                 userProfile.classList.add('hidden');
-                sectionContrib.classList.add('hidden');
-                sectionMapEventContrib.classList.add('hidden');
+                adminPanel.classList.add('hidden');
             }
             renderPosts(latestPostsSnapshot);
             renderMapEvents(latestEventsSnapshot);
         });
 
-        // 5. PUBLICATION POST TEXTE
-        document.getElementById('btn-send-post').addEventListener('click', () => {
-            const title = document.getElementById('input-title').value.trim();
-            const city = document.getElementById('input-city').value.trim();
-            const desc = document.getElementById('input-desc').value.trim();
-            const user = auth.currentUser;
-
-            if(!title || !desc || !city) return alert("Tous les champs sont obligatoires.");
-            if(!user) return alert("Vous devez être connecté.");
-
-            push(ref(db, 'posts'), {
-                title, city, description: desc, author: user.displayName || user.email || "Anonyme", uid: user.uid, timestamp: Date.now()
-            }).then(() => {
-                document.getElementById('input-title').value = '';
-                document.getElementById('input-city').value = '';
-                document.getElementById('input-desc').value = '';
-            });
-        });
-
+        // 5. FIL D'ACTUALITÉ OFFICIELE
         onValue(ref(db, 'posts'), snapshot => {
             latestPostsSnapshot = snapshot.val();
             renderPosts(latestPostsSnapshot);
@@ -781,12 +753,13 @@
             const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
             const currentUser = auth.currentUser;
+            const isAdmin = currentUser && (adminEmails.includes(currentUser.email) || currentUser.email === "nathancarer.cinema@gmail.com");
 
             if(!data) { 
                 liveFeedList.innerHTML = `
                     <div class="glass-panel p-6 rounded-2xl border border-brand-border text-center">
                         <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2 block"></i>
-                        <p class="text-xs font-bold text-slate-300">Rien à signaler pour le moment</p>
+                        <p class="text-xs font-bold text-slate-300">Aucune alerte majeure pour le moment</p>
                         <p class="text-[11px] text-slate-500 font-mono">mob2026.vercel.app</p>
                     </div>
                 `; 
@@ -798,8 +771,7 @@
                 const card = document.createElement('article');
                 card.className = "glass-panel p-5 rounded-2xl border border-brand-border space-y-2.5 relative transition hover:-translate-y-0.5 duration-200";
 
-                const isAuthor = currentUser && (currentUser.uid === post.uid);
-                const deleteBtnHtml = isAuthor ? `
+                const deleteBtnHtml = isAdmin ? `
                     <button onclick="deletePost('${key}')" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs px-2.5 py-1 rounded-lg border border-red-500/40 transition flex items-center gap-1 shadow-md">
                         <i class="fa-solid fa-trash-can text-[10px]"></i> <span class="text-[10px] font-bold">Supprimer</span>
                     </button>
@@ -816,7 +788,7 @@
                     <h3 class="font-display font-extrabold text-base text-white">${escapeHtml(post.title)}</h3>
                     <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(post.description)}</p>
                     <div class="text-[10px] text-slate-500 pt-1.5 border-t border-slate-800/60 flex items-center justify-between">
-                        <span>Par <strong class="text-slate-400">${escapeHtml(post.author)}</strong></span>
+                        <span>Émission : <strong class="text-amber-400 font-semibold">Rédaction MOB'2026</strong></span>
                         <span class="text-[9px] text-slate-600">ID: ${key.substring(0, 6)}</span>
                     </div>
                 `;
@@ -825,8 +797,8 @@
         }
 
         window.deletePost = function(postKey) {
-            if(confirm("Confirmez-vous la suppression définitive de votre annonce ?")) {
-                remove(ref(db, 'posts/' + postKey)).then(() => alert("Annonce supprimée."));
+            if(confirm("Confirmez-vous la suppression de ce message officiel ?")) {
+                remove(ref(db, 'posts/' + postKey)).then(() => alert("Message supprimé."));
             }
         };
 
