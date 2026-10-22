@@ -92,17 +92,17 @@
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-    <!-- BANDEROLLE FLASH INFO -->
+    <!-- BANDEROLLE FLASH INFO 22 OCTOBRE -->
     <div class="bg-gradient-to-r from-brand-red/30 via-brand-amber/20 to-brand-red/30 border-b border-brand-red/40 py-2.5 px-4 text-xs md:text-sm font-semibold text-red-400 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
             <div class="flex items-center gap-2 shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-brand-red pulse-red"></span>
-                <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT</span>
+                <span class="font-display font-black tracking-widest uppercase text-brand-red">FLASH DIRECT — 22 OCTOBRE</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>Acte II du 24 Octobre 2026 : Plateforme citoyenne pacifique d'information et de sécurité.</span>
+                <span>Point d'actualité : Interdictions à Lyon & Rouen, périmètres protégés à Paris pour l'Acte II.</span>
             </div>
-            <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">2026</span>
+            <span class="text-slate-400 text-xs shrink-0 hidden sm:inline font-mono">22/10/2026</span>
         </div>
     </div>
 
@@ -121,10 +121,10 @@
                 </div>
             </div>
 
-            <!-- BOUTON NOUVELLE PAGE VILLES À HAUT RISQUE -->
+            <!-- BOUTON NOUVELLE PAGE VILLES À HAUT RISQUE & INTERDITES -->
             <div class="flex items-center gap-3">
                 <button id="open-high-risk-modal" class="bg-gradient-to-r from-brand-red via-red-600 to-amber-600 hover:opacity-90 text-white font-display font-black text-xs py-2 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-brand-red/50 glow-red animate-pulse">
-                    <i class="fa-solid fa-fire text-amber-300"></i> Villes à Haut Risque / Confirmées
+                    <i class="fa-solid fa-ban text-amber-300"></i> Villes Interdites & À Haut Risque
                 </button>
 
                 <div id="user-profile" class="hidden flex items-center gap-2.5 bg-brand-card/90 border border-brand-border p-1.5 px-3 rounded-xl shadow-lg">
@@ -160,7 +160,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Plateforme citoyenne d'information en temps réel. Suivez les rassemblements pacifistes, préservez la sécurité de tous et partagez les informations du terrain.
+                    Plateforme citoyenne d'information en temps réel. Suivez les rassemblements pacifistes, préservez la sécurité de tous et consultez les arrêtés préfectoraux.
                 </p>
 
                 <div class="pt-2 flex items-center gap-3">
@@ -171,6 +171,50 @@
                         <span id="cd-mins" class="bg-brand-card/90 border border-slate-700 px-2.5 py-1 rounded-lg text-white font-black text-sm shadow-md">00</span>m
                         <span id="cd-secs" class="bg-brand-card/90 border border-emerald-500/50 px-2.5 py-1 rounded-lg text-emerald-400 font-black text-sm shadow-md">00</span>s
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION FLASH INFO 22 OCTOBRE : ARRÊTÉS & DISPOSITIF -->
+        <section class="glass-panel p-6 rounded-2xl border border-red-500/40 space-y-4 glow-red">
+            <div class="flex items-center gap-2 text-red-400 font-display font-black text-base uppercase tracking-wide">
+                <i class="fa-solid fa-triangle-exclamation text-xl text-brand-red"></i> POINT D'ACTUALITÉ DU 22 OCTOBRE — SÉCURITÉ & INTERDICTIONS
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300">
+                <!-- Interdictions -->
+                <div class="bg-red-950/40 border border-red-500/30 p-4 rounded-xl space-y-2">
+                    <p class="font-bold text-white flex items-center gap-1.5 text-sm">
+                        <i class="fa-solid fa-ban text-red-500"></i> Interdictions de manifester :
+                    </p>
+                    <ul class="space-y-1.5 list-disc list-inside text-[11px] leading-relaxed text-slate-300">
+                        <li><strong class="text-white">Lyon (Interdiction totale) :</strong> Arrêté préfectoral du Rhône interdisant tout rassemblement sur l'ensemble de la ville.</li>
+                        <li><strong class="text-white">Rouen :</strong> Interdiction ciblée sur tout rassemblement non déclaré en hyper-centre.</li>
+                        <li><strong class="text-white">Paris :</strong> Interdiction absolue aux abords de l'Élysée, Matignon, Assemblée, Sénat, Les Halles et grandes gares.</li>
+                    </ul>
+                </div>
+
+                <!-- Parcours & Surveillance -->
+                <div class="bg-amber-950/30 border border-amber-500/30 p-4 rounded-xl space-y-2">
+                    <p class="font-bold text-white flex items-center gap-1.5 text-sm">
+                        <i class="fa-solid fa-route text-amber-400"></i> Parcours & Rassemblements :
+                    </p>
+                    <ul class="space-y-1.5 list-disc list-inside text-[11px] leading-relaxed text-slate-300">
+                        <li><strong class="text-white">Paris :</strong> Parcours intersyndical (CGT) déposé de Bastille à Nation. Convergence étudiante/citoyenne dès 14h00 à Bastille.</li>
+                        <li><strong class="text-white">Grandes Métropoles :</strong> Nantes, Rennes, Lorient, Bordeaux sous haute surveillance des réseaux de transport.</li>
+                    </ul>
+                </div>
+
+                <!-- Dispositif national -->
+                <div class="bg-slate-900/90 border border-slate-700 p-4 rounded-xl space-y-2">
+                    <p class="font-bold text-white flex items-center gap-1.5 text-sm">
+                        <i class="fa-solid fa-shield-halved text-blue-400"></i> Dispositif Sécuritaire :
+                    </p>
+                    <ul class="space-y-1.5 list-disc list-inside text-[11px] leading-relaxed text-slate-300">
+                        <li><strong class="text-white">Unités mobiles :</strong> Déploiement renforcé (BRI, RAID, GIGN, BRAV-M).</li>
+                        <li><strong class="text-white">Opération Sentinelle :</strong> Militaires en soutien fixe pour libérer les forces d'intervention.</li>
+                        <li><strong class="text-white">Surveillance aérienne :</strong> Drones et hélicoptères engagés.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -213,28 +257,28 @@
             </div>
         </section>
 
-        <!-- CARTE INTERACTIVE EN DIRECT (34 VILLES OFFICIELLES) -->
+        <!-- CARTE INTERACTIVE EN DIRECT -->
         <section id="villes-carte" class="glass-panel p-6 rounded-2xl border border-brand-border space-y-5 transition hover:-translate-y-1 duration-300">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <h2 class="font-display font-black text-lg text-white flex items-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-map-location-dot text-brand-red"></i> Carte des Mobilisations (34 Villes Officielles)
                     </h2>
-                    <p class="text-xs text-slate-400">Signalements interactifs répertoriés en direct par les utilisateurs.</p>
+                    <p class="text-xs text-slate-400">Signalements interactifs et zones sous interdiction préfectorale.</p>
                 </div>
                 <button id="btn-download-map" class="bg-gradient-to-r from-brand-red to-red-600 hover:opacity-90 text-white font-display font-extrabold text-xs py-2.5 px-5 rounded-xl flex items-center gap-2 transition shadow-lg shadow-brand-red/30 self-start sm:self-auto glow-red">
                     <i class="fa-solid fa-download"></i> Télécharger la Carte HD
                 </button>
             </div>
 
-            <!-- LÉGENDE -->
+            <!-- LÉGENDE DE CARTE MIS À JOUR -->
             <div class="flex flex-wrap items-center gap-3 p-3 bg-brand-dark/90 rounded-xl border border-slate-800 text-xs">
                 <span class="text-slate-400 font-bold">Légende :</span>
                 <span class="flex items-center gap-1 text-red-400"><i class="fa-solid fa-bullhorn text-brand-red"></i> Manif</span>
                 <span class="flex items-center gap-1 text-blue-400"><i class="fa-solid fa-shield-halved text-blue-500"></i> Police</span>
                 <span class="flex items-center gap-1 text-amber-400"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Dangereux</span>
                 <span class="flex items-center gap-1 text-yellow-300"><i class="fa-solid fa-burst text-yellow-400"></i> Pétard</span>
-                <span class="flex items-center gap-1 text-slate-300"><i class="fa-solid fa-store-slash text-slate-400"></i> Incident</span>
+                <span class="flex items-center gap-1 text-slate-300"><i class="fa-solid fa-ban text-red-500"></i> Interdit</span>
             </div>
 
             <!-- CARTE -->
@@ -246,13 +290,13 @@
                         <span class="text-brand-red font-mono font-bold text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">Liste des 34 Villes :</strong> Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux, Lille, Rennes, Grenoble, Reims, Dijon, Limoges, Clermont-Ferrand, Brest, Lorient, La Rochelle, Perpignan, Besançon, Orléans, Nancy, Angers, Caen, Le Havre, Rouen, Saint-Étienne, Metz, Mulhouse, Aix-en-Provence, Nîmes, Poitiers.</p>
+                        <p><strong class="text-white">34 Villes Répertoriées :</strong> Paris, Marseille, Lyon (Interdit), Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux, Lille, Rennes, Grenoble, Reims, Dijon, Limoges, Clermont-Ferrand, Brest, Lorient, La Rochelle, Perpignan, Besançon, Orléans, Nancy, Angers, Caen, Le Havre, Rouen (Interdit hyper-centre), Saint-Étienne, Metz, Mulhouse, Aix-en-Provence, Nîmes, Poitiers.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FORMULAIRE : AJOUTER UN REPÈRE SUR LA CARTE (Si connecté) -->
+        <!-- FORMULAIRE : AJOUTER UN REPÈRE SUR LA CARTE -->
         <section id="section-map-event-contrib" class="hidden glass-panel p-6 rounded-2xl border border-brand-border space-y-4">
             <h3 class="font-display font-black text-sm text-white flex items-center gap-2 uppercase tracking-wide">
                 <i class="fa-solid fa-location-crosshairs text-brand-red"></i> Placer un repère sur la carte
@@ -274,7 +318,7 @@
                         <select id="map-input-city" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-red">
                             <option value="48.8566,2.3522">Paris</option>
                             <option value="43.2965,5.3698">Marseille</option>
-                            <option value="45.7640,4.8357">Lyon</option>
+                            <option value="45.7640,4.8357">Lyon (Interdit)</option>
                             <option value="43.6047,1.4442">Toulouse</option>
                             <option value="43.7102,7.2620">Nice</option>
                             <option value="47.2183,-1.5536">Nantes</option>
@@ -284,6 +328,7 @@
                             <option value="50.6292,3.0573">Lille</option>
                             <option value="48.1172,-1.6777">Rennes</option>
                             <option value="47.7483,-3.3700">Lorient</option>
+                            <option value="49.4432,1.0999">Rouen (Interdit)</option>
                         </select>
                     </div>
                     <div>
@@ -327,7 +372,7 @@
 
     </main>
 
-    <!-- MODAL / NOUVELLE PAGE : VILLES À HAUT RISQUE ET CONFIRMÉES -->
+    <!-- MODAL / NOUVELLE PAGE : VILLES INTERDITES, À HAUT RISQUE & CONFIRMÉES -->
     <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
         <div class="flame-modal-bg w-full max-w-4xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
             <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-red/25 rounded-full blur-3xl pointer-events-none"></div>
@@ -336,11 +381,11 @@
             <div class="flex items-center justify-between border-b border-red-500/30 pb-4 relative z-10">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-red to-amber-600 flex items-center justify-center text-white text-xl shadow-lg shadow-red-600/50 glow-red animate-pulse">
-                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <i class="fa-solid fa-ban"></i>
                     </div>
                     <div>
-                        <h2 class="font-display font-black text-xl text-white uppercase tracking-wider">Villes à Haut Risque & Confirmées</h2>
-                        <p class="text-xs text-red-300 font-mono">Suivi du 24 Octobre 2026 | Signalements croisés</p>
+                        <h2 class="font-display font-black text-xl text-white uppercase tracking-wider">Villes Interdites & À Haut Risque</h2>
+                        <p class="text-xs text-red-300 font-mono">Flash Info du 22 Octobre 2026 | Arrêtés Préfectoraux</p>
                     </div>
                 </div>
                 <button id="close-high-risk-modal" class="text-slate-400 hover:text-white bg-slate-800/80 hover:bg-red-600/80 w-9 h-9 rounded-xl flex items-center justify-center transition border border-slate-700">
@@ -348,25 +393,55 @@
                 </button>
             </div>
 
-            <!-- CONTENU DE LA PAGE SPÉCIALE (AVEC VOS DEUX NIVEAUX DE CONFIRMATION) -->
+            <!-- CONTENU SPÉCIAL DE LA MODAL -->
             <div class="space-y-6 relative z-10 text-xs text-slate-200">
                 
-                <!-- NOTE D'AVERTISSEMENT DE SÉCURITÉ -->
-                <div class="bg-slate-900/90 border border-amber-500/40 p-4 rounded-2xl space-y-1">
-                    <p class="font-bold text-amber-400 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-info"></i> Information importante :
-                    </p>
-                    <p class="text-slate-300 text-[11px] leading-relaxed">
-                        Cette confirmation concerne des manifestations ou rassemblements annoncés dans ces villes, pas nécessairement l'« Acte II » des Gilets jaunes ni un même mouvement national unique.
-                    </p>
+                <!-- CASE SPÉCIALE 1 : VILLES INTERDITES DE MANIFESTATION -->
+                <div class="space-y-3">
+                    <h3 class="font-display font-black text-sm text-red-500 uppercase tracking-wide flex items-center gap-2">
+                        <i class="fa-solid fa-ban text-red-500"></i> 🚫 Villes interdites de manifester (Arrêtés préfectoraux)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-red-950/70 border border-red-500/60 p-4 rounded-2xl space-y-1.5 shadow-lg glow-red">
+                            <div class="flex items-center justify-between">
+                                <span class="font-display font-black text-white text-sm">LYON (69)</span>
+                                <span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Interdiction Totale</span>
+                            </div>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                Arrêté préfectoral officiel du Rhône interdisant tout rassemblement sur l'ensemble de la ville ce 24 octobre, suite aux récents débordements.
+                            </p>
+                        </div>
+
+                        <div class="bg-red-950/70 border border-red-500/60 p-4 rounded-2xl space-y-1.5 shadow-lg glow-red">
+                            <div class="flex items-center justify-between">
+                                <span class="font-display font-black text-white text-sm">ROUEN (76)</span>
+                                <span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Interdiction Hyper-centre</span>
+                            </div>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                Arrêté d'interdiction préfectoral ciblant spécifiquement tout rassemblement non déclaré dans l'hyper-centre.
+                            </p>
+                        </div>
+
+                        <div class="md:col-span-2 bg-red-950/50 border border-red-500/40 p-3.5 rounded-2xl space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span class="font-display font-bold text-white text-xs">PARIS (75) — PERIMÈTRES PROTÉGÉS STRICTS</span>
+                                <span class="bg-amber-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-md">Secteurs Interdits</span>
+                            </div>
+                            <p class="text-slate-300 text-[11px]">
+                                Interdiction stricte de manifester dans les secteurs institutionnels (Élysée, Matignon, Assemblée, Sénat), Les Halles, grandes gares parisiennes et principales places hors cortège officiel Bastille-Nation.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- SECTION 1 : MANIFESTATIONS CONFIRMÉES PAR PLUSIEURS SOURCES -->
+                <hr class="border-red-500/20">
+
+                <!-- SECTION 2 : MANIFESTATIONS CONFIRMÉES PAR PLUSIEURS SOURCES -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-sm text-emerald-400 uppercase tracking-wide flex items-center gap-2">
                         <i class="fa-solid fa-circle-check"></i> ✅ Manifestations confirmées par plusieurs sources
                     </h3>
-                    <p class="text-[11px] text-slate-400">Signalements concordants recensés pour le 24 octobre d'après les calendriers consultés :</p>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                         <div class="bg-emerald-950/40 border border-emerald-500/40 p-2.5 rounded-xl text-center font-bold text-white shadow-md">Paris</div>
@@ -388,12 +463,11 @@
 
                 <hr class="border-red-500/20">
 
-                <!-- SECTION 2 : MANIFESTATIONS ANNONCÉES / CONFIRMATION LIMITÉE -->
+                <!-- SECTION 3 : MANIFESTATIONS ANNONCÉES / CONFIRMATION LIMITÉE -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-sm text-amber-400 uppercase tracking-wide flex items-center gap-2">
                         <i class="fa-solid fa-triangle-exclamation"></i> 🟠 Manifestations annoncées (Confirmation plus limitée)
                     </h3>
-                    <p class="text-[11px] text-slate-400">Villes apparaissant également dans les appels et signalements consultés :</p>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Nice</div>
@@ -407,7 +481,6 @@
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Nancy</div>
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Caen</div>
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Le Havre</div>
-                        <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Rouen</div>
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Metz</div>
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Mulhouse</div>
                         <div class="bg-amber-950/30 border border-amber-500/30 p-2.5 rounded-xl text-center font-semibold text-slate-200">Lorient</div>
@@ -415,7 +488,7 @@
                 </div>
 
                 <div class="p-3 bg-black/40 rounded-xl border border-red-500/20 text-center text-[11px] text-slate-400 font-mono">
-                    Données consolidées via le réseau citoyen MOB'2026.
+                    Flash Info consolidé au 22 octobre 2026.
                 </div>
             </div>
 
@@ -469,7 +542,7 @@
         let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
 
-        // GESTION MODAL VILLES À HAUT RISQUE
+        // GESTION MODAL VILLES À HAUT RISQUE & INTERDITES
         const modal = document.getElementById('high-risk-modal');
         document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
         document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
@@ -484,44 +557,47 @@
         }).addTo(map);
 
         const citiesList = [
-            { name: "Paris", lat: 48.8566, lng: 2.3522 },
-            { name: "Marseille", lat: 43.2965, lng: 5.3698 },
-            { name: "Lyon", lat: 45.7640, lng: 4.8357 },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442 },
-            { name: "Nice", lat: 43.7102, lng: 7.2620 },
-            { name: "Nantes", lat: 47.2183, lng: -1.5536 },
-            { name: "Montpellier", lat: 43.6108, lng: 3.8767 },
-            { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
-            { name: "Bordeaux", lat: 44.8378, lng: -0.5792 },
-            { name: "Lille", lat: 50.6292, lng: 3.0573 },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777 },
-            { name: "Grenoble", lat: 45.1885, lng: 5.7245 },
-            { name: "Reims", lat: 49.2583, lng: 4.0317 },
-            { name: "Dijon", lat: 47.3220, lng: 5.0415 },
-            { name: "Limoges", lat: 45.8336, lng: 1.2611 },
-            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870 },
-            { name: "Brest", lat: 48.3904, lng: -4.4861 },
-            { name: "Lorient", lat: 47.7483, lng: -3.3700 },
-            { name: "La Rochelle", lat: 46.1603, lng: -1.1511 },
-            { name: "Perpignan", lat: 42.6986, lng: 2.8956 },
-            { name: "Besançon", lat: 47.2378, lng: 6.0241 },
-            { name: "Orléans", lat: 47.9029, lng: 1.9090 },
-            { name: "Nancy", lat: 48.6921, lng: 6.1844 },
-            { name: "Angers", lat: 47.4784, lng: -0.5632 },
-            { name: "Caen", lat: 49.1829, lng: -0.3707 },
-            { name: "Le Havre", lat: 49.4944, lng: 0.1079 },
-            { name: "Rouen", lat: 49.4432, lng: 1.0999 },
-            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872 },
-            { name: "Metz", lat: 49.1193, lng: 6.1757 },
-            { name: "Mulhouse", lat: 47.7508, lng: 7.3359 },
-            { name: "Aix-en-Provence", lat: 43.5297, lng: 5.4474 },
-            { name: "Nîmes", lat: 43.8367, lng: 4.3601 },
-            { name: "Poitiers", lat: 46.5802, lng: 0.3404 }
+            { name: "Paris", lat: 48.8566, lng: 2.3522, status: "Périmètres protégés" },
+            { name: "Marseille", lat: 43.2965, lng: 5.3698, status: "Mobilisation répertoriée" },
+            { name: "Lyon", lat: 45.7640, lng: 4.8357, status: "INTERDICTION TOTALE" },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442, status: "Mobilisation répertoriée" },
+            { name: "Nice", lat: 43.7102, lng: 7.2620, status: "Mobilisation répertoriée" },
+            { name: "Nantes", lat: 47.2183, lng: -1.5536, status: "Mobilisation répertoriée" },
+            { name: "Montpellier", lat: 43.6108, lng: 3.8767, status: "Mobilisation répertoriée" },
+            { name: "Strasbourg", lat: 48.5734, lng: 7.7521, status: "Mobilisation répertoriée" },
+            { name: "Bordeaux", lat: 44.8378, lng: -0.5792, status: "Mobilisation répertoriée" },
+            { name: "Lille", lat: 50.6292, lng: 3.0573, status: "Mobilisation répertoriée" },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777, status: "Mobilisation répertoriée" },
+            { name: "Grenoble", lat: 45.1885, lng: 5.7245, status: "Mobilisation répertoriée" },
+            { name: "Reims", lat: 49.2583, lng: 4.0317, status: "Mobilisation répertoriée" },
+            { name: "Dijon", lat: 47.3220, lng: 5.0415, status: "Mobilisation répertoriée" },
+            { name: "Limoges", lat: 45.8336, lng: 1.2611, status: "Mobilisation répertoriée" },
+            { name: "Clermont-Ferrand", lat: 45.7772, lng: 3.0870, status: "Mobilisation répertoriée" },
+            { name: "Brest", lat: 48.3904, lng: -4.4861, status: "Mobilisation répertoriée" },
+            { name: "Lorient", lat: 47.7483, lng: -3.3700, status: "Mobilisation répertoriée" },
+            { name: "La Rochelle", lat: 46.1603, lng: -1.1511, status: "Mobilisation répertoriée" },
+            { name: "Perpignan", lat: 42.6986, lng: 2.8956, status: "Mobilisation répertoriée" },
+            { name: "Besançon", lat: 47.2378, lng: 6.0241, status: "Mobilisation répertoriée" },
+            { name: "Orléans", lat: 47.9029, lng: 1.9090, status: "Mobilisation répertoriée" },
+            { name: "Nancy", lat: 48.6921, lng: 6.1844, status: "Mobilisation répertoriée" },
+            { name: "Angers", lat: 47.4784, lng: -0.5632, status: "Mobilisation répertoriée" },
+            { name: "Caen", lat: 49.1829, lng: -0.3707, status: "Mobilisation répertoriée" },
+            { name: "Le Havre", lat: 49.4944, lng: 0.1079, status: "Mobilisation répertoriée" },
+            { name: "Rouen", lat: 49.4432, lng: 1.0999, status: "INTERDICTION HYPER-CENTRE" },
+            { name: "Saint-Étienne", lat: 45.4397, lng: 4.3872, status: "Mobilisation répertoriée" },
+            { name: "Metz", lat: 49.1193, lng: 6.1757, status: "Mobilisation répertoriée" },
+            { name: "Mulhouse", lat: 47.7508, lng: 7.3359, status: "Mobilisation répertoriée" },
+            { name: "Aix-en-Provence", lat: 43.5297, lng: 5.4474, status: "Mobilisation répertoriée" },
+            { name: "Nîmes", lat: 43.8367, lng: 4.3601, status: "Mobilisation répertoriée" },
+            { name: "Poitiers", lat: 46.5802, lng: 0.3404, status: "Mobilisation répertoriée" }
         ];
 
         citiesList.forEach(c => {
-            L.marker([c.lat, c.lng]).addTo(map)
-                .bindPopup(`<b>${c.name}</b><br>Mobilisation répertoriée.`);
+            const popupText = c.status.includes("INTERDICTION") 
+                ? `<b style="color:red;">${c.name}</b><br><span style="color:red;font-weight:bold;">${c.status}</span>` 
+                : `<b>${c.name}</b><br>${c.status}.`;
+            
+            L.marker([c.lat, c.lng]).addTo(map).bindPopup(popupText);
         });
 
         // 2. CONFIGURATION DES ICÔNES DE CARTE
@@ -542,7 +618,7 @@
             });
         }
 
-        // LECTURE & RENDU DES ÉVÉNEMENTS CARTE AVEC SUPPRESSION RÉSERVÉE À L'AUTEUR (UID)
+        // LECTURE & RENDU DES ÉVÉNEMENTS CARTE
         onValue(ref(db, 'events'), snapshot => {
             latestEventsSnapshot = snapshot.val();
             renderMapEvents(latestEventsSnapshot);
