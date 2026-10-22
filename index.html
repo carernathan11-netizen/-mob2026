@@ -65,7 +65,6 @@
         }
         #map-export-area { position: relative; border-radius: 1.5rem; overflow: hidden; }
         
-        /* CARTE RESPONSIVE POUR MOBILE, TABLETTE ET PC */
         #map { height: 360px; width: 100%; z-index: 1; border-radius: 1rem; }
         @media (min-width: 640px) { #map { height: 420px; border-radius: 1.25rem; } }
         @media (min-width: 1024px) { #map { height: 500px; } }
@@ -126,7 +125,7 @@
                 </div>
             </div>
 
-            <!-- BOUTONS ACTION ADAPTATIFS -->
+            <!-- BOUTONS ACTION -->
             <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
                 <button id="open-high-risk-modal" class="bg-gradient-to-r from-brand-red via-red-600 to-amber-600 hover:opacity-90 text-white font-display font-black text-[10px] sm:text-xs py-1.5 sm:py-2 px-2.5 sm:px-4 rounded-xl flex items-center gap-1.5 shadow-lg shadow-brand-red/50 glow-red animate-pulse">
                     <i class="fa-solid fa-ban text-amber-300"></i> <span class="hidden xs:inline">Villes Interdites & Haut Risque</span><span class="xs:hidden">Villes Risk</span>
@@ -149,7 +148,7 @@
 
     <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-10">
 
-        <!-- HERO BANNER ADAPTATIF -->
+        <!-- HERO BANNER -->
         <section class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-brand-red/50 p-4 sm:p-8 md:p-10 shadow-2xl min-h-[300px] sm:min-h-[360px] flex flex-col justify-between glow-red">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
@@ -262,20 +261,20 @@
                         <span class="text-brand-red font-mono font-bold text-[10px] sm:text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[10px] sm:text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">Directive Nationale du 22 Octobre :</strong> Les manifestations non déclarées par les syndicats sont strictly prohibées. Les centres-villes et zones commerçantes sont protégés par déviation obligatoire des parcours.</p>
+                        <p><strong class="text-white">Directive Nationale du 22 Octobre :</strong> Les manifestations non déclarées par les syndicats sont strictement prohibées. Les centres-villes et zones commerçantes sont protégés par déviation obligatoire des parcours.</p>
                         <p class="text-[9px] sm:text-[10px] text-amber-400 font-semibold pt-1"><i class="fa-solid fa-shield-check mr-1"></i> Carte mise à jour en direct par l'équipe MOB'2026.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PANEL DE GESTION ADMIN -->
+        <!-- PANEL DE GESTION ADMIN (EXCLUSIF ADMIN) -->
         <section id="admin-panel" class="hidden glass-panel p-4 sm:p-6 rounded-2xl border border-amber-500/50 space-y-3 sm:space-y-4 glow-amber">
             <div class="flex items-center justify-between border-b border-amber-500/30 pb-3">
                 <h3 class="font-display font-black text-xs sm:text-sm text-amber-400 flex items-center gap-2 uppercase tracking-wide">
-                    <i class="fa-solid fa-user-gear"></i> Administration centrale MOB'2026 — Placer une Alerte Officielle
+                    <i class="fa-solid fa-user-gear"></i> Administration centrale MOB'2026 — Publier une Alerte Officielle
                 </h3>
-                <span class="bg-amber-500/20 text-amber-300 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-500/40">Créateur</span>
+                <span class="bg-amber-500/20 text-amber-300 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-lg border border-amber-500/40">Admin Actif</span>
             </div>
 
             <div class="space-y-3">
@@ -348,19 +347,12 @@
             </div>
 
             <div class="space-y-3">
-                <p class="text-xs text-slate-400">Accès sécurisé réservé aux créateurs pour administrer la carte en temps réel.</p>
-                <input id="auth-email" type="email" placeholder="Adresse email admin..." value="carer.nathan11@gmail.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
+                <p class="text-xs text-slate-400">Accès réservé à l'administrateur pour modifier la carte et gérer les annonces.</p>
+                <input id="auth-email" type="email" placeholder="Adresse email admin..." value="mob2026actu@mob.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                 <input id="auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                 
                 <div class="flex gap-2 pt-1">
                     <button id="btn-signin-email" class="w-full bg-brand-amber hover:bg-amber-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">Connexion Administrateur</button>
-                </div>
-                
-                <div class="pt-2 border-t border-slate-800">
-                    <button id="btn-login-google" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-                        Connexion Google Admin
-                    </button>
                 </div>
             </div>
         </div>
@@ -489,8 +481,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
             getAuth, 
-            GoogleAuthProvider, 
-            signInWithPopup, 
             signInWithEmailAndPassword, 
             signOut, 
             onAuthStateChanged 
@@ -510,20 +500,15 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getDatabase(app);
-        const googleProvider = new GoogleAuthProvider();
 
-        // EMAILS ADMINS AUTORISÉS À ACCÉDER AU PANEL ET SUPPRIMER DES ALERTES
-        const adminEmails = [
-            "carer.nathan11@gmail.com",
-            "nathancarer.cinema@gmail.com",
-            "admin@mob2026.fr"
-        ]; 
+        // NOUVEAU COMPTE ADMIN UNIQUE AUTORISÉ
+        const adminEmails = ["mob2026actu@mob.com"];
 
         let latestPostsSnapshot = null;
         let latestEventsSnapshot = null;
         let mapMarkersGroup = [];
 
-        // GESTION DES MODALS ET TOUCH EVENTS SUR MOBILE
+        // MODALS
         const modal = document.getElementById('high-risk-modal');
         document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
         document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
@@ -534,7 +519,7 @@
         document.getElementById('open-admin-login-modal').addEventListener('click', () => adminLoginModal.classList.remove('hidden'));
         document.getElementById('close-admin-login-modal').addEventListener('click', () => adminLoginModal.classList.add('hidden'));
 
-        // 1. CARTE INTERACTIVE - DYNAMIQUEMENT ADAPTÉE AUX ÉCRANS
+        // 1. CARTE INTERACTIVE
         const map = L.map('map', { tap: false }).setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap',
@@ -617,7 +602,7 @@
             });
         }
 
-        // RENDU DES REPERES DE LA CARTE
+        // RENDU DES REPERES CARTE (SEUL L'ADMIN PEUT SUPPRIMER)
         onValue(ref(db, 'events'), snapshot => {
             latestEventsSnapshot = snapshot.val();
             renderMapEvents(latestEventsSnapshot);
@@ -629,11 +614,11 @@
 
             if(!data) return;
             const currentUser = auth.currentUser;
-            const isAdmin = currentUser && adminEmails.includes(currentUser.email.toLowerCase());
+            const isAdmin = currentUser && currentUser.email && adminEmails.includes(currentUser.email.toLowerCase());
 
             Object.entries(data).forEach(([key, ev]) => {
                 const deleteBtnHtml = isAdmin ? 
-                    `<br><button onclick="deleteMapEvent('${key}')" style="background:#FF2A2A;color:white;border:none;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:bold;margin-top:6px;cursor:pointer;">Supprimer l'Alerte (Admin)</button>` : '';
+                    `<br><button onclick="deleteMapEvent('${key}')" style="background:#FF2A2A;color:white;border:none;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:bold;margin-top:6px;cursor:pointer;">Supprimer l'Alerte (Admin)</button>` : '';
 
                 const marker = L.marker([ev.lat, ev.lng], { icon: createCustomIcon(ev.type) }).addTo(map)
                     .bindPopup(`
@@ -648,9 +633,14 @@
         }
 
         window.deleteMapEvent = function(key) {
+            const currentUser = auth.currentUser;
+            if(!currentUser || !currentUser.email || !adminEmails.includes(currentUser.email.toLowerCase())) {
+                return alert("Action refusée : Seul l'administrateur peut supprimer des alertes.");
+            }
+
             if(confirm("Confirmez-vous la suppression de cette alerte ?")) {
                 remove(ref(db, 'events/' + key))
-                    .then(() => alert("Alerte supprimée."))
+                    .then(() => alert("Alerte supprimée de la carte."))
                     .catch(err => alert("Erreur : " + err.message));
             }
         };
@@ -663,8 +653,11 @@
             const desc = document.getElementById('map-input-desc').value.trim();
             const user = auth.currentUser;
 
+            if(!user || !user.email || !adminEmails.includes(user.email.toLowerCase())) {
+                return alert("Action refusée : Connexion administrateur requise.");
+            }
+
             if(!title || !desc) return alert("Le titre et la description sont obligatoires.");
-            if(!user) return alert("Connexion administrateur requise.");
 
             push(ref(db, 'events'), {
                 type: type,
@@ -714,16 +707,12 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 4. AUTHENTIFICATION & PANEL ADMIN
+        // 4. AUTHENTIFICATION
         const userProfile = document.getElementById('user-profile');
         const userName = document.getElementById('user-name');
         const userAvatar = document.getElementById('user-avatar');
         const btnLogout = document.getElementById('btn-logout');
         const adminPanel = document.getElementById('admin-panel');
-
-        document.getElementById('btn-login-google').addEventListener('click', () => {
-            signInWithPopup(auth, googleProvider).then(() => adminLoginModal.classList.add('hidden')).catch(err => alert("Erreur Google : " + err.message));
-        });
 
         document.getElementById('btn-signin-email').addEventListener('click', () => {
             const e = document.getElementById('auth-email').value.trim(), p = document.getElementById('auth-password').value.trim();
@@ -734,18 +723,20 @@
                         alert("Connexion Administrateur réussie !");
                     })
                     .catch(err => alert("Erreur de connexion : " + err.message));
+            } else {
+                alert("Veuillez saisir votre mot de passe.");
             }
         });
 
         btnLogout.addEventListener('click', () => signOut(auth));
 
         onAuthStateChanged(auth, user => {
-            if (user) {
+            if (user && user.email) {
                 userProfile.classList.remove('hidden');
-                userName.textContent = user.displayName || user.email;
+                userName.textContent = user.email;
                 userAvatar.src = user.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=" + user.uid;
                 
-                // Vérification si l'utilisateur connecté est un administrateur
+                // VÉRIFICATION COMPTE ADMIN
                 if (adminEmails.includes(user.email.toLowerCase())) {
                     adminPanel.classList.remove('hidden');
                 } else {
@@ -769,7 +760,7 @@
             const liveFeedList = document.getElementById('live-feed-list');
             liveFeedList.innerHTML = '';
             const currentUser = auth.currentUser;
-            const isAdmin = currentUser && adminEmails.includes(currentUser.email.toLowerCase());
+            const isAdmin = currentUser && currentUser.email && adminEmails.includes(currentUser.email.toLowerCase());
 
             if(!data) { 
                 liveFeedList.innerHTML = `
@@ -789,7 +780,7 @@
 
                 const deleteBtnHtml = isAdmin ? `
                     <button onclick="deletePost('${key}')" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs px-2.5 py-1 rounded-lg border border-red-500/40 transition flex items-center gap-1 shadow-md">
-                        <i class="fa-solid fa-trash-can text-[10px]"></i> <span class="text-[10px] font-bold">Supprimer</span>
+                        <i class="fa-solid fa-trash-can text-[10px]"></i> <span class="text-[10px] font-bold">Supprimer (Admin)</span>
                     </button>
                 ` : '';
 
@@ -813,6 +804,11 @@
         }
 
         window.deletePost = function(postKey) {
+            const currentUser = auth.currentUser;
+            if(!currentUser || !currentUser.email || !adminEmails.includes(currentUser.email.toLowerCase())) {
+                return alert("Action refusée : Seul l'administrateur peut supprimer des annonces.");
+            }
+
             if(confirm("Confirmez-vous la suppression de ce message officiel ?")) {
                 remove(ref(db, 'posts/' + postKey)).then(() => alert("Message supprimé."));
             }
