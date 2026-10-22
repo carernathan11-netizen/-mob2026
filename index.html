@@ -51,6 +51,10 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
         }
         .glow-red { box-shadow: 0 0 30px -5px rgba(255, 42, 42, 0.35); }
         .glow-amber { box-shadow: 0 0 25px -5px rgba(255, 149, 0, 0.3); }
@@ -65,8 +69,8 @@
         }
         #map-export-area { position: relative; border-radius: 1.5rem; overflow: hidden; }
         
-        #map { height: 360px; width: 100%; z-index: 1; border-radius: 1rem; }
-        @media (min-width: 640px) { #map { height: 420px; border-radius: 1.25rem; } }
+        #map { height: 380px; width: 100%; z-index: 1; border-radius: 1rem; }
+        @media (min-width: 640px) { #map { height: 440px; border-radius: 1.25rem; } }
         @media (min-width: 1024px) { #map { height: 500px; } }
         
         .custom-map-icon {
@@ -104,13 +108,13 @@
                 <span class="font-display font-black tracking-widest uppercase text-brand-red text-[10px] sm:text-xs">FLASH ÉLYSÉE — 22 OCTOBRE</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>E. Macron souhaite qu'aucune manifestation n'ait lieu le 24 octobre dans toute la France. Suivi en direct.</span>
+                <span>E. Macron souhaite l'interdiction totale de toute manifestation en France pour le 24 octobre.</span>
             </div>
             <span class="text-slate-400 text-[10px] sm:text-xs shrink-0 hidden md:inline font-mono">22/10/2026</span>
         </div>
     </div>
 
-    <!-- NAVBAR RESPONSIVE -->
+    <!-- NAVBAR RESPONSIVE FLUIDE -->
     <header class="sticky top-0 z-50 glass-panel border-b border-brand-border/80">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -125,14 +129,14 @@
                 </div>
             </div>
 
-            <!-- BOUTONS ACTION & AUTHENTIFICATION -->
+            <!-- BOUTONS ACTION & AUTH -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <a href="#section-news" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] sm:text-xs font-bold py-1.5 sm:py-2 px-2.5 sm:px-3 rounded-xl border border-slate-700 transition flex items-center gap-1">
                     <i class="fa-solid fa-newspaper text-brand-red"></i> Actualités
                 </a>
 
                 <button id="open-high-risk-modal" class="bg-gradient-to-r from-brand-red via-red-600 to-amber-600 hover:opacity-90 text-white font-display font-black text-[10px] sm:text-xs py-1.5 sm:py-2 px-2.5 sm:px-3 rounded-xl flex items-center gap-1.5 shadow-lg shadow-brand-red/50 glow-red">
-                    <i class="fa-solid fa-ban text-amber-300"></i> <span class="hidden xs:inline">Villes Interdites & Réglementées</span><span class="xs:hidden">Villes</span>
+                    <i class="fa-solid fa-ban text-amber-300"></i> <span class="hidden xs:inline">Villes & Interdictions</span><span class="xs:hidden">Villes</span>
                 </button>
 
                 <button id="open-user-login-modal" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-display font-bold text-[10px] sm:text-xs py-1.5 sm:py-2 px-2.5 sm:px-3 rounded-xl border border-slate-700 transition flex items-center gap-1">
@@ -156,7 +160,7 @@
 
     <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-10">
 
-        <!-- HERO BANNER -->
+        <!-- HERO BANNER & COMPTE À REBOURS JUSQU'AU 24 OCTOBRE 00H00 -->
         <section class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-brand-red/50 p-4 sm:p-8 md:p-10 shadow-2xl min-h-[300px] sm:min-h-[360px] flex flex-col justify-between glow-red">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
@@ -167,7 +171,7 @@
                         TRACKER OFFICIEL VÉRIFIÉ
                     </span>
                     <span class="bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-lg border border-amber-400/40 glow-amber">
-                        <i class="fa-solid fa-calendar-days mr-1"></i> SAMEDI 24 OCTOBRE 2026
+                        <i class="fa-solid fa-calendar-days mr-1"></i> ÉCHÉANCE : 24 OCTOBRE 2026 — 00H00
                     </span>
                 </div>
 
@@ -176,11 +180,12 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-2xl leading-relaxed">
-                    Plateforme officielle d'information et de suivi en temps réel administrée centralement par l'équipe MOB'2026. Suivi des 34 villes, arrêtés préfectoraux et déviations.
+                    Plateforme officielle d'information et de suivi en temps réel administrée centralement par l'équipe MOB'2026. Suivi des arrêtés ministériels et interdictions nationales.
                 </p>
 
+                <!-- COMPTE À REBOURS ACTIF JUSQU'AU 24 OCTOBRE 00H00 -->
                 <div class="pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
-                    <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Rassemblement dans :</span>
+                    <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Compte à rebours (24 oct 00h00) :</span>
                     <div id="countdown" class="flex items-center gap-1 font-mono font-bold text-xs text-white">
                         <span id="cd-days" class="bg-brand-card/90 border border-brand-red/50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-brand-red font-black text-xs sm:text-sm shadow-md">00</span>j
                         <span id="cd-hours" class="bg-brand-card/90 border border-brand-amber/50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-brand-amber font-black text-xs sm:text-sm shadow-md">00</span>h
@@ -191,34 +196,34 @@
             </div>
         </section>
 
-        <!-- SECTION ACTUALITÉS DU 24 OCTOBRE -->
+        <!-- SECTION ACTUALITÉS -->
         <section id="section-news" class="glass-panel p-4 sm:p-6 rounded-2xl border border-brand-red/40 space-y-4 glow-red">
             <div class="flex items-center justify-between border-b border-brand-red/30 pb-3">
                 <h2 class="font-display font-black text-base sm:text-lg text-white flex items-center gap-2 uppercase tracking-wide">
-                    <i class="fa-solid fa-newspaper text-brand-red"></i> ACTUALITÉS & DÉCLARATIONS — 24 OCTOBRE
+                    <i class="fa-solid fa-newspaper text-brand-red"></i> ACTUALITÉS & DÉCLARATIONS OFFICIELLES
                 </h2>
                 <span class="bg-brand-red text-white text-[9px] font-black px-2.5 py-1 rounded-md uppercase">Flash Direct</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <article class="bg-brand-dark/90 border border-brand-red/50 p-4 rounded-xl space-y-2.5">
-                    <span class="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">Déclaration Élysée</span>
+                <article class="bg-brand-dark/90 border border-brand-red/50 p-4 rounded-xl space-y-2.5 transition hover:scale-[1.01]">
+                    <span class="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">Directive Présidentielle</span>
                     <h3 class="font-display font-black text-sm sm:text-base text-white">
                         Emmanuel Macron souhaite l'interdiction de toute manifestation en France ce 24 octobre
                     </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
-                        Le chef de l'État a exprimé le souhait qu'aucun rassemblement n'ait lieu le samedi 24 octobre sur tout le territoire national, dénonçant des dérives violentes. Les préfectures étudient l'application des arrêtés d'interdiction ville par ville.
+                        Le chef de l'État a formulé le souhait strict qu'aucune manifestation ni rassemblement ne se tienne sur l'ensemble du territoire national le samedi 24 octobre, suite aux risques de troubles majeurs.
                     </p>
                     <div class="text-[10px] text-slate-500 font-mono pt-1">22 Octobre 2026</div>
                 </article>
 
-                <article class="bg-brand-dark/90 border border-amber-500/40 p-4 rounded-xl space-y-2.5">
+                <article class="bg-brand-dark/90 border border-amber-500/40 p-4 rounded-xl space-y-2.5 transition hover:scale-[1.01]">
                     <span class="bg-amber-600 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">Conseil de Défense</span>
                     <h3 class="font-display font-black text-sm sm:text-base text-white">
-                        Réunion du Conseil de Défense vendredi & Dispositifs de sécurité
+                        Conseil de Défense extraordinaire ce vendredi pour valider les interdictions
                     </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
-                        Un Conseil de Défense est convoqué pour ce vendredi afin d'arrêter les consignes de sécurité, de protéger les centres-villes et de coordonner les déviations des parcours en cas de rassemblements maintenus par les syndicats.
+                        Le gouvernement réunit un Conseil de Défense d'urgence afin d'harmoniser les mesures d'interdiction préfectorales et de mobiliser les forces de l'ordre pour faire respecter l'interdiction totale des cortèges.
                     </p>
                     <div class="text-[10px] text-slate-500 font-mono pt-1">22 Octobre 2026</div>
                 </article>
@@ -226,7 +231,7 @@
         </section>
 
         <!-- CARTE INTERACTIVE - 34 VILLES -->
-        <section id="villes-carte" class="glass-panel p-4 sm:p-6 rounded-2xl border border-brand-border space-y-4 sm:space-y-5 transition hover:-translate-y-0.5 duration-300">
+        <section id="villes-carte" class="glass-panel p-4 sm:p-6 rounded-2xl border border-brand-border space-y-4 sm:space-y-5">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                     <h2 class="font-display font-black text-base sm:text-lg text-white flex items-center gap-2 uppercase tracking-wide">
@@ -242,10 +247,9 @@
             <!-- LÉGENDE DE CARTE -->
             <div class="flex flex-wrap items-center gap-2 sm:gap-3 p-2.5 sm:p-3 bg-brand-dark/90 rounded-xl border border-slate-800 text-[10px] sm:text-xs">
                 <span class="text-slate-400 font-bold">Légende :</span>
-                <span class="flex items-center gap-1 text-emerald-400"><i class="fa-solid fa-square-check text-emerald-500"></i> Syndicats / En attente</span>
+                <span class="flex items-center gap-1 text-emerald-400"><i class="fa-solid fa-square-check text-emerald-500"></i> Suivi / En attente d'arrêté</span>
                 <span class="flex items-center gap-1 text-red-500"><i class="fa-solid fa-ban text-red-500"></i> Interdiction Avérée</span>
-                <span class="flex items-center gap-1 text-blue-400"><i class="fa-solid fa-shield-halved text-blue-500"></i> Forces de l'ordre</span>
-                <span class="flex items-center gap-1 text-amber-400"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Tension</span>
+                <span class="flex items-center gap-1 text-blue-400"><i class="fa-solid fa-shield-halved text-blue-500"></i> Dispositif renforcé</span>
             </div>
 
             <!-- CARTE -->
@@ -253,12 +257,12 @@
                 <div id="map"></div>
                 <div class="p-3 sm:p-4 bg-brand-card rounded-xl border border-slate-800 space-y-2 sm:space-y-3">
                     <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-2">
-                        <span class="font-display text-white font-black text-[10px] sm:text-xs uppercase tracking-wider">MOB'2026 — CARTE DÉTAILLÉE DES 34 VILLES</span>
+                        <span class="font-display text-white font-black text-[10px] sm:text-xs uppercase tracking-wider">MOB'2026 — CARTE OFFICIELLE DES 34 VILLES</span>
                         <span class="text-brand-red font-mono font-bold text-[10px] sm:text-xs">mob2026.vercel.app</span>
                     </div>
                     <div class="text-[10px] sm:text-[11px] text-slate-300 space-y-1">
-                        <p><strong class="text-white">Note de mise à jour :</strong> Seules les interdictions officielles confirmées par arrêté préfectoral (ex: Lyon, Rouen) apparaissent sous le statut d'Interdiction Totale. Pour les autres villes (dont Rennes, Nantes, Paris), les informations sont mises à jour au fur et à mesure des annonces préfectorales.</p>
-                        <p class="text-[9px] sm:text-[10px] text-amber-400 font-semibold pt-1"><i class="fa-solid fa-shield-check mr-1"></i> Carte mise à jour en direct par l'équipe MOB'2026.</p>
+                        <p><strong class="text-white">Note :</strong> Les interdictions spécifiques s'appliquent selon les arrêtés préfectoraux locaux en lien avec la directive présidentielle.</p>
+                        <p class="text-[9px] sm:text-[10px] text-amber-400 font-semibold pt-1"><i class="fa-solid fa-shield-check mr-1"></i> Carte administrée en direct par l'équipe MOB'2026.</p>
                     </div>
                 </div>
             </div>
@@ -343,7 +347,7 @@
             </div>
 
             <div class="space-y-3">
-                <p class="text-xs text-slate-400">Espace administrateur exclusif pour publier des alertes et administrer le contenu.</p>
+                <p class="text-xs text-slate-400">Espace administrateur exclusif (Identifiant : mob2026actu@mob.com).</p>
                 <input id="admin-auth-email" type="email" placeholder="Adresse email admin..." value="mob2026actu@mob.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                 <input id="admin-auth-password" type="password" placeholder="Mot de passe..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-brand-amber">
                 
@@ -377,7 +381,7 @@
         </div>
     </div>
 
-    <!-- MODAL VILLES INTERDITES & RÉGLEMENTÉES COMPLÈTE -->
+    <!-- MODAL VILLES INTERDITES & RÉGLEMENTÉES COMPLÈTE (34 VILLES) -->
     <div id="high-risk-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md hidden">
         <div class="flame-modal-bg w-full max-w-4xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6 relative overflow-hidden max-h-[90vh] overflow-y-auto">
             <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-red/25 rounded-full blur-3xl pointer-events-none"></div>
@@ -397,19 +401,19 @@
                 </button>
             </div>
 
-            <!-- CONTENU COMPLET DE LA MODAL -->
+            <!-- CONTENU DE LA MODAL -->
             <div class="space-y-4 sm:space-y-6 relative z-10 text-xs text-slate-200">
                 
                 <div class="bg-red-950/80 border border-red-500/80 p-3.5 sm:p-4 rounded-2xl space-y-1 shadow-xl glow-red">
                     <p class="font-bold text-red-400 flex items-center gap-2 text-xs sm:text-sm uppercase">
-                        <i class="fa-solid fa-gavel text-red-500"></i> Directive Élysée (22 Octobre) :
+                        <i class="fa-solid fa-gavel text-red-500"></i> Directive Présidentielle (22 Octobre) :
                     </p>
                     <p class="text-slate-200 text-[10px] sm:text-[11px] leading-relaxed">
-                        Emmanuel Macron demande l'interdiction de toutes les manifestations en France pour la journée du 24 octobre. Le cadre réglementaire s'applique selon les arrêtés préfectoraux pris dans chaque département.
+                        Emmanuel Macron souhaite l'interdiction de toutes les manifestations en France pour la journée du 24 octobre. Les arrêtés préfectoraux s'appliquent selon les décisions locales.
                     </p>
                 </div>
 
-                <!-- 1. INTERDICTIONS CONFIRMÉES -->
+                <!-- Interdictions spécifiques -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-xs sm:text-sm text-red-500 uppercase tracking-wide flex items-center gap-2">
                         <i class="fa-solid fa-ban text-red-500"></i> 🚫 Interdictions Préfectorales Spécifiques
@@ -438,7 +442,7 @@
 
                         <div class="md:col-span-2 bg-slate-900/90 border border-amber-500/40 p-3 sm:p-3.5 rounded-2xl space-y-1">
                             <div class="flex flex-wrap items-center justify-between gap-1">
-                                <span class="font-display font-bold text-white text-xs">PARIS (75) — SECTEURS INSTITUTIONNELS ET STATIONS NEVRALGIQUES</span>
+                                <span class="font-display font-bold text-white text-xs">PARIS (75) — SECTEURS INSTITUTIONNELS</span>
                                 <span class="bg-amber-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-md">Bastille-Nation uniquement</span>
                             </div>
                             <p class="text-slate-300 text-[10px] sm:text-[11px]">
@@ -450,10 +454,10 @@
 
                 <hr class="border-red-500/20">
 
-                <!-- 2. RECAPITULATIF DES 34 VILLES OFFICIELLES -->
+                <!-- Liste complète des 34 villes -->
                 <div class="space-y-3">
                     <h3 class="font-display font-black text-xs sm:text-sm text-emerald-400 uppercase tracking-wide flex items-center gap-2">
-                        <i class="fa-solid fa-list-check"></i> 📍 Liste des 34 Villes Suivies (Rassemblements Syndicaux & Arrêtés)
+                        <i class="fa-solid fa-list-check"></i> 📍 Liste des 34 Villes Suivies
                     </h3>
                     
                     <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
@@ -554,6 +558,7 @@
         document.getElementById('open-high-risk-modal').addEventListener('click', () => modal.classList.remove('hidden'));
         document.getElementById('close-high-risk-modal').addEventListener('click', () => modal.classList.add('hidden'));
         document.getElementById('close-high-risk-modal-btn').addEventListener('click', () => modal.classList.add('hidden'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('hidden'); });
 
         const adminLoginModal = document.getElementById('admin-login-modal');
         document.getElementById('open-admin-login-modal').addEventListener('click', () => adminLoginModal.classList.remove('hidden'));
@@ -563,7 +568,30 @@
         document.getElementById('open-user-login-modal').addEventListener('click', () => userLoginModal.classList.remove('hidden'));
         document.getElementById('close-user-login-modal').addEventListener('click', () => userLoginModal.classList.add('hidden'));
 
-        // CARTE INTERACTIVE - 34 VILLES RESTAURÉES
+        // COMPTE À REBOURS JUSQU'AU 24 OCTOBRE 2026 À 00H00
+        const targetDate = new Date('2026-10-24T00:00:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').textContent = d < 10 ? '0' + d : d;
+                document.getElementById('cd-hours').textContent = h < 10 ? '0' + h : h;
+                document.getElementById('cd-mins').textContent = m < 10 ? '0' + m : m;
+                document.getElementById('cd-secs').textContent = s < 10 ? '0' + s : s;
+            } else {
+                document.getElementById('countdown').innerHTML = '<span class="text-brand-red font-black">ÉCHÉANCE ATTEINTE (24 OCTOBRE 00H00)</span>';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // CARTE INTERACTIVE - 34 VILLES (STATUTS RÉALISTES)
         const map = L.map('map', { tap: false }).setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap',
@@ -574,14 +602,14 @@
             { name: "Paris", lat: 48.8566, lng: 2.3522, status: "Bastille-Nation uniquement", restricted: false },
             { name: "Marseille", lat: 43.2965, lng: 5.3698, status: "Cortège syndical dévié", restricted: false },
             { name: "Lyon", lat: 45.7640, lng: 4.8357, status: "🚫 INTERDICTION TOTALE (Arrêté Rhône)", restricted: true },
-            { name: "Toulouse", lat: 43.6047, lng: 1.4442, status: "Cortège syndical sous réserve", restricted: false },
+            { name: "Toulouse", lat: 43.6047, lng: 1.4442, status: "En attente d'arrêté préfectoral", restricted: false },
             { name: "Nice", lat: 43.7102, lng: 7.2620, status: "Rassemblement encadré", restricted: false },
             { name: "Nantes", lat: 47.2183, lng: -1.5536, status: "Cortège syndical dévié", restricted: false },
             { name: "Montpellier", lat: 43.6108, lng: 3.8767, status: "Cortège syndical autorisé", restricted: false },
             { name: "Strasbourg", lat: 48.5734, lng: 7.7521, status: "Cortège syndical dévié", restricted: false },
             { name: "Bordeaux", lat: 44.8378, lng: -0.5792, status: "Cortège syndical autorisé", restricted: false },
             { name: "Lille", lat: 50.6292, lng: 3.0573, status: "Cortège syndical autorisé", restricted: false },
-            { name: "Rennes", lat: 48.1172, lng: -1.6777, status: "Cortège syndical sous réserve d'arrêté", restricted: false },
+            { name: "Rennes", lat: 48.1172, lng: -1.6777, status: "Sous réserve d'arrêté préfectoral", restricted: false },
             { name: "Grenoble", lat: 45.1885, lng: 5.7245, status: "Cortège syndical autorisé", restricted: false },
             { name: "Reims", lat: 49.2583, lng: 4.0317, status: "Sous réserve déclaration syndicale", restricted: false },
             { name: "Dijon", lat: 47.3220, lng: 5.0415, status: "Cortège syndical autorisé", restricted: false },
