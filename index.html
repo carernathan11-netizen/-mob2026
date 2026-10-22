@@ -108,13 +108,13 @@
                 <span class="font-display font-black tracking-widest uppercase text-brand-red text-[10px] sm:text-xs">FLASH ÉLYSÉE — 22 OCTOBRE</span>
             </div>
             <div class="truncate text-slate-200 font-medium">
-                <span>E. Macron souhaite qu'aucune manifestation non syndicale n'ait lieu le 24 octobre. Seules les manifestations organisées par des syndicats seront autorisées dans les villes autorisées.</span>
+                <span>Seules les manifestations organisées par des syndicats seront autorisées dans les villes autorisées ce 24 octobre.</span>
             </div>
             <span class="text-slate-400 text-[10px] sm:text-xs shrink-0 hidden md:inline font-mono">22/10/2026</span>
         </div>
     </div>
 
-    <!-- NAVBAR RESPONSIVE FLUIDE -->
+    <!-- NAVBAR RESPONSIVE -->
     <header class="sticky top-0 z-50 glass-panel border-b border-brand-border/80">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -160,7 +160,7 @@
 
     <main class="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-10">
 
-        <!-- HERO BANNER & COMPTE À REBOURS JUSQU'AU 24 OCTOBRE 00H00 -->
+        <!-- HERO BANNER -->
         <section class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-brand-red/50 p-4 sm:p-8 md:p-10 shadow-2xl min-h-[300px] sm:min-h-[360px] flex flex-col justify-between glow-red">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
@@ -183,7 +183,7 @@
                     Plateforme officielle d'information et de suivi en temps réel administrée centralement par l'équipe MOB'2026. Suivi des arrêtés ministériels et interdictions nationales.
                 </p>
 
-                <!-- COMPTE À REBOURS ACTIF JUSQU'AU 24 OCTOBRE 00H00 -->
+                <!-- COMPTE À REBOURS -->
                 <div class="pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
                     <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400"><i class="fa-regular fa-clock text-brand-red mr-1"></i> Compte à rebours (24 oct 00h00) :</span>
                     <div id="countdown" class="flex items-center gap-1 font-mono font-bold text-xs text-white">
@@ -209,10 +209,10 @@
                 <article class="bg-brand-dark/90 border border-brand-red/50 p-4 rounded-xl space-y-2.5 transition hover:scale-[1.01]">
                     <span class="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">Directive Présidentielle</span>
                     <h3 class="font-display font-black text-sm sm:text-base text-white">
-                        Seules les manifestations syndicales autorisées dans les villes autorisées
+                        Seules les manifestations organisées par des syndicats seront autorisées dans les villes autorisées
                     </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
-                        Emmanuel Macron et le gouvernement précisent que <strong class="text-white">seules les manifestations déclarées et organisées par des syndicats officiels seront autorisées ce samedi 24 octobre</strong>, et uniquement dans les villes ne faisant pas l'objet d'un arrêté d'interdiction totale. Tout autre rassemblement sauvage est strictement interdit.
+                        Pour ce samedi 24 octobre, le cadre réglementaire fixé indique que <strong class="text-white">seules les manifestations déclarées et organisées par des syndicats seront autorisées dans les villes autorisées</strong>. Tous les autres rassemblements non déclarés ou sauvages demeurent formellement interdits sur l'ensemble du territoire national.
                     </p>
                     <div class="text-[10px] text-slate-500 font-mono pt-1">22 Octobre 2026</div>
                 </article>
@@ -356,7 +356,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2 : CONNEXION ESPACE MEMBRE VISITEUR (CORRIGÉE) -->
+    <!-- MODAL 2 : CONNEXION ET INSCRIPTION MEMBRE VISITEUR (CORRECTIF FINAL) -->
     <div id="user-login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md hidden">
         <div class="glass-panel w-full max-w-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 space-y-4 relative border border-emerald-500/40 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -369,10 +369,13 @@
             </div>
 
             <div class="space-y-3">
-                <p class="text-xs text-slate-400">Pour vous connecter, entrez vos identifiants et cliquez sur <strong class="text-emerald-400">Se Connecter</strong>. Si vous n'avez pas encore de compte, cliquez sur <strong class="text-slate-200">Créer un compte</strong>.</p>
+                <p class="text-xs text-slate-400">Saisissez vos identifiants pour vous connecter ou créer votre compte.</p>
                 <input id="user-auth-email" type="email" placeholder="Votre adresse email..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
-                <input id="user-auth-password" type="password" placeholder="Votre mot de passe (6 caractères min.)..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                <input id="user-auth-password" type="password" placeholder="Votre mot de passe (6 car. min)..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
                 
+                <!-- Zone de message d'information dynamique -->
+                <div id="user-auth-msg" class="text-[11px] hidden font-semibold p-2 rounded-lg"></div>
+
                 <div class="flex gap-2">
                     <button id="btn-signup-user" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 transition">Créer un compte</button>
                     <button id="btn-signin-user" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition">Se Connecter</button>
@@ -409,7 +412,7 @@
                         <i class="fa-solid fa-gavel text-red-500"></i> Directive Présidentielle (22 Octobre) :
                     </p>
                     <p class="text-slate-200 text-[10px] sm:text-[11px] leading-relaxed">
-                        Seules les manifestations organisées et déclarées par des syndicats sont autorisées dans les villes ne faisant pas l'objet d'une interdiction totale.
+                        Seules les manifestations organisées par des syndicats seront autorisées dans les villes autorisées.
                     </p>
                 </div>
 
@@ -426,7 +429,7 @@
                                 <span class="bg-red-600 text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-md">Interdiction Totale</span>
                             </div>
                             <p class="text-slate-300 text-[10px] sm:text-[11px] leading-relaxed">
-                                Arrêté du Rhône : tout rassemblement est strictly interdit sur l'ensemble de la métropole.
+                                Arrêté du Rhône : tout rassemblement est strictement interdit sur l'ensemble de la métropole.
                             </p>
                         </div>
 
@@ -591,7 +594,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // CARTE INTERACTIVE - 34 VILLES (STATUTS RÉALISTES)
+        // CARTE INTERACTIVE - 34 VILLES
         const map = L.map('map', { tap: false }).setView([46.603354, 1.888334], 5.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap',
@@ -707,66 +710,86 @@
                         alert("Connexion Administrateur réussie !");
                     })
                     .catch(err => {
-                        if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
-                            alert("Identifiants Administrateur incorrects. Vérifiez l'adresse e-mail et le mot de passe.");
-                        } else {
-                            alert("Erreur de connexion : " + err.message);
-                        }
+                        alert("Erreur de connexion admin : " + err.message);
                     });
             } else {
-                alert("Veuillez saisir votre e-mail et votre mot de passe admin.");
+                alert("Veuillez remplir les identifiants administrateur.");
             }
         });
 
-        // CONNEXION MEMBRE VISITEUR (AVEC GESTION D'ERREUR PRÉCISE)
+        // LOGIQUE FLUIDE D'AUTH MEMBRE (SE CONNECTER & CRÉER UN COMPTE SANS ERREUR)
+        function showAuthMsg(msg, isError = true) {
+            const msgBox = document.getElementById('user-auth-msg');
+            msgBox.classList.remove('hidden', 'bg-red-500/20', 'text-red-300', 'bg-emerald-500/20', 'text-emerald-300');
+            if(isError) {
+                msgBox.classList.add('bg-red-500/20', 'text-red-300');
+            } else {
+                msgBox.classList.add('bg-emerald-500/20', 'text-emerald-300');
+            }
+            msgBox.textContent = msg;
+        }
+
+        // 1. BOUTON SE CONNECTER
         document.getElementById('btn-signin-user').addEventListener('click', () => {
-            const e = document.getElementById('user-auth-email').value.trim(), p = document.getElementById('user-auth-password').value.trim();
-            if(e && p) {
-                signInWithEmailAndPassword(auth, e, p)
-                    .then(() => {
-                        userLoginModal.classList.add('hidden');
-                        alert("Bienvenue dans votre espace membre !");
-                    })
-                    .catch(err => {
-                        if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-                            alert("Identifiants incorrects. Si vous n'avez pas encore de compte, cliquez sur 'Créer un compte'.");
-                        } else if (err.code === 'auth/invalid-email') {
-                            alert("Adresse email invalide. Veuillez vérifier le format de votre email.");
-                        } else {
-                            alert("Erreur de connexion : " + err.message);
-                        }
-                    });
-            } else {
-                alert("Veuillez remplir l'email et le mot de passe pour vous connecter.");
-            }
+            const e = document.getElementById('user-auth-email').value.trim();
+            const p = document.getElementById('user-auth-password').value.trim();
+
+            if(!e || !p) return showAuthMsg("Veuillez saisir votre e-mail et votre mot de passe.");
+
+            signInWithEmailAndPassword(auth, e, p)
+                .then(() => {
+                    userLoginModal.classList.add('hidden');
+                    alert("Connexion réussie !");
+                })
+                .catch(err => {
+                    if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
+                        // S'il n'existe pas, tente la création automatique
+                        createUserWithEmailAndPassword(auth, e, p)
+                            .then(() => {
+                                userLoginModal.classList.add('hidden');
+                                alert("Compte créé et connecté automatiquement !");
+                            })
+                            .catch(createErr => {
+                                showAuthMsg("Mot de passe ou adresse e-mail incorrect.");
+                            });
+                    } else if (err.code === 'auth/invalid-email') {
+                        showAuthMsg("Adresse e-mail invalide.");
+                    } else {
+                        showAuthMsg("Erreur : " + err.message);
+                    }
+                });
         });
 
-        // INSCRIPTION MEMBRE VISITEUR (CORRECTEMENT TRADUITE POUR auth/email-already-in-use)
+        // 2. BOUTON CRÉER UN COMPTE
         document.getElementById('btn-signup-user').addEventListener('click', () => {
-            const e = document.getElementById('user-auth-email').value.trim(), p = document.getElementById('user-auth-password').value.trim();
-            if(e && p) {
-                if(p.length < 6) {
-                    return alert("Le mot de passe doit contenir au moins 6 caractères.");
-                }
-                createUserWithEmailAndPassword(auth, e, p)
-                    .then(() => {
-                        userLoginModal.classList.add('hidden');
-                        alert("Compte Membre créé avec succès ! Vous êtes désormais connecté.");
-                    })
-                    .catch(err => {
-                        if (err.code === 'auth/email-already-in-use') {
-                            alert("Un compte existe déjà avec cette adresse email ! Cliquez sur le bouton vert 'Se Connecter' pour vous identifier.");
-                        } else if (err.code === 'auth/invalid-email') {
-                            alert("Adresse email invalide. Veuillez saisir un e-mail valide.");
-                        } else if (err.code === 'auth/weak-password') {
-                            alert("Mot de passe trop faible (6 caractères minimum).");
-                        } else {
-                            alert("Erreur d'inscription : " + err.message);
-                        }
-                    });
-            } else {
-                alert("Veuillez saisir un e-mail et un mot de passe pour créer votre compte.");
-            }
+            const e = document.getElementById('user-auth-email').value.trim();
+            const p = document.getElementById('user-auth-password').value.trim();
+
+            if(!e || !p) return showAuthMsg("Veuillez remplir l'e-mail et le mot de passe.");
+            if(p.length < 6) return showAuthMsg("Le mot de passe doit faire au moins 6 caractères.");
+
+            createUserWithEmailAndPassword(auth, e, p)
+                .then(() => {
+                    userLoginModal.classList.add('hidden');
+                    alert("Votre compte a été créé avec succès !");
+                })
+                .catch(err => {
+                    // Si le compte existe déjà, se connecte automatiquement
+                    if (err.code === 'auth/email-already-in-use') {
+                        signInWithEmailAndPassword(auth, e, p)
+                            .then(() => {
+                                userLoginModal.classList.add('hidden');
+                                alert("Compte déjà existant : Connexion réussie !");
+                            })
+                            .catch(loginErr => {
+                                showAuthMsg("Ce compte existe déjà mais le mot de passe entré est incorrect.");
+                            });
+                    } else if (err.code === 'auth/invalid-email') {
+                        showAuthMsg("Adresse e-mail invalide.");
+                    } else {
+                        showAuthMsg("Erreur : " + err.message);
+                    }
+                });
         });
 
         document.getElementById('btn-logout').addEventListener('click', () => signOut(auth));
